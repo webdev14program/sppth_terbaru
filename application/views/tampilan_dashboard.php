@@ -23,18 +23,22 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            DATA MASTER
+        <div class="sidebar-heading text-uppercase">
+            master akademik
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>/Dashboard/data_jurusan">
-                <i class="fas fa-school"></i>
-                <span>JURUSAN</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>/Dashboard/data_siswa">
-                <i class="fas fa-user-graduate"></i>
-                <span>SISWA</span></a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span class="text-uppercase">master akademik</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_jurusan">Jurusan</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_kelas">Kelas</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa">Siswa</a>
+                </div>
+            </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -62,11 +66,11 @@
         </div>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapse">
                 <i class="fas fa-book-open"></i>
                 <span>PEMBAYARAN SPP</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_admin_perbulan_perhari">Rekap Hari</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_admin_perbulan">Rekap Bulan</a>

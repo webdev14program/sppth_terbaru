@@ -6,7 +6,7 @@ class Model_jurusan extends CI_Model
 
     public function countJurusan()
     {
-        $sql = "SELECT COUNT(*) AS jurusan FROM `jurusan`";
+        $sql = "SELECT COUNT(*) AS jurusan FROM `jurusan`;";
         $query = $this->db->query($sql);
         return $query->row()->jurusan;
     }

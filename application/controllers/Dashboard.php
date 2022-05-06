@@ -8,6 +8,8 @@ class Dashboard extends CI_Controller
     public function index()
     {
         $isi['content'] = 'tampilan_home';
+        $isi['jurusan'] = $this->Model_jurusan->countJurusan();
+        $isi['kelas'] = $this->Model_kelas->countKelas();
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -19,6 +21,16 @@ class Dashboard extends CI_Controller
         $isi['jurusan'] = $this->Model_jurusan->dataJurusan();
 
         $isi['content'] = 'tampilan_jurusan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_kelas()
+    {
+
+        $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+        $isi['content'] = 'tampilan_kelas';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');

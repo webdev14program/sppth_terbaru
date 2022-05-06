@@ -6,7 +6,7 @@ class Model_kelas extends CI_Model
 
     public function countKelas()
     {
-        $sql = "SELECT COUNT(*) AS kelas FROM `a_kelas`";
+        $sql = "SELECT COUNT(*) AS kelas FROM `kelas`;";
         $query = $this->db->query($sql);
         return $query->row()->kelas;
     }

@@ -21,7 +21,7 @@
         <div class="card bg-warning">
             <div class="card-body">
                 <h4 class="text-white font-weight-bold text-uppercase">jurusan siswa</h4>
-                <h4 class="text-white font-weight-bold text-uppercase">0 jurusan</h4>
+                <h4 class="text-white font-weight-bold text-uppercase"><?= $jurusan ?> jurusan</h4>
             </div>
         </div>
     </div>
