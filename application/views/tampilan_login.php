@@ -21,7 +21,7 @@
 
 </head>
 
-<body style="background-image: url(https://tatausaha.smkth-jakbar.com/assets/img/background_sekolah.png);background-position: center;background-repeat: no-repeat;background-size: cover;">
+<body style="background-image: url(<?= base_url() ?>assets/img/Background-Merah.png);background-position: center;background-repeat: no-repeat;background-size: cover;">
 
     <div class="container">
 

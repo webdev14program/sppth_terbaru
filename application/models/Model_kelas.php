@@ -6,7 +6,10 @@ class Model_kelas extends CI_Model
 
     public function countKelas()
     {
-        $sql = "SELECT COUNT(*) AS kelas FROM `kelas`;";
+        $sql = "SELECT COUNT(*) AS kelas FROM `kelas`
+                INNER JOIN tahun_ajaran
+                ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+                WHERE tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
         return $query->row()->kelas;
     }
@@ -25,7 +28,11 @@ class Model_kelas extends CI_Model
     }
     public function tahun_ajaran()
     {
-        $sql = "SELECT * FROM `tahun_ajaran`";
+        $sql = "SELECT tahun_ajaran.id_tahun_ajaran,tahun_ajaran.tahun_ajaran,COUNT(*) AS jumlah_kelas FROM `kelas`
+                INNER JOIN tahun_ajaran
+                ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+                GROUP BY tahun_ajaran.id_tahun_ajaran
+                ORDER BY tahun_ajaran.id_tahun_ajaran DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

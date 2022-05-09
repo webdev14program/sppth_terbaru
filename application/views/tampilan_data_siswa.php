@@ -17,12 +17,10 @@
                 <thead>
                     <tr class="text-center text-uppercase font-weight-bold">
                         <th>#</th>
-                        <th>ID Siswa Siswa</th>
-                        <th>Nama Siswa</th>
-                        <th>Rombel</th>
-                        <th>Group Rombel</th>
-                        <th>Jurusan</th>
-                        <th>Tahun Ajaran</th>
+                        <th>ID tahun ajaran kelas</th>
+                        <th>tahun ajaran</th>
+                        <th>jumlah siswa</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,12 +30,14 @@
                         foreach ($siswa as $row) {
                         ?>
                             <td class="text-center text-uppercase font-weight-bold"><?php echo $no++; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nis']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_siswa']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['kelas']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['jurusan']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['id_tahun_ajaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['jumlah_siswa']; ?> Siswa</td>
+                            <td>
+                                <h5 class="text-center">
+                                    <a class="btn btn-primary btn-sm" href="<?= base_url() ?>Dashboard/detail_data_siswa/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
+                                </h5>
+                            </td>
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -45,7 +45,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -67,7 +66,7 @@
                         <select class="form-control" name="jurusan">
                             <option class="bg-info text-white" disabled>PILIH JURUSAN</option>
                             <?php foreach ($jurusan as $row) { ?>
-                                <option value="<?= $row['id']; ?>"><?= $row['id']; ?> | <?= $row['jurusan']; ?> </option>
+                                <option value="<?= $row['kode']; ?>"><?= $row['kode']; ?> | <?= $row['jurusan']; ?> </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -76,7 +75,7 @@
                         <select class="form-control" name="kelas">
                             <option class="bg-info text-white" disabled>PILIH KELAS</option>
                             <?php foreach ($kelas as $row) { ?>
-                                <option value="<?= $row['id']; ?>"><?= $row['id']; ?> | <?= $row['kelas']; ?> </option>
+                                <option value="<?= $row['kelas']; ?>"><?= $row['id']; ?> | <?= $row['kelas']; ?> </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -86,7 +85,7 @@
                         <select class="form-control" name="group_kelas">
                             <option class="bg-info text-white" disabled>PILIH GROUP KELAS</option>
                             <?php foreach ($group_kelas as $row) { ?>
-                                <option value="<?= $row['id_groupKelas']; ?>"><?= $row['id_groupKelas']; ?> | <?= $row['nama_group']; ?> </option>
+                                <option value="<?= $row['nama_group']; ?>"><?= $row['id_groupKelas']; ?> | <?= $row['nama_group']; ?> </option>
                             <?php } ?>
                         </select>
                     </div>
