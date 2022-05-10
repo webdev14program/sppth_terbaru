@@ -18,6 +18,17 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function data_tahun_ajaran()
+    {
+
+        $isi['tahun_ajaran'] = $this->Model_tahun_ajaran->dataTahunAjaran();
+
+        $isi['content'] = 'tampilan_data_tahun_ajaran';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
     public function data_jurusan()
     {
 

@@ -34,6 +34,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_tahun_ajaran">Tahun Ajaran</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_jurusan">Jurusan</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_kelas">Kelas</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa">Siswa</a>

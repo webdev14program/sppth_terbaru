@@ -11,9 +11,9 @@ class Model_tahun_ajaran extends CI_Model
         $query = $this->db->query($sql);
         return $query->row()->tahun_ajaran;
     }
-    public function dataKelas()
+    public function dataTahunAjaran()
     {
-        $sql = "SELECT * FROM `kelas`";
+        $sql = "SELECT * FROM `tahun_ajaran`";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
