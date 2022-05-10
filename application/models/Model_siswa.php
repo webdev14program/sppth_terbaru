@@ -13,6 +13,20 @@ class Model_siswa extends CI_Model
         return $query->row()->siswa;
     }
 
+    public function dataSiswaALL()
+    {
+        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.nama_siswa,jurusan.jurusan,siswa.kelas,group_kelas.nama_group,tahun_ajaran.tahun_ajaran FROM `siswa`
+                INNER JOIN jurusan
+                ON siswa.jurusan=jurusan.kode
+                INNER JOIN group_kelas
+                ON siswa.group_kelas=group_kelas.id_groupKelas
+                INNER JOIN tahun_ajaran
+                ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+                ORDER BY siswa.id_siswa ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
     public function dataSiswa()
     {
         $sql = "SELECT tahun_ajaran.id_tahun_ajaran,tahun_ajaran.tahun_ajaran,COUNT(*) AS jumlah_siswa FROM `siswa`
