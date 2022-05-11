@@ -101,6 +101,60 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function pembayaran_spp()
+    {
+        $isi['siswa'] = $this->Model_siswa->dataSiswaALL();
+        $isi['content'] = 'SPP/tampilan_pembayaran_spp';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail_pembayaran_spp($id_siswa)
+    {
+
+
+        $isi['siswa'] = $this->Model_siswa->dataSiswaALLFindID($id_siswa);
+        $isi['spp'] = $this->Model_siswa->SPPdataSiswaALLFindID($id_siswa);
+        $isi['siswa_spp'] = $this->Model_siswa->SPPdataSiswaALLFindID($id_siswa);
+        $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function generate_detail_pembayaran_spp($id_siswa)
+    {
+        $months = array(
+            '1' => 'Juli',
+            '2' => 'Augustus',
+            '3' => 'September',
+            '4' => 'Oktober',
+            '5' => 'November',
+            '6' => 'Desember',
+            '7' => 'Januari',
+            '8' => 'Februar',
+            '9' => 'Maret',
+            '10' => 'April',
+            '11' => 'Mei',
+        );
+
+
+        foreach ($months as $key => $value) {
+            $data = array(
+                'id_spp_siswa' => rand(11111, 99999),
+                'id_siswa' => $id_siswa,
+                'kode_bulan' => $key,
+                'bulan' => $value,
+                'status' => 'BELUM LUNAS',
+            );
+            $this->db->insert('spp_siswa', $data);
+        }
+
+        redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
+    }
+
+
     public function daftar_setting_pembayaran()
     {
         $isi['kelas'] = $this->Model_kelas->group_kelas();

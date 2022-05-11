@@ -10,7 +10,8 @@ class Model_setting_pembayaran extends CI_Model
         INNER JOIN group_kelas
         ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas
         INNER JOIN tahun_ajaran
-        ON setting_pembayaran.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran;";
+        ON setting_pembayaran.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+        ORDER BY group_kelas.id_groupKelas,tahun_ajaran.id_tahun_ajaran ASC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
