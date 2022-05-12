@@ -23,7 +23,8 @@
                             <td class="text-center text-uppercase font-weight-bold"><?php echo $no++; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['id_tahun_ajaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold">Tahun Ajaran <?= $row['tahun_ajaran']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['status']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['status_tahun_ajaran']; ?></td>
+                            <td></td>
                     </tr>
                 <?php } ?>
                 </tbody>
