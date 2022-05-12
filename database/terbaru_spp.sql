@@ -2,9 +2,9 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 10, 2022 at 10:52 AM
--- Server version: 10.4.24-MariaDB
+-- Host: localhost
+-- Generation Time: May 12, 2022 at 01:44 PM
+-- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -199,9 +199,12 @@ CREATE TABLE `setting_pembayaran` (
 --
 
 INSERT INTO `setting_pembayaran` (`id_setting_pembayaran`, `nama_pembayaran`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `nominal`, `date`) VALUES
+(163651, 'PEMBAYARAN BULANAN', 1001, 202, 'Pembayaran SPP', 400000, '2022-05-11'),
+(183376, 'PEMBAYARAN BULANAN', 3003, 202, 'Pembayaran SPP', 375000, '2022-05-11'),
 (209515, 'PEMBAYARAN BULANAN', 2002, 202, 'Pembayaran SPP', 475000, '2022-05-07'),
-(236546, 'ULANGAN TENGAH SEMESTER GANJIL', 2002, 202, 'Pembayaran Administrasi Lain', 50000, '2022-05-07'),
-(724682, 'ULANGAN TENGAH SEMESTER GANJIL', 1001, 202, 'Pembayaran Administrasi Lain', 50000, '2022-05-07');
+(552800, 'PEMBAYARAN BULANAN', 4004, 202, 'Pembayaran SPP', 450000, '2022-05-11'),
+(558122, 'PEMBAYARAN BULANAN', 5005, 202, 'Pembayaran SPP', 425000, '2022-05-11'),
+(800164, 'PEMBAYARAN BULANAN', 6006, 202, 'Pembayaran SPP', 500000, '2022-05-11');
 
 -- --------------------------------------------------------
 
@@ -2276,6 +2279,71 @@ INSERT INTO `siswa` (`id_siswa`, `nis`, `nama_siswa`, `jurusan`, `kelas`, `group
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `spp_siswa`
+--
+
+CREATE TABLE `spp_siswa` (
+  `id_spp_siswa` int(18) NOT NULL,
+  `id_siswa` int(18) NOT NULL,
+  `kode_bulan` int(18) NOT NULL,
+  `bulan` varchar(128) NOT NULL,
+  `status` varchar(32) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `spp_siswa`
+--
+
+INSERT INTO `spp_siswa` (`id_spp_siswa`, `id_siswa`, `kode_bulan`, `bulan`, `status`, `date`) VALUES
+(11276, 1001479, 7, 'Januari', 'BELUM LUNAS', '2022-05-11'),
+(24225, 3236138, 7, 'Januari', 'BELUM LUNAS', '2022-05-11'),
+(24432, 3254905, 1, 'Juli', 'BELUM LUNAS', '2022-05-11'),
+(25516, 1001479, 11, 'Mei', 'BELUM LUNAS', '2022-05-11'),
+(25783, 3254905, 3, 'September', 'BELUM LUNAS', '2022-05-11'),
+(25929, 1001479, 10, 'April', 'BELUM LUNAS', '2022-05-11'),
+(26727, 3620855, 6, 'Desember', 'BELUM LUNAS', '2022-05-11'),
+(28630, 1001479, 9, 'Maret', 'BELUM LUNAS', '2022-05-11'),
+(29433, 3620855, 7, 'Januari', 'BELUM LUNAS', '2022-05-11'),
+(33499, 3236138, 1, 'Juli', 'BELUM LUNAS', '2022-05-11'),
+(36727, 3254905, 4, 'Oktober', 'BELUM LUNAS', '2022-05-11'),
+(38892, 1001479, 8, 'Februar', 'BELUM LUNAS', '2022-05-11'),
+(39063, 3236138, 9, 'Maret', 'BELUM LUNAS', '2022-05-11'),
+(40071, 3620855, 9, 'Maret', 'BELUM LUNAS', '2022-05-11'),
+(40109, 3620855, 5, 'November', 'BELUM LUNAS', '2022-05-11'),
+(41319, 3620855, 3, 'September', 'BELUM LUNAS', '2022-05-11'),
+(42484, 3620855, 4, 'Oktober', 'BELUM LUNAS', '2022-05-11'),
+(43255, 1001479, 3, 'September', 'BELUM LUNAS', '2022-05-11'),
+(47124, 3620855, 11, 'Mei', 'BELUM LUNAS', '2022-05-11'),
+(54294, 1001479, 2, 'Augustus', 'BELUM LUNAS', '2022-05-11'),
+(58522, 1001479, 5, 'November', 'BELUM LUNAS', '2022-05-11'),
+(58525, 3254905, 2, 'Augustus', 'BELUM LUNAS', '2022-05-11'),
+(58682, 1001479, 1, 'Juli', 'BELUM LUNAS', '2022-05-11'),
+(60001, 3254905, 9, 'Maret', 'BELUM LUNAS', '2022-05-11'),
+(60705, 3236138, 8, 'Februar', 'BELUM LUNAS', '2022-05-11'),
+(63171, 3254905, 8, 'Februar', 'BELUM LUNAS', '2022-05-11'),
+(64565, 3236138, 11, 'Mei', 'BELUM LUNAS', '2022-05-11'),
+(66556, 3254905, 7, 'Januari', 'BELUM LUNAS', '2022-05-11'),
+(67489, 3236138, 10, 'April', 'BELUM LUNAS', '2022-05-11'),
+(68977, 3236138, 2, 'Augustus', 'BELUM LUNAS', '2022-05-11'),
+(70073, 3236138, 6, 'Desember', 'BELUM LUNAS', '2022-05-11'),
+(71563, 3254905, 10, 'April', 'BELUM LUNAS', '2022-05-11'),
+(82066, 3620855, 10, 'April', 'BELUM LUNAS', '2022-05-11'),
+(83293, 1001479, 6, 'Desember', 'BELUM LUNAS', '2022-05-11'),
+(89531, 3254905, 11, 'Mei', 'BELUM LUNAS', '2022-05-11'),
+(90193, 3236138, 3, 'September', 'BELUM LUNAS', '2022-05-11'),
+(90480, 3620855, 2, 'Augustus', 'BELUM LUNAS', '2022-05-11'),
+(91053, 3254905, 6, 'Desember', 'BELUM LUNAS', '2022-05-11'),
+(91242, 1001479, 4, 'Oktober', 'BELUM LUNAS', '2022-05-11'),
+(92454, 3254905, 5, 'November', 'BELUM LUNAS', '2022-05-11'),
+(92871, 3620855, 8, 'Februar', 'BELUM LUNAS', '2022-05-11'),
+(97431, 3236138, 5, 'November', 'BELUM LUNAS', '2022-05-11'),
+(98206, 3620855, 1, 'Juli', 'BELUM LUNAS', '2022-05-11'),
+(98478, 3236138, 4, 'Oktober', 'BELUM LUNAS', '2022-05-11');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tahun_ajaran`
 --
 
@@ -2342,6 +2410,12 @@ ALTER TABLE `setting_pembayaran`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id_siswa`) USING BTREE;
+
+--
+-- Indexes for table `spp_siswa`
+--
+ALTER TABLE `spp_siswa`
+  ADD PRIMARY KEY (`id_spp_siswa`);
 
 --
 -- Indexes for table `tahun_ajaran`
