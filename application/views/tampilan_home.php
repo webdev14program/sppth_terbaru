@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="card bg-primary">
             <div class="card-body">
-                <h5 class="text-white font-weight-bold text-uppercase">SPP V1.0 smk tunas harapan (<?= $tahun_ajaran ?>)</h5>
+                <h5 class="text-white font-weight-bold text-uppercase">SPP V1.0 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <div class="card bg-danger">
             <div class="card-body">
                 <h4 class="text-white font-weight-bold text-uppercase">jumlah rombel </h4>
-                <h4 class="text-white font-weight-bold text-uppercase"><?= $kelas ?> rombel</h4>
+                <h4 class="text-white font-weight-bold text-uppercase"><?= $kelas['kelas'] ?> rombel</h4>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
                     <tbody>
                         <tr>
                             <td>Versi Aplikasi </td>
-                            <td>: SPP V1.5 (<?= $tahun_ajaran ?>)</td>
+                            <td>: SPP V1.5 (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
                         </tr>
                         <tr>
                             <td>Versi PHP </td>

@@ -7,12 +7,22 @@ class Model_kelas extends CI_Model
     public function countKelas()
     {
         $sql = "SELECT COUNT(*) AS kelas FROM `kelas`
-                INNER JOIN tahun_ajaran
-                ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
-                WHERE tahun_ajaran.status='AKTIF';";
+INNER JOIN tahun_ajaran
+ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
-        return $query->row()->kelas;
+        return $query->row_array();
     }
+    public function dataKelasAktif()
+    {
+        $sql = "SELECT * FROM `kelas`
+INNER JOIN tahun_ajaran
+ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE tahun_ajaran.status='AKTIF';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
     public function dataKelas()
     {
         $sql = "SELECT * FROM `kelas`";
@@ -35,5 +45,14 @@ class Model_kelas extends CI_Model
                 ORDER BY tahun_ajaran.id_tahun_ajaran DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+
+    function simpan_kelas($data = array())
+    {
+        $jumlah = count($data);
+
+        if ($jumlah > 0) {
+            $this->db->insert_batch('kelas', $data);
+        }
     }
 }

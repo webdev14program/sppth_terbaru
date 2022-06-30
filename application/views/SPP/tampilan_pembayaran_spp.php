@@ -33,7 +33,7 @@
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['id_siswa'] ?>">Detail</a>
+                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['siswa_tahun_ajaran'] ?>">Detail</a>
                                 </h5>
                             </td>
                     </tr>

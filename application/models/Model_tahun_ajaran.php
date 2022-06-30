@@ -4,6 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_tahun_ajaran extends CI_Model
 {
 
+    public function home_tahun_ajaran()
+    {
+
+        $sql = "SELECT * FROM `tahun_ajaran`
+                WHERE status='AKTIF';";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
     public function tahun_ajaran()
     {
 

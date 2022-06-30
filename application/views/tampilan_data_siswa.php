@@ -7,8 +7,16 @@
         <button type="button" class="btn btn-primary btn-sm text-uppercase" data-toggle="modal" data-target="#exampleModal">
             <i class="fas fa-plus-square"></i> tambah siswa
         </button>
+        <button type="button" class="btn btn-success btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#uploadSiswa">
+            <i class="fas fa-plus-square"></i> Upload siswa
+        </button>
+        <a class="btn btn-danger btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/hapus_all_siswa"><i class="fas fa-trash"></i> Hapus Siswa</a>
     </div>
 </div>
+
+
+
+<?= $this->session->flashdata('pesan') ?>
 
 <div class="card mt-2">
     <div class="card-body">
@@ -107,6 +115,30 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadSiswa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Siswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open_multipart('Dashboard/upload_siswa'); ?>
+                <div class="form-group">
+                    <input type="file" name="excel" class="form-control-file" name="file" required accept=".xlsx">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" value="upload" class="btn btn-primary">Upload</button>
+                </div>
+                <?= form_close(); ?>
             </div>
         </div>
     </div>
