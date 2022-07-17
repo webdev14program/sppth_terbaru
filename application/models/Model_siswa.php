@@ -27,6 +27,43 @@ WHERE tahun_ajaran.status='AKTIF';";
         return $query->result_array();
     }
 
+    public function NISdataSiswaALL()
+    {
+        $sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan FROM `siswa`
+INNER JOIN jurusan
+ON siswa.jurusan=jurusan.kode
+GROUP BY siswa.nis
+ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function PerNISdataSiswaALL($nis)
+    {
+        $sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran, concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar FROM `siswa`
+INNER JOIN jurusan
+ON siswa.jurusan=jurusan.kode
+INNER JOIN tahun_ajaran
+ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE siswa.nis='$nis'
+ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function HeaderPerNISdataSiswaALL($nis)
+    {
+        $sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
+INNER JOIN jurusan
+ON siswa.jurusan=jurusan.kode
+INNER JOIN tahun_ajaran
+ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE siswa.nis='$nis'
+ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+
     public function dataSiswaALLFindID($id_siswa)
     {
         $sql = "SELECT siswa.nama_siswa,siswa.kelas,jurusan.jurusan,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `siswa`
@@ -44,7 +81,7 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
         $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,setting_pembayaran.nominal,spp_siswa.kjp,spp_siswa.kjp_cash,
 IF(spp_siswa.pembayaran='NON KJP','LUNAS','') AS non_kjp,
 IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas',' ') AS statsu_kjp,
-IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas',' ') AS statsu_cash_kjp
+IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas',' ') AS statsu_cash_kjp, spp_siswa.date
 FROM `spp_siswa`
 INNER JOIN siswa
 ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)

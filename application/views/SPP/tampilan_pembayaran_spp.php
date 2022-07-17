@@ -12,9 +12,7 @@
                         <th>id siswa</th>
                         <th>nis</th>
                         <th>nama siswa</th>
-                        <th>kelas</th>
-                        <th>group</th>
-                        <th>tahun ajaran</th>
+                        <th>Jurusan</th>
                         <th>aksi</th>
                     </tr>
                 </thead>
@@ -28,12 +26,10 @@
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['id_siswa']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['nis']; ?></td>
                             <td class=" text-uppercase font-weight-bold"><?= $row['nama_siswa']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['kelas']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
+                            <td class=" text-uppercase font-weight-bold"><?= $row['jurusan']; ?></td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['siswa_tahun_ajaran'] ?>">Detail</a>
+                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Dashboard/pembayaran_spp_per_nis/<?= $row['nis'] ?>">Detail</a>
                                 </h5>
                             </td>
                     </tr>

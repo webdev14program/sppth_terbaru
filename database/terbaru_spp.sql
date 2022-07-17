@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2022 at 05:38 AM
+-- Generation Time: Jul 17, 2022 at 02:22 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -225,9 +225,18 @@ CREATE TABLE `setting_pembayaran` (
 --
 
 INSERT INTO `setting_pembayaran` (`id_setting_pembayaran`, `nama_pembayaran`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `nominal`, `date`) VALUES
-(449902, 'PEMBAYARAN SPP', 2002, 303, 'Pembayaran SPP', 450000, '2022-07-16'),
-(557865, 'pembayaran spp', 4004, 303, 'Pembayaran SPP', 425000, '2022-07-16'),
-(836538, 'Pembayaran SPP', 1001, 303, 'Pembayaran SPP', 400000, '2022-07-17');
+(192278, 'Pembayaran SPP', 2002, 303, '1001', 450000, '2022-07-17'),
+(208139, 'Pembayaran spp', 5005, 202, '1001', 425000, '2022-07-17'),
+(431851, 'Pembayaran spp', 3003, 202, '1001', 375000, '2022-07-17'),
+(541316, 'Pembayaran spp', 4004, 202, '1001', 450000, '2022-07-17'),
+(543802, 'Pembayaran SPP', 4004, 303, '1001', 475000, '2022-07-17'),
+(651961, 'pembayaran spp', 2002, 202, '1001', 475000, '2022-07-17'),
+(886077, 'pembayaran spp', 1001, 202, '1001', 400000, '2022-07-17'),
+(895074, 'Pembayaran SPP', 5005, 303, '1001', 425000, '2022-07-17'),
+(927244, 'Pembayaran SPP', 1001, 303, '1001', 400000, '2022-07-17'),
+(938219, 'Pembayaran spp', 6006, 202, '1001', 500000, '2022-07-17'),
+(954370, 'PEMBAYARAN SPP', 6006, 303, '1001', 500000, '2022-07-17'),
+(956412, 'Pembayaran SPP', 3003, 303, '1001', 375000, '2022-07-17');
 
 -- --------------------------------------------------------
 
@@ -3348,45 +3357,6 @@ CREATE TABLE `spp_siswa` (
   `kjp_cash` int(68) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `spp_siswa`
---
-
-INSERT INTO `spp_siswa` (`id_spp_siswa`, `id_siswa`, `kode_bulan`, `bulan`, `status`, `pembayaran`, `kjp`, `kjp_cash`, `date`) VALUES
-(11350, 3357303303, 8, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(11609, 3679303303, 3, 'September', 'LUNAS', 'NON KJP', 0, 0, '2022-07-16'),
-(14801, 3357303303, 9, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(21559, 3679303303, 7, 'Januari', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(24204, 3357303303, 3, 'September', 'LUNAS', 'KJP', 200000, 250000, '2022-07-16'),
-(25444, 1234202202, 4, 'Oktober', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(25963, 3357303303, 4, 'Oktober', 'LUNAS', 'NON KJP', 0, 0, '2022-07-16'),
-(30143, 3679303303, 5, 'November', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(30255, 3357303303, 5, 'November', 'BELUM LUNAS', 'KJP', 200000, 200000, '2022-07-16'),
-(33726, 3679303303, 4, 'Oktober', 'LUNAS', 'KJP', 300000, 125000, '2022-07-16'),
-(35992, 3357303303, 1, 'Juli', 'LUNAS', 'KJP', 200000, 250000, '2022-07-16'),
-(39404, 1234202202, 9, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(40013, 1234202202, 8, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(40053, 1234202202, 3, 'September', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(41584, 1234202202, 6, 'Desember', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(44439, 1234202202, 10, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(51257, 3357303303, 11, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(55775, 1234202202, 5, 'November', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(58096, 3679303303, 1, 'Juli', 'LUNAS', 'NON KJP', 0, 0, '2022-07-16'),
-(62411, 3679303303, 6, 'Desember', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(67892, 1234202202, 7, 'Januari', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(68797, 3679303303, 11, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(72412, 1234202202, 2, 'Augustus', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(75220, 3357303303, 2, 'Augustus', 'LUNAS', 'NON KJP', 0, 0, '2022-07-16'),
-(80389, 3679303303, 9, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(80566, 3357303303, 10, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(81360, 3679303303, 2, 'Augustus', 'LUNAS', 'NON KJP', 0, 0, '2022-07-16'),
-(82492, 3357303303, 6, 'Desember', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(90649, 3679303303, 8, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(91578, 3357303303, 7, 'Januari', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16'),
-(92570, 1234202202, 11, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(97870, 1234202202, 1, 'Juli', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-17'),
-(99620, 3679303303, 10, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-16');
 
 -- --------------------------------------------------------
 

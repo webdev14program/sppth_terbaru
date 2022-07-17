@@ -9,6 +9,7 @@
         </button>
     </div>
 </div>
+<?= $this->session->flashdata('info') ?>
 
 <div class="card mt-2">
     <div class="card-body">
@@ -23,6 +24,7 @@
                         <th>Grup kelas</th>
                         <th>nominal</th>
                         <th>tahun ajaran</th>
+                        <th>hapus</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +36,15 @@
                             <td class="text-center text-uppercase font-weight-bold"><?php echo $no++; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['id_setting_pembayaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['jenis_pembayaran']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_jenis_pembayaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
+                            <td>
+                                <h5 class="text-center">
+                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Dashboard/hapus_setting_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-trash"></i></a>
+                                </h5>
+                            </td>
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -79,8 +86,8 @@
                     <div class="form-group">
                         <label>Jenis Pembayaran</label>
                         <select class="form-control" name="jenis_pembayaran">
-                            <option>Pembayaran SPP</option>
-                            <option>Pembayaran Administrasi Lain</option>
+                            <option value="1001">Pembayaran SPP</option>
+                            <option value="2002">Pembayaran Administrasi Lain</option>
 
                         </select>
                     </div>

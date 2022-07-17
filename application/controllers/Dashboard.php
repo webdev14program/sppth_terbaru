@@ -261,9 +261,20 @@ class Dashboard extends CI_Controller
 
     public function pembayaran_spp()
     {
-        $isi['siswa'] = $this->Model_siswa->dataSiswaALL();
+        $isi['siswa'] = $this->Model_siswa->NISdataSiswaALL();
         $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'SPP/tampilan_pembayaran_spp';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function pembayaran_spp_per_nis($nis)
+    {
+        $isi['header'] = $this->Model_siswa->HeaderPerNISdataSiswaALL($nis);
+        $isi['siswa'] = $this->Model_siswa->PerNISdataSiswaALL($nis);
+        $this->Model_keamanan->getKeamanan();
+        $isi['content'] = 'SPP/pembayaran_spp_per_nis';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -435,8 +446,35 @@ class Dashboard extends CI_Controller
             'jenis_pembayaran' => $jenis_pembayaran,
             'nominal' => $nominal,
         );
-
         $this->db->insert('setting_pembayaran', $data);
+        $this->session->set_flashdata('info', '<div class="row">
+        <div class="col-md mt-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>SETTING PEMBAYARAN BERHASIL DI SIMPAN</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>');
+        redirect('Dashboard/daftar_setting_pembayaran');
+        redirect('Dashboard/daftar_setting_pembayaran');
+    }
+
+    public function hapus_setting_pembayaran($id_setting_pembayaran)
+    {
+        $this->db->where('id_setting_pembayaran', $id_setting_pembayaran);
+        $this->db->delete('setting_pembayaran');
+        $this->session->set_flashdata('info', '<div class="row">
+        <div class="col-md mt-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>SETTING PEMBAYARAN BERHASIL DI HAPUS BERDASARKAN ID </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>');
         redirect('Dashboard/daftar_setting_pembayaran');
     }
 

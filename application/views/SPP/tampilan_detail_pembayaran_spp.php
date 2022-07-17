@@ -64,7 +64,7 @@
                         <tr class="text-center text-uppercase">
                             <th scope="col">Nomor</th>
                             <th scope="col">Bulan</th>
-                            <th scope="col">status</th>
+                            <!-- <th scope="col">status</th> -->
                             <th scope="col">pembayaran</th>
                             <th scope="col">non kjp</th>
                             <th scope="col">nominal kjp</th>
@@ -72,6 +72,7 @@
                             <th scope="col">Non KJP</th>
                             <!-- <th scope="col">Cicil</th> -->
                             <th scope="col">KJP</th>
+                            <th scope="col">Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,11 +83,12 @@
                             ?>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['bulan']; ?></td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['status']; ?> </td>
+                                <!-- <td class="text-center text-uppercase font-weight-bold"><?= $row['status']; ?> </td> -->
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['pembayaran']; ?> </td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['non_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?>)</td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp'], 2, ',', '.') ?>)</td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_cash_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?>)</td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $row['date']; ?> </td>
                                 <td>
                                     <form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
                                         <input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
