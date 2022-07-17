@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller
         $isi['kelas'] = $this->Model_kelas->countKelas();
         $isi['siswa'] = $this->Model_siswa->countSiswa();
 
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'tampilan_home';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -23,9 +24,9 @@ class Dashboard extends CI_Controller
 
     public function data_tahun_ajaran()
     {
-
         $isi['tahun_ajaran'] = $this->Model_tahun_ajaran->dataTahunAjaran();
 
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'tampilan_data_tahun_ajaran';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -37,6 +38,7 @@ class Dashboard extends CI_Controller
 
         $isi['jurusan'] = $this->Model_jurusan->dataJurusan();
 
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'tampilan_jurusan';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -47,6 +49,7 @@ class Dashboard extends CI_Controller
     {
 
         $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'tampilan_kelas';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -129,7 +132,7 @@ class Dashboard extends CI_Controller
 
     public function data_siswa()
     {
-
+        $this->Model_keamanan->getKeamanan();
         $isi['kelas'] = $this->Model_kelas->dataKelasAktif();
         $isi['jurusan'] = $this->Model_jurusan->dataJurusan();
         $isi['siswa'] = $this->Model_siswa->dataSiswa();
@@ -249,7 +252,7 @@ class Dashboard extends CI_Controller
     {
         $isi['header_siswa'] = $this->Model_siswa->header_detail_siswa($id_tahun_ajaran);
         $isi['data_siswa'] = $this->Model_siswa->detail_siswa($id_tahun_ajaran);
-
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'tampilan_detail_data_siswa';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -259,6 +262,7 @@ class Dashboard extends CI_Controller
     public function pembayaran_spp()
     {
         $isi['siswa'] = $this->Model_siswa->dataSiswaALL();
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'SPP/tampilan_pembayaran_spp';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -267,8 +271,7 @@ class Dashboard extends CI_Controller
 
     public function detail_pembayaran_spp($id_siswa)
     {
-
-
+        $this->Model_keamanan->getKeamanan();
         $isi['siswa'] = $this->Model_siswa->dataSiswaALLFindID($id_siswa);
         $isi['jumlah_bulan'] = $this->Model_pembayaran_spp->countPembayaranSPP($id_siswa);
         $isi['jumlah_bayar'] = $this->Model_pembayaran_spp->jumlahPembayaranSPP($id_siswa);
@@ -346,6 +349,7 @@ class Dashboard extends CI_Controller
 
 
         // $isi['tabel'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
+        $this->Model_keamanan->getKeamanan();
         $isi['siswa'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
         $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp_kjp';
         $this->load->view('templates/header');
@@ -384,6 +388,7 @@ class Dashboard extends CI_Controller
     public function rekap_spp_perbulan_perhari()
     {
         $isi['spp_perbulan_perhari'] = $this->Model_siswa->pembayaranSPP_perbulan_perhari();
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'SPP/rekap_spp_perbulan_perhari';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -394,6 +399,7 @@ class Dashboard extends CI_Controller
     public function rekap_spp_admin_perhari($bulan_tahun)
     {
         $isi['spp_perhari'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
+        $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'SPP/rekap_spp_perhari';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
@@ -404,7 +410,7 @@ class Dashboard extends CI_Controller
     {
         $isi['kelas'] = $this->Model_kelas->group_kelas();
         $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
-
+        $this->Model_keamanan->getKeamanan();
         $isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran();
         $isi['content'] = 'Setting/tampilan_setting_pembayaran';
         $this->load->view('templates/header');
@@ -432,5 +438,11 @@ class Dashboard extends CI_Controller
 
         $this->db->insert('setting_pembayaran', $data);
         redirect('Dashboard/daftar_setting_pembayaran');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('/');
     }
 }
