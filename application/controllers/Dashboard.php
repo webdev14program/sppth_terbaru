@@ -270,7 +270,9 @@ class Dashboard extends CI_Controller
 
 
         $isi['siswa'] = $this->Model_siswa->dataSiswaALLFindID($id_siswa);
-        // $isi['spp'] = $this->Model_siswa->SPPdataSiswaALLFindID($id_siswa);
+        $isi['jumlah_bulan'] = $this->Model_pembayaran_spp->countPembayaranSPP($id_siswa);
+        $isi['jumlah_bayar'] = $this->Model_pembayaran_spp->jumlahPembayaranSPP($id_siswa);
+        $isi['total_bayar'] = $this->Model_pembayaran_spp->totalPembayaranSPP($id_siswa);
         $isi['siswa_spp'] = $this->Model_siswa->SPPdataSiswaALLFindID($id_siswa);
         $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp';
         $this->load->view('templates/header');
@@ -303,6 +305,9 @@ class Dashboard extends CI_Controller
                 'bulan' => $value,
                 'status' => 'BELUM LUNAS',
                 'pembayaran' => 'BELUM LUNAS',
+                'kjp' => ' ',
+                'kjp_cash' => ' '
+
             );
             $this->db->insert('spp_siswa', $data);
         }
@@ -327,6 +332,8 @@ class Dashboard extends CI_Controller
             'bulan' => $bulan,
             'status' => $status,
             'pembayaran' => $pembayaran,
+            'kjp' => ' ',
+            'kjp_cash' => ' ',
         );
 
         $this->db->where('id_spp_siswa', $id_spp_siswa);
@@ -336,12 +343,26 @@ class Dashboard extends CI_Controller
 
     public function bayar_spp_KJP($id_spp_siswa)
     {
+
+
+        // $isi['tabel'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
+        $isi['siswa'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
+        $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp_kjp';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function simpan_spp_kjp()
+    {
         $id_spp_siswa = $this->input->post('id_spp_siswa');
         $id_siswa = $this->input->post('id_siswa');
         $kode_bulan = $this->input->post('kode_bulan');
         $bulan = $this->input->post('bulan');
-        $status = 'LUNAS';
+        $status = $this->input->post('status');;
         $pembayaran = 'KJP';
+        $kjp = $this->input->post('kjp');
+        $kjp_cash = $this->input->post('kjp_cash');
 
 
         $data = array(
@@ -351,6 +372,8 @@ class Dashboard extends CI_Controller
             'bulan' => $bulan,
             'status' => $status,
             'pembayaran' => $pembayaran,
+            'kjp' => $kjp,
+            'kjp_cash' => $kjp_cash,
         );
 
         $this->db->where('id_spp_siswa', $id_spp_siswa);
@@ -360,10 +383,18 @@ class Dashboard extends CI_Controller
 
     public function rekap_spp_perbulan_perhari()
     {
-
-
         $isi['spp_perbulan_perhari'] = $this->Model_siswa->pembayaranSPP_perbulan_perhari();
         $isi['content'] = 'SPP/rekap_spp_perbulan_perhari';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+
+    public function rekap_spp_admin_perhari($bulan_tahun)
+    {
+        $isi['spp_perhari'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
+        $isi['content'] = 'SPP/rekap_spp_perhari';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');

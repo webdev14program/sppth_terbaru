@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="card bg-primary">
             <div class="card-body">
-                <h5 class="text-white font-weight-bold text-uppercase">SPP V1.0 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
+                <h5 class="text-white font-weight-bold text-uppercase">SPP V1.5 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
             </div>
         </div>
     </div>
