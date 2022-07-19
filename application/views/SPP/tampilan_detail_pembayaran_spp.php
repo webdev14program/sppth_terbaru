@@ -97,7 +97,7 @@
                                         <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
                                         <!-- <input type="text" class="form-control text-uppercase" name="status" hidden> -->
                                         <h5 class="text-center ">
-                                            <button type="submit" class="badge badge-primary text-uppercase">pembayaran non kjp</button>
+                                            <button type="submit" class="badge badge-primary text-uppercase">non kjp</button>
                                         </h5>
                                     </form>
                                 </td>
@@ -113,7 +113,7 @@
                                 </td> -->
                                 <td>
                                     <h5 class="text-center text-uppercase">
-                                        <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">Pembayaran KJP</a>
+                                        <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
                                     </h5>
                                 </td>
                         </tr>

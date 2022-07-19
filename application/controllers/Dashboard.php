@@ -320,7 +320,8 @@ class Dashboard extends CI_Controller
                 'status' => 'BELUM LUNAS',
                 'pembayaran' => 'BELUM LUNAS',
                 'kjp' => ' ',
-                'kjp_cash' => ' '
+                'kjp_cash' => ' ',
+                'date' => date("Y-m-d h:i:sa")
 
             );
             $this->db->insert('spp_siswa', $data);
@@ -348,6 +349,7 @@ class Dashboard extends CI_Controller
             'pembayaran' => $pembayaran,
             'kjp' => ' ',
             'kjp_cash' => ' ',
+            'date' => date("Y-m-d h:i:sa")
         );
 
         $this->db->where('id_spp_siswa', $id_spp_siswa);
@@ -409,12 +411,21 @@ class Dashboard extends CI_Controller
 
     public function rekap_spp_admin_perhari($bulan_tahun)
     {
-        $isi['spp_perhari'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
+        $isi['header'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
+        $isi['tabel_perhari'] = $this->Model_pembayaran_spp->tabel_rekap_spp_admin_perhari($bulan_tahun);
         $this->Model_keamanan->getKeamanan();
         $isi['content'] = 'SPP/rekap_spp_perhari';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
+    }
+
+    public function print_perhari_pembayaran_spp($hari_bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari_header($hari_bulan_tahun);
+        $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari($hari_bulan_tahun);
+        $this->load->view('SPP/print_rekap_spp_perhari', $isi);
     }
 
     public function daftar_setting_pembayaran()

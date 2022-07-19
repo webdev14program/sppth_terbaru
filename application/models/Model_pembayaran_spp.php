@@ -86,11 +86,58 @@ FROM `spp_siswa`
     public function rekap_spp_admin_perhari($bulan_tahun)
     {
         $sql = "SELECT day(spp_siswa.date) AS hari,monthname(spp_siswa.date) AS nama_bulan, year(spp_siswa.date) AS tahun, concat(monthname(spp_siswa.date),year(spp_siswa.date)) AS bulan_tahun
-FROM `spp_siswa`
-WHERE concat(monthname(spp_siswa.date),year(spp_siswa.date))='$bulan_tahun'
-GROUP BY concat(monthname(spp_siswa.date),year(spp_siswa.date))
-ORDER BY spp_siswa.kode_bulan DESC;";
+                FROM `spp_siswa`
+                WHERE concat(monthname(spp_siswa.date),year(spp_siswa.date))='$bulan_tahun'
+                GROUP BY concat(monthname(spp_siswa.date),year(spp_siswa.date))
+                ORDER BY spp_siswa.kode_bulan DESC;";
         $query = $this->db->query($sql);
         return $query->row_array();
+    }
+
+    public function tabel_rekap_spp_admin_perhari($bulan_tahun)
+    {
+        $sql = "SELECT day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun, SUM(setting_pembayaran.nominal) AS jumlah_non_kjp,SUM(spp_siswa.kjp_cash) AS kjp_cash,(SUM(setting_pembayaran.nominal)+SUM(spp_siswa.kjp_cash)) AS total_pembayarn,day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun,
+                concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date)) AS hari_bulan_tahun
+                FROM `spp_siswa`
+                INNER JOIN siswa
+                ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
+                INNER JOIN setting_pembayaran
+                ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
+                WHERE spp_siswa.status='LUNAS' AND concat(monthname(spp_siswa.date),YEAR(spp_siswa.date))='July2022'
+                GROUP BY day(spp_siswa.date)
+                ORDER BY day(spp_siswa.date) DESC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function print_rekap_spp_perbulan_perhari_header($hari_bulan_tahun)
+    {
+        $sql = "SELECT day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun, SUM(setting_pembayaran.nominal) AS jumlah_non_kjp,SUM(spp_siswa.kjp_cash) AS kjp_cash,(SUM(setting_pembayaran.nominal)+SUM(spp_siswa.kjp_cash)) AS total_pembayarn,day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun,
+concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date)) AS hari_bulan_tahun
+FROM `spp_siswa`
+INNER JOIN siswa
+ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
+INNER JOIN setting_pembayaran
+ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
+WHERE spp_siswa.status='LUNAS' AND concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date))='$hari_bulan_tahun'
+GROUP BY day(spp_siswa.date)
+ORDER BY day(spp_siswa.date) DESC;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+
+    public function print_rekap_spp_perbulan_perhari($hari_bulan_tahun)
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,siswa.kelas,spp_siswa.bulan,spp_siswa.pembayaran,spp_siswa.date,day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun,
+concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date)) AS hari_bulan_tahun
+FROM `spp_siswa`
+INNER JOIN siswa
+ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
+INNER JOIN setting_pembayaran
+ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
+WHERE spp_siswa.status='LUNAS' AND concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date))='$hari_bulan_tahun'
+ORDER BY day(spp_siswa.date) DESC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }
 }
