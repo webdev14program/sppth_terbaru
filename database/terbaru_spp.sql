@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2022 at 02:22 PM
+-- Generation Time: Jul 19, 2022 at 04:51 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -219,24 +219,6 @@ CREATE TABLE `setting_pembayaran` (
   `nominal` int(128) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `setting_pembayaran`
---
-
-INSERT INTO `setting_pembayaran` (`id_setting_pembayaran`, `nama_pembayaran`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `nominal`, `date`) VALUES
-(192278, 'Pembayaran SPP', 2002, 303, '1001', 450000, '2022-07-17'),
-(208139, 'Pembayaran spp', 5005, 202, '1001', 425000, '2022-07-17'),
-(431851, 'Pembayaran spp', 3003, 202, '1001', 375000, '2022-07-17'),
-(541316, 'Pembayaran spp', 4004, 202, '1001', 450000, '2022-07-17'),
-(543802, 'Pembayaran SPP', 4004, 303, '1001', 475000, '2022-07-17'),
-(651961, 'pembayaran spp', 2002, 202, '1001', 475000, '2022-07-17'),
-(886077, 'pembayaran spp', 1001, 202, '1001', 400000, '2022-07-17'),
-(895074, 'Pembayaran SPP', 5005, 303, '1001', 425000, '2022-07-17'),
-(927244, 'Pembayaran SPP', 1001, 303, '1001', 400000, '2022-07-17'),
-(938219, 'Pembayaran spp', 6006, 202, '1001', 500000, '2022-07-17'),
-(954370, 'PEMBAYARAN SPP', 6006, 303, '1001', 500000, '2022-07-17'),
-(956412, 'Pembayaran SPP', 3003, 303, '1001', 375000, '2022-07-17');
 
 -- --------------------------------------------------------
 
@@ -3355,7 +3337,7 @@ CREATE TABLE `spp_siswa` (
   `pembayaran` varchar(128) NOT NULL,
   `kjp` int(64) NOT NULL,
   `kjp_cash` int(68) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
