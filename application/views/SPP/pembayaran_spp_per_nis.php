@@ -70,3 +70,17 @@
         </div>
     </div>
 </div>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+        Toggle width collapse
+    </button>
+</p>
+
+<div style="min-height: 120px;">
+    <div class="collapse width" id="collapseWidthExample">
+        <div class="card card-body" style="width: 320px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+        </div>
+    </div>
+</div>

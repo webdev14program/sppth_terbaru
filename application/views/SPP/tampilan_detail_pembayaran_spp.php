@@ -2,7 +2,7 @@
     <h5 class="text-center text-uppercase font-weight-bold">detail pembayaran spp</h5>
 </div>
 
-<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/pembayaran_spp">kembali</a>
+<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/pembayaran_spp_per_nis/<?= $siswa['nis'] ?>">kembali</a>
 <div class="row">
     <div class="col-md">
         <div class="alert alert-success" role="alert">
@@ -43,7 +43,7 @@
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar<?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar <?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
         </div>
     </div>
 </div>

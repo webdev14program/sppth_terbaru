@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2022 at 04:51 AM
+-- Generation Time: Aug 06, 2022 at 12:31 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -219,6 +219,13 @@ CREATE TABLE `setting_pembayaran` (
   `nominal` int(128) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `setting_pembayaran`
+--
+
+INSERT INTO `setting_pembayaran` (`id_setting_pembayaran`, `nama_pembayaran`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `nominal`, `date`) VALUES
+(667321, 'pembayaran spp', 4004, 303, '1001', 450000, '2022-07-23');
 
 -- --------------------------------------------------------
 
@@ -3339,6 +3346,23 @@ CREATE TABLE `spp_siswa` (
   `kjp_cash` int(68) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `spp_siswa`
+--
+
+INSERT INTO `spp_siswa` (`id_spp_siswa`, `id_siswa`, `kode_bulan`, `bulan`, `status`, `pembayaran`, `kjp`, `kjp_cash`, `date`) VALUES
+(15499, 3679303303, 2, 'Augustus', 'LUNAS', 'NON KJP', 0, 0, '2022-07-24 00:15:35'),
+(20030, 3679303303, 8, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(48251, 3679303303, 3, 'September', 'LUNAS', 'KJP', 250000, 200000, '2022-07-24 00:15:02'),
+(49988, 3679303303, 9, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(50611, 3679303303, 10, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(58897, 3679303303, 4, 'Oktober', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(72667, 3679303303, 11, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(74456, 3679303303, 5, 'November', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(80245, 3679303303, 1, 'Juli', 'LUNAS', 'NON KJP', 0, 0, '2022-07-24 01:10:26'),
+(82426, 3679303303, 6, 'Desember', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02'),
+(87835, 3679303303, 7, 'Januari', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, '2022-07-24 00:15:02');
 
 -- --------------------------------------------------------
 

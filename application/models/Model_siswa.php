@@ -66,7 +66,7 @@ ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
 
     public function dataSiswaALLFindID($id_siswa)
     {
-        $sql = "SELECT siswa.nama_siswa,siswa.kelas,jurusan.jurusan,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `siswa`
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,siswa.kelas,jurusan.jurusan,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `siswa`
 INNER JOIN jurusan
 ON siswa.jurusan=jurusan.kode
 INNER JOIN tahun_ajaran
@@ -79,9 +79,9 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
     public function SPPdataSiswaALLFindID($id_siswa)
     {
         $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,setting_pembayaran.nominal,spp_siswa.kjp,spp_siswa.kjp_cash,
-IF(spp_siswa.pembayaran='NON KJP','LUNAS','') AS non_kjp,
-IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas',' ') AS statsu_kjp,
-IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas',' ') AS statsu_cash_kjp, spp_siswa.date
+IF(spp_siswa.pembayaran='NON KJP','LUNAS',' ') AS non_kjp,
+IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas','') AS statsu_kjp,
+IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas','') AS statsu_cash_kjp, spp_siswa.date
 FROM `spp_siswa`
 INNER JOIN siswa
 ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
