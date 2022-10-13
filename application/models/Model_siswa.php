@@ -93,6 +93,8 @@ ORDER BY spp_siswa.kode_bulan;";
         return $query->result_array();
     }
 
+
+
     public function dataSiswa()
     {
         $sql = "SELECT tahun_ajaran.id_tahun_ajaran,tahun_ajaran.tahun_ajaran,COUNT(*) AS jumlah_siswa FROM `siswa`

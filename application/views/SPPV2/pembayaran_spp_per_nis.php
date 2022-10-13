@@ -60,7 +60,8 @@
                                     </td>
                                     <td>
                                         <h5 class="text-center">
-                                            <a class="btn btn-success btn-sm" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran</a>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran V1</a>
+                                            <a class="btn btn-success btn-sm" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp_v2/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran V2</a>
                                         </h5>
                                     </td>
                             </tr>

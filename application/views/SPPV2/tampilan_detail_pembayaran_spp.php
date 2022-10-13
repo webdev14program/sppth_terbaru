@@ -66,14 +66,13 @@
                             <th scope="col">Bulan</th>
                             <!-- <th scope="col">status</th> -->
                             <th scope="col">pembayaran</th>
-                            <th scope="col">non kjp</th>
-                            <th scope="col">nominal kjp</th>
-                            <th scope="col">nominal kjp cas</th>
+                            <th scope="col">Nominal</th>
+                            <th scope="col">Non KJP</th>
+                            <th scope="col">KJP</th>
                             <th scope="col">Tanggal</th>
                             <!-- <th scope="col">Cicil</th> -->
-                            <th scope="col">NON KJP</th>
-                            <th scope="col">NON KJP (CICIL)</th>
-                            <th scope="col">KJP</th>
+                            <th colspan="3">Pembayaran SPP</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -85,12 +84,12 @@
                                 <td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['bulan']; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['pembayaran']; ?> </td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['non_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?>)</td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp'], 2, ',', '.') ?>)</td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_cash_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?>)</td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $row['non_kjp'] ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $row['kjp'] ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['date']; ?> </td>
                                 <td>
-                                    <form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
+                                    <form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP_v2/<?= $row['id_spp_siswa'] ?>" method="POST">
                                         <input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
                                         <input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
                                         <input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
