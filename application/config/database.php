@@ -7,10 +7,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'terbaru_spp',
+	'hostname' => 'srv43.niagahoster.com',
+	'username' => 'u1808623_sppTH',
+	'password' => 'Rdss1995',
+	'database' => 'u1808623_sppTH',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

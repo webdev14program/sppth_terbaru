@@ -72,7 +72,6 @@
                             <th scope="col">Tanggal</th>
                             <!-- <th scope="col">Cicil</th> -->
                             <th scope="col">NON KJP</th>
-                            <th scope="col">NON KJP (CICIL)</th>
                             <th scope="col">KJP</th>
                         </tr>
                     </thead>
@@ -100,11 +99,7 @@
                                         </h5>
                                     </form>
                                 </td>
-                                <td>
-                                    <h5 class="text-center text-uppercase">
-                                        <a class="badge badge-warning" href="<?= base_url() ?>Dashboard/bayar_spp_cicil/<?= $row['id_spp_siswa']; ?>">NON KJP (CICIL)</a>
-                                    </h5>
-                                </td>
+                               
                                 <td>
                                     <h5 class="text-center text-uppercase">
                                         <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
