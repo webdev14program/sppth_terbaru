@@ -52,16 +52,16 @@
                                         <h6><?php echo $no++; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['hari']; ?></h6>
+                                        <h6 class="text-uppercase text-center"><?php echo $row['tanggal_spp']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['bulan']; ?></h6>
+                                        <h6 class="text-uppercase text-center"><?php echo $row['bulan_spp']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase"><?php echo $row['tahun']; ?></h6>
+                                        <h6 class="text-uppercase"><?php echo $row['tahun_spp']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($row['jumlah_non_kjp'], 2, ',', '.') ?></h6>
+                                        <h6 class="text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($row['cash_non_kjp'], 2, ',', '.') ?></h6>
                                     </td>
                                     <td>
                                         <h6 class="text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></h6>
@@ -71,7 +71,7 @@
                                     </td>
                                     <th>
                                         <h5 class="text-center">
-                                            <a class="btn btn-success btn-sm text-uppercase text-white font-weight-bold" href="<?= base_url() ?>Dashboard/print_perhari_pembayaran_spp/<?= $row['hari_bulan_tahun'] ?>" target="_blank">Print</a>
+                                            <a class="btn btn-danger btn-sm text-uppercase text-white font-weight-bold" href="<?= base_url() ?>Dashboard/print_perhari_pembayaran_spp/<?= $row['hari_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a>
                                         </h5>
                                     </th>
                             </tr>

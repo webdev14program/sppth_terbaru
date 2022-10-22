@@ -341,17 +341,17 @@ class Dashboard extends CI_Controller
     public function generate_detail_pembayaran_spp($id_siswa)
     {
         $months = array(
-            '1' => 'Juli',
-            '2' => 'Augustus',
-            '3' => 'September',
-            '4' => 'Oktober',
-            '5' => 'November',
-            '6' => 'Desember',
-            '7' => 'Januari',
-            '8' => 'Februar',
-            '9' => 'Maret',
-            '10' => 'April',
-            '11' => 'Mei',
+            '1' => 'Augustus',
+            '2' => 'September',
+            '3' => 'Oktober',
+            '4' => 'November',
+            '5' => 'Desember',
+            '6' => 'Januari',
+            '7' => 'Februar',
+            '8' => 'Maret',
+            '9' => 'April',
+            '10' => 'Mei',
+            '11' => 'Juni',
         );
 
 
@@ -363,7 +363,7 @@ class Dashboard extends CI_Controller
                 'bulan' => $value,
                 'status' => 'BELUM LUNAS',
                 'pembayaran' => 'BELUM LUNAS',
-                'cicil_cash' => ' ',
+                'cash' => ' ',
                 'kjp' => ' ',
                 'kjp_cash' => ' ',
                 'date' => date("Y-m-d h:i:sa")
@@ -381,6 +381,7 @@ class Dashboard extends CI_Controller
         $id_siswa = $this->input->post('id_siswa');
         $kode_bulan = $this->input->post('kode_bulan');
         $bulan = $this->input->post('bulan');
+        $cash = $this->input->post('cash');
         $status = 'LUNAS';
         $pembayaran = 'NON KJP';
 
@@ -392,7 +393,7 @@ class Dashboard extends CI_Controller
             'bulan' => $bulan,
             'status' => $status,
             'pembayaran' => $pembayaran,
-            'cicil_cash' => ' ',
+            'cash' => $cash,
             'kjp' => ' ',
             'kjp_cash' => ' ',
             'date' => date("Y-m-d h:i:sa")
@@ -444,18 +445,18 @@ class Dashboard extends CI_Controller
         redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
     }
 
-    public function bayar_spp_cicil($id_spp_siswa)
-    {
+    // public function bayar_spp_cicil($id_spp_siswa)
+    // {
 
 
-        // $isi['tabel'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
-        $this->Model_keamanan->getKeamanan();
-        $isi['siswa'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
-        $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp_cicil';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
+    //     // $isi['tabel'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
+    //     $this->Model_keamanan->getKeamanan();
+    //     $isi['siswa'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
+    //     $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp_cicil';
+    //     $this->load->view('templates/header');
+    //     $this->load->view('tampilan_dashboard', $isi);
+    //     $this->load->view('templates/footer');
+    // }
 
     public function rekap_spp_perbulan_perhari()
     {

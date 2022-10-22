@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="card bg-primary">
             <div class="card-body">
-                <h5 class="text-white font-weight-bold text-uppercase">SPP V1.5 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
+                <h5 class="text-white font-weight-bold text-uppercase">SPP V2.0 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-border">
-                    <tbody>
+                    <tbody class="text-dark">
                         <tr>
                             <td>Nama Sekolah </td>
                             <td>: SMK Tunas Harapan</td>
@@ -62,7 +62,7 @@
                         </tr>
                         <tr>
                             <td>Website </td>
-                            <td>: smkth-jakbar.com</td>
+                            <td>: <a class="text-dark" target="_blank" href="https://smkth-jakbar.com/">https://smkth-jakbar.com/</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -79,7 +79,7 @@
                     <tbody>
                         <tr>
                             <td>Versi Aplikasi </td>
-                            <td>: SPP V1.5 (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
+                            <td>: SPP V2.0 (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
                         </tr>
                         <tr>
                             <td>Versi PHP </td>

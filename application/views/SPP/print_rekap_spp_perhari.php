@@ -29,7 +29,8 @@
                             <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
                             <th scope="col">Keterangan</th>
-                            <th scope="col">Pembayaran SPP</th>
+                            <th scope="col">NON KJP</th>
+                            <th scope="col">KJP cash</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,13 +46,13 @@
                                 <td class=""><?= $row['bulan']; ?></td>
                                 <td class=""><?= $row['tahun']; ?></td>
                                 <td class=""><?= $row['pembayaran']; ?></td>
-                                <!-- <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td> -->
-                                <td>0</td>
+                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
+                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
                         </tr>
                     <?php } ?>
                     <tr>
-                        <td colspan="7" class="font-weight-bold text-center">Jumlah Pembayaran SPP</td>
-                        <td class="font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($header['total_pembayarn'], 2, ',', '.') ?></td>
+                        <td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+                        <td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_pembayarn'], 2, ',', '.') ?></td>
                     </tr>
                     </tbody>
                 </table>

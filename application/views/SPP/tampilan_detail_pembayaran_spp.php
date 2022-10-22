@@ -67,8 +67,8 @@
                             <!-- <th scope="col">status</th> -->
                             <th scope="col">pembayaran</th>
                             <th scope="col">non kjp</th>
-                            <th scope="col">nominal kjp</th>
                             <th scope="col">nominal kjp cas</th>
+                            <th scope="col">nominal kjp</th>
                             <th scope="col">Tanggal</th>
                             <!-- <th scope="col">Cicil</th> -->
                             <th scope="col">NON KJP</th>
@@ -94,12 +94,13 @@
                                         <input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
                                         <input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
                                         <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
+                                        <input type="text" class="form-control text-uppercase" name="cash" value="<?= $row['nominal'] ?>" hidden>
                                         <h5 class="text-center ">
                                             <button type="submit" class="badge badge-primary text-uppercase">non kjp</button>
                                         </h5>
                                     </form>
                                 </td>
-                               
+
                                 <td>
                                     <h5 class="text-center text-uppercase">
                                         <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
