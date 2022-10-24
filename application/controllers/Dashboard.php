@@ -477,6 +477,14 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function print_perbulan_pembayaran_spp($bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perbulan_header($bulan_tahun);
+        $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perbulan($bulan_tahun);
+        $this->load->view('SPP/print_rekap_spp_perbulan', $isi);
+    }
+
 
     public function rekap_spp_admin_perhari($bulan_tahun)
     {
