@@ -145,4 +145,13 @@ ORDER BY spp_siswa.id_siswa,spp_siswa.kode_bulan ASC";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function rekap_spp_perbulan_perbulan()
+    {
+        $sql = "SELECT SUM(spp_siswa.cash) AS cash, SUM(spp_siswa.kjp_cash) AS kjp_cash,(SUM(spp_siswa.cash)+SUM(spp_siswa.kjp_cash)) AS total_pembayaran,COUNT(*) AS jumlah_siswa,monthname(spp_siswa.date) AS bulan,year(spp_siswa.date) AS tahun, concat(monthname(spp_siswa.date),year(spp_siswa.date)) AS bulan_tahun FROM `spp_siswa`
+WHERE spp_siswa.status='LUNAS'
+group BY monthname(spp_siswa.date),year(spp_siswa.date) ASC";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }

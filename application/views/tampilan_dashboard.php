@@ -76,7 +76,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_perbulan_perhari">Rekap Hari</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_admin_perbulan">Rekap Bulan</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_perbulan_perbulan">Rekap Bulan</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_kelas">Rekap Kelas</a>
                 </div>
             </div>

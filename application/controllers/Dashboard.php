@@ -467,6 +467,15 @@ class Dashboard extends CI_Controller
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+    public function rekap_spp_perbulan_perbulan()
+    {
+        $isi['spp_perbulan_perbulan'] = $this->Model_pembayaran_spp->rekap_spp_perbulan_perbulan();
+        $this->Model_keamanan->getKeamanan();
+        $isi['content'] = 'SPP/rekap_spp_perbulan_perbulan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
 
 
     public function rekap_spp_admin_perhari($bulan_tahun)
