@@ -423,7 +423,7 @@ class Dashboard extends CI_Controller
         $id_siswa = $this->input->post('id_siswa');
         $kode_bulan = $this->input->post('kode_bulan');
         $bulan = $this->input->post('bulan');
-        $status = $this->input->post('status');;
+        $status = 'LUNAS';
         $pembayaran = 'KJP';
         $kjp = $this->input->post('kjp');
         $kjp_cash = $this->input->post('kjp_cash');
@@ -445,18 +445,7 @@ class Dashboard extends CI_Controller
         redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
     }
 
-    // public function bayar_spp_cicil($id_spp_siswa)
-    // {
 
-
-    //     // $isi['tabel'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
-    //     $this->Model_keamanan->getKeamanan();
-    //     $isi['siswa'] = $this->Model_pembayaran_spp->pembayaran_spp_kjp($id_spp_siswa);
-    //     $isi['content'] = 'SPP/tampilan_detail_pembayaran_spp_cicil';
-    //     $this->load->view('templates/header');
-    //     $this->load->view('tampilan_dashboard', $isi);
-    //     $this->load->view('templates/footer');
-    // }
 
     public function rekap_spp_perbulan_perhari()
     {
@@ -524,7 +513,11 @@ class Dashboard extends CI_Controller
         $group_kelas = $this->input->post('group_kelas');
         $tahun_ajaran = $this->input->post('tahun_ajaran');
         $jenis_pembayaran = $this->input->post('jenis_pembayaran');
-        $nominal = $this->input->post('nominal');
+        $spp = $this->input->post('spp');
+        $tabungan = $this->input->post('tabungan');
+        $internet = $this->input->post('internet');
+        $praktek = $this->input->post('praktek');
+
 
         $data = array(
             'id_setting_pembayaran' => $id_setting_pembayaran,
@@ -532,7 +525,10 @@ class Dashboard extends CI_Controller
             'id_groupKelas' => $group_kelas,
             'id_tahun_ajaran' => $tahun_ajaran,
             'jenis_pembayaran' => $jenis_pembayaran,
-            'nominal' => $nominal,
+            'spp' => $spp,
+            'tabungan' => $tabungan,
+            'internet' => $internet,
+            'praktek' => $praktek,
         );
         $this->db->insert('setting_pembayaran', $data);
         $this->session->set_flashdata('info', '<div class="row">
@@ -547,6 +543,16 @@ class Dashboard extends CI_Controller
         </div>');
         redirect('Dashboard/daftar_setting_pembayaran');
         redirect('Dashboard/daftar_setting_pembayaran');
+    }
+
+    public function detail_setting_pembayaran($id_setting_pembayaran)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['setting_pembayaran'] = $this->Model_setting_pembayaran->detailSettingpembayaran($id_setting_pembayaran);
+        $isi['content'] = 'Setting/tampilan_detail_setting_pembayaran';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
     }
 
     public function hapus_setting_pembayaran($id_setting_pembayaran)

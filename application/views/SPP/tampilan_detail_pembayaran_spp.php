@@ -16,7 +16,7 @@
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold"><?= $siswa['jurusan'] ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold"><?= $siswa['kode'] ?></h5>
         </div>
     </div>
     <div class="col-md">
@@ -28,22 +28,22 @@
 <div class="row">
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Jumlah Bulan <?= $jumlah_bulan['jumlah_bulan'] ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Jumlah Bulan <br> <?= $jumlah_bulan['jumlah_bulan'] ?></h5>
         </div>
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sisa Bulan <?= $total_bayar['total_bulan'] - $jumlah_bulan['jumlah_bulan'] ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sisa Bulan <br> <?= $total_bayar['total_bulan'] - $jumlah_bulan['jumlah_bulan'] ?></h5>
         </div>
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sudah Bayar <?= $hasil_rupiah = "Rp " . number_format($jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sudah Bayar <br> <?= $hasil_rupiah = "Rp " . number_format($jumlah_bayar['jumlah_pembayaran'], 0, ',', '.') ?></h5>
         </div>
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar <?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar <br> <?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 0, ',', '.') ?></h5>
         </div>
     </div>
 </div>
@@ -65,14 +65,14 @@
                             <th scope="col">Nomor</th>
                             <th scope="col">Bulan</th>
                             <!-- <th scope="col">status</th> -->
-                            <th scope="col">pembayaran</th>
-                            <th scope="col">non kjp</th>
-                            <th scope="col">nominal kjp cas</th>
-                            <th scope="col">nominal kjp</th>
-                            <th scope="col">Tanggal</th>
-                            <!-- <th scope="col">Cicil</th> -->
-                            <th scope="col">NON KJP</th>
-                            <th scope="col">KJP</th>
+                            <th scope="col">SPP</th>
+                            <th scope="col">TABUNGAN</th>
+                            <th scope="col">INTERNET</th>
+                            <th scope="col">PRAKTEK</th>
+                            <th scope="col">TOTAL</th>
+                            <th scope="col">STATUS PEMBAYARAN</th>
+                            <th scope="col">WAKTU</th>
+                            <th scope="col">PEMBAYARAN</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,30 +83,34 @@
                             ?>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['bulan']; ?></td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['pembayaran']; ?> </td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['non_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?>)</td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp'], 2, ',', '.') ?>)</td>
-                                <td class="text-center text-uppercase font-weight-bold"><?= $row['statsu_cash_kjp'] ?> (<?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?>)</td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['spp'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['tabungan'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['internet'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['praktek'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $row['status_pabayar_spp']; ?> </td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['date']; ?> </td>
                                 <td>
-                                    <form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
-                                        <input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
-                                        <input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
-                                        <input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
-                                        <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
-                                        <input type="text" class="form-control text-uppercase" name="cash" value="<?= $row['nominal'] ?>" hidden>
-                                        <h5 class="text-center ">
-                                            <button type="submit" class="badge badge-primary text-uppercase">non kjp</button>
-                                        </h5>
-                                    </form>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
+                                                <input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
+                                                <input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
+                                                <input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
+                                                <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
+                                                <input type="text" class="form-control text-uppercase" name="cash" value="<?= $row['nominal'] ?>" hidden>
+                                                <h5 class="text-center ">
+                                                    <button type="submit" class="badge badge-primary text-uppercase">non kjp</button>
+                                                </h5>
+                                            </form>
+                                        </div>
+                                        <div class="col-md">
+                                            <h5 class="text-center text-uppercase">
+                                                <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
+                                            </h5>
+                                        </div>
+                                    </div>
                                 </td>
-
-                                <td>
-                                    <h5 class="text-center text-uppercase">
-                                        <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
-                                    </h5>
-                                </td>
-
                         </tr>
                     <?php } ?>
                     </tbody>

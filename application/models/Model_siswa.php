@@ -66,7 +66,7 @@ ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
 
     public function dataSiswaALLFindID($id_siswa)
     {
-        $sql = "SELECT siswa.nis,siswa.nama_siswa,siswa.kelas,jurusan.jurusan,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `siswa`
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,siswa.kelas,jurusan.kode,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `siswa`
 INNER JOIN jurusan
 ON siswa.jurusan=jurusan.kode
 INNER JOIN tahun_ajaran
@@ -78,17 +78,22 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
 
     public function SPPdataSiswaALLFindID($id_siswa)
     {
-        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,setting_pembayaran.nominal,spp_siswa.kjp,spp_siswa.kjp_cash,
-IF(spp_siswa.pembayaran='NON KJP','LUNAS',' ') AS non_kjp,
-IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas','') AS statsu_kjp,
-IF ((spp_siswa.kjp+spp_siswa.kjp_cash)=setting_pembayaran.nominal,'Lunas','') AS statsu_cash_kjp, spp_siswa.date
-FROM `spp_siswa`
-INNER JOIN siswa
-ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
-INNER JOIN setting_pembayaran
-ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
-WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa'
-ORDER BY spp_siswa.kode_bulan;";
+        $belum_lunas = '<p class="text-center font-weight-bold text-danger">BELUM LUNAS</p>';
+        $lunas_cash = '<p class="text-center font-weight-bold text-success">LUNAS CASH</p>';
+        $lunas_kjp = '<p class="text-center font-weight-bold text-warning">LUNAS KJP</p>';
+        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,spp_siswa.cash,spp_siswa.kjp,spp_siswa.kjp_cash,setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) AS nominal,
+        CASE
+            WHEN spp_siswa.cash=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) THEN '$lunas_cash'
+            WHEN (spp_siswa.kjp+kjp_cash)=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) THEN '$lunas_kjp'
+            ELSE '$belum_lunas'
+        END AS status_pabayar_spp,spp_siswa.date
+        FROM `spp_siswa`
+        INNER JOIN siswa
+        ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
+        INNER JOIN setting_pembayaran
+        ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
+        WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa'
+        ORDER BY spp_siswa.kode_bulan;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
