@@ -1,6 +1,7 @@
 <div class="alert alert-success" role="alert">
     <h5 class="text-center text-uppercase font-weight-bold">detail pembayaran spp</h5>
 </div>
+
 <a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/pembayaran_spp_per_nis/<?= $siswa['nis'] ?>">kembali</a>
 <div class="row">
     <div class="col-md">
@@ -99,21 +100,14 @@
                                                 <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
                                                 <input type="text" class="form-control text-uppercase" name="cash" value="<?= $row['nominal'] ?>" hidden>
                                                 <h5 class="text-center ">
-                                                    <button type="submit" class="btn btn-primary btn-sm btn-block text-uppercase font-weight-bold">non kjp</button>
+                                                    <button type="submit" class="badge badge-primary text-uppercase">non kjp</button>
                                                 </h5>
                                             </form>
                                         </div>
                                         <div class="col-md">
-                                            <form action="<?= base_url() ?>Dashboard/simpan_spp_kjp/<?= $row['id_spp_siswa'] ?>" method="POST">
-                                                <input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
-                                                <input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
-                                                <input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
-                                                <input type="text" class="form-control text-uppercase" name="bulan" value="<?= $row['bulan'] ?>" hidden>
-                                                <input type="text" class="form-control text-uppercase" name="kjp_cash" value="<?= $row['nominal'] - '240000' ?>" hidden>
-                                                <h5 class="text-center ">
-                                                    <button type="submit" class="btn btn-danger btn-sm btn-block text-uppercase font-weight-bold">kjp</button>
-                                                </h5>
-                                            </form>
+                                            <h5 class="text-center text-uppercase">
+                                                <a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
+                                            </h5>
                                         </div>
                                     </div>
                                 </td>

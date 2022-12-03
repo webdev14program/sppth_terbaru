@@ -28,6 +28,7 @@
                             <th scope="col">Kelas</th>
                             <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
+                            <th scope="col">Keterangan</th>
                             <th scope="col">NON KJP</th>
                             <th scope="col">KJP cash</th>
                         </tr>
@@ -42,14 +43,15 @@
                                 <td><?= $row['nis']; ?></td>
                                 <td class="text-uppercase"><?= $row['nama_siswa']; ?></td>
                                 <td class=""><?= $row['kelas']; ?></td>
-                                <td class="text-uppercase"><?= $row['jumlah_bulan']; ?> Bulan</td>
-                                <td class=""><?= $row['tahun_ajaran']; ?></td>
-                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['jumlah_cash'], 2, ',', '.') ?></td>
-                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['jumlah_kjp_cash'], 2, ',', '.') ?></td>
+                                <td class=""><?= $row['bulan']; ?></td>
+                                <td class=""><?= $row['tahun']; ?></td>
+                                <td class=""><?= $row['pembayaran']; ?></td>
+                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
+                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
                         </tr>
                     <?php } ?>
                     <tr>
-                        <td colspan="6" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+                        <td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
                         <td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></td>
                     </tr>
                     </tbody>

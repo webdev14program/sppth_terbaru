@@ -417,7 +417,7 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function simpan_spp_kjp($id_spp_siswa)
+    public function simpan_spp_kjp()
     {
         $id_spp_siswa = $this->input->post('id_spp_siswa');
         $id_siswa = $this->input->post('id_siswa');
@@ -425,17 +425,17 @@ class Dashboard extends CI_Controller
         $bulan = $this->input->post('bulan');
         $status = 'LUNAS';
         $pembayaran = 'KJP';
-        $kjp = '240000';
+        $kjp = $this->input->post('kjp');
         $kjp_cash = $this->input->post('kjp_cash');
 
 
         $data = array(
+            'id_spp_siswa' => $id_spp_siswa,
             'id_siswa' => $id_siswa,
             'kode_bulan' => $kode_bulan,
             'bulan' => $bulan,
             'status' => $status,
             'pembayaran' => $pembayaran,
-            'cash' => ' ',
             'kjp' => $kjp,
             'kjp_cash' => $kjp_cash,
         );

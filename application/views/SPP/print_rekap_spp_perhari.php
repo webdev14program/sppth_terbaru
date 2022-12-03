@@ -15,7 +15,7 @@
 
 <body>
     <div class="container mt-5">
-        <h3 class="text-center text-uppercase font-weight-bold">Rekap Pembayaran SPP PER HARI</h3>
+        <h3 class="text-center text-uppercase font-weight-bold">Rekap Pembayaran SPP</h3>
         <h3 class="text-center text-uppercase font-weight-bold"><?= $header['hari'] ?> <?= $header['bulan'] ?> <?= $header['tahun'] ?></h3>
         <div class="row mt-5">
             <div class="col-md">

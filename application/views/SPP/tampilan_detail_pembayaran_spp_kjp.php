@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Pembayaran KJP Cash</label>
-                                <input type="text" name="kjp_cash" value="<?= $siswa['nominal'] - "240000" ?>" class="form-control">
+                                <input type="text" name="kjp_cash" value="<?= $siswa['kjp_cash'] ?>" class="form-control">
                             </div>
                         </div>
                     </div>

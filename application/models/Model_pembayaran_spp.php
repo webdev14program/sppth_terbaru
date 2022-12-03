@@ -171,17 +171,11 @@ ORDER BY siswa.nis, spp_siswa.bulan asc";
     }
     public function print_rekap_spp_perbulan_perbulan($bulan_tahun)
     {
-        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.nama_siswa,siswa.jurusan,siswa.kelas,group_kelas.nama_group,tahun_ajaran.tahun_ajaran,
-COUNT(spp_siswa.bulan) AS jumlah_bulan,sum(spp_siswa.cash) AS jumlah_cash,SUM(spp_siswa.kjp_cash) AS jumlah_kjp_cash,spp_siswa.date,concat(monthname(spp_siswa.date),year(spp_siswa.date)) AS bulan_tahun
-FROM `spp_siswa`
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,siswa.kelas,spp_siswa.pembayaran,spp_siswa.bulan,year(spp_siswa.date) AS tahun,spp_siswa.cash,spp_siswa.kjp_cash,concat(monthname(spp_siswa.date),year(spp_siswa.date)) As bulan_tahun FROM `spp_siswa`
 INNER JOIN siswa
 ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
-INNER JOIN group_kelas
-ON siswa.group_kelas=group_kelas.id_groupKelas
-INNER JOIN tahun_ajaran
-ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
-WHERE spp_siswa.status='LUNAS' AND concat(monthname(spp_siswa.date),year(spp_siswa.date)) ='$bulan_tahun'
-GROUP BY concat(siswa.id_siswa,siswa.tahun_ajaran);";
+WHERE spp_siswa.status='LUNAS' AND concat(monthname(spp_siswa.date),year(spp_siswa.date))='$bulan_tahun'
+ORDER BY siswa.nis, spp_siswa.bulan asc";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
