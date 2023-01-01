@@ -36,8 +36,8 @@
 					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_tahun_ajaran">Tahun Ajaran</a>
 					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_jurusan">Jurusan</a>
 					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_kelas">Kelas</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa">Siswa</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa"> Non Aktif Siswa</a>
+					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa">Siswa Aktif</a>
+					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa_non_aktif"> Siswa Non Aktif</a>
 				</div>
 			</div>
 		</li>

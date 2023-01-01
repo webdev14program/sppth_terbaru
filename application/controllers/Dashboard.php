@@ -13,7 +13,8 @@ class Dashboard extends CI_Controller
 		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->home_tahun_ajaran();
 		$isi['jurusan'] = $this->Model_jurusan->countJurusan();
 		$isi['kelas'] = $this->Model_kelas->countKelas();
-		$isi['siswa'] = $this->Model_siswa->countSiswa();
+		$isi['siswa'] = $this->Model_siswa->countSiswaAktif();
+		$isi['siswa_tidak_aktif'] = $this->Model_siswa->countSiswaTidakAktif();
 
 		$this->Model_keamanan->getKeamanan();
 		$isi['content'] = 'tampilan_home';
@@ -257,6 +258,43 @@ class Dashboard extends CI_Controller
 				echo "Error :" . $this->upload->display_errors();
 			}
 		}
+	}
+
+	public function data_siswa_non_aktif()
+	{
+		$isi['data_siswa'] = $this->Model_siswa->data_siswa_non_aktif();
+		$this->Model_keamanan->getKeamanan();
+		$isi['content'] = 'tampilan_data_siswa_non_aktif';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function simpan_siswa_non_aktif()
+	{
+		$id_siswa = $this->input->post('id_siswa');
+		$nis = $this->input->post('nis');
+		$nama_siswa = $this->input->post('nama_siswa');
+		$jurusan = $this->input->post('jurusan');
+		$kelas = $this->input->post('kelas');
+		$group_kelas = $this->input->post('group_kelas');
+		$tahun_ajaran = $this->input->post('tahun_ajaran');
+		$status = $this->input->post('status');
+
+		$data = array(
+			'id_siswa' => $id_siswa,
+			'nis' => $nis,
+			'nama_siswa' => $nama_siswa,
+			'jurusan' => $jurusan,
+			'kelas' => $kelas,
+			'group_kelas' => $group_kelas,
+			'tahun_ajaran' => $tahun_ajaran,
+			'status' => $status,
+		);
+
+		$this->db->where('id_siswa', $id_siswa);
+		$this->db->update('siswa', $data);
+		redirect('Dashboard/data_siswa_non_aktif');
 	}
 
 	public function detail_data_siswa($id_tahun_ajaran)
