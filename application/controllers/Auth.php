@@ -6,7 +6,7 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $isi['version'] = 'Release Candidate V2.0 rev 1.5';
+        $isi['version'] = 'Release Candidate V2.2 rev 1.6';
         $this->load->view('tampilan_login', $isi);
     }
 

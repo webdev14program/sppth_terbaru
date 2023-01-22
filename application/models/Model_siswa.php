@@ -108,6 +108,12 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
 		return $query->result_array();
 	}
 
+	public function validasi_generate_pembayaran_spp($id_siswa)
+	{
+		$this->db->where("id_siswa", $id_siswa);
+		return $this->db->get('spp_siswa');
+	}
+
 
 
 	public function dataSiswa()

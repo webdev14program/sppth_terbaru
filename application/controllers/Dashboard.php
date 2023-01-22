@@ -160,10 +160,10 @@ class Dashboard extends CI_Controller
 	public function hapus_all_siswa()
 	{
 		$this->db->empty_table('siswa');
-		$this->session->set_flashdata('info', '<div class="row">
+		$this->session->set_flashdata('pesan', '<div class="row">
         <div class="col-md mt-2">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Data Siswa Berhasil Di Hapus</strong>
+                <strong>Data Siswa Berhasil Di Hapus Semua</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -244,7 +244,7 @@ class Dashboard extends CI_Controller
 					$this->session->set_flashdata('pesan', '<div class="row">
         <div class="col-md mt-2">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Data Mapel Berhasil Di Tambah</strong>
+                <strong>Data Siswa Berhasil Di Upload</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -330,49 +330,6 @@ class Dashboard extends CI_Controller
 	}
 
 
-
-	public function detail_pembayaran_spp_v2($id_siswa)
-	{
-		$this->Model_keamanan->getKeamanan();
-		$isi['siswa'] = $this->Model_siswa->dataSiswaALLFindID($id_siswa);
-		$isi['jumlah_bulan'] = $this->Model_pembayaran_spp->countPembayaranSPP($id_siswa);
-		$isi['jumlah_bayar'] = $this->Model_pembayaran_spp->jumlahPembayaranSPP($id_siswa);
-		$isi['total_bayar'] = $this->Model_pembayaran_spp->totalPembayaranSPP($id_siswa);
-		$isi['siswa_spp'] = $this->Model_siswa->SPPdataSiswaALLFindID_v2($id_siswa);
-		$isi['content'] = 'SPPV2/tampilan_detail_pembayaran_spp';
-		$this->load->view('templates/header');
-		$this->load->view('tampilan_dashboard', $isi);
-		$this->load->view('templates/footer');
-	}
-
-	public function bayar_spp_nonKJP_v2($id_spp_siswa)
-	{
-		$id_spp_siswa = $this->input->post('id_spp_siswa');
-		$id_siswa = $this->input->post('id_siswa');
-		$kode_bulan = $this->input->post('kode_bulan');
-		$bulan = $this->input->post('bulan');
-		$status = 'LUNAS';
-		$pembayaran = 'NON KJP';
-
-
-		$data = array(
-			'id_spp_siswa' => $id_spp_siswa,
-			'id_siswa' => $id_siswa,
-			'kode_bulan' => $kode_bulan,
-			'bulan' => $bulan,
-			'status' => $status,
-			'pembayaran' => $pembayaran,
-			'cicil_cash' => ' ',
-			'kjp' => ' ',
-			'kjp_cash' => ' ',
-			'date' => date("Y-m-d h:i:sa")
-		);
-
-		$this->db->where('id_spp_siswa', $id_spp_siswa);
-		$this->db->update('spp_siswa', $data);
-		redirect('Dashboard/detail_pembayaran_spp_v2/' . $id_siswa);
-	}
-
 	public function detail_pembayaran_spp($id_siswa)
 	{
 		$this->Model_keamanan->getKeamanan();
@@ -381,6 +338,9 @@ class Dashboard extends CI_Controller
 		$isi['jumlah_bayar'] = $this->Model_pembayaran_spp->jumlahPembayaranSPP($id_siswa);
 		$isi['total_bayar'] = $this->Model_pembayaran_spp->totalPembayaranSPP($id_siswa);
 		$isi['siswa_spp'] = $this->Model_siswa->SPPdataSiswaALLFindID($id_siswa);
+		// $isi['validasi'] = $this->Model_siswa->validasi_generate_pembayaran_spp($id_siswa);
+
+
 		$isi['content'] = 'SPP/tampilan_detail_pembayaran_spp';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
@@ -389,6 +349,7 @@ class Dashboard extends CI_Controller
 
 	public function generate_detail_pembayaran_spp($id_siswa)
 	{
+
 		$months = array(
 			'1' => 'Augustus',
 			'2' => 'September',
