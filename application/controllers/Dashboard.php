@@ -349,40 +349,44 @@ class Dashboard extends CI_Controller
 
 	public function generate_detail_pembayaran_spp($id_siswa)
 	{
-
-		$months = array(
-			'1' => 'Augustus',
-			'2' => 'September',
-			'3' => 'Oktober',
-			'4' => 'November',
-			'5' => 'Desember',
-			'6' => 'Januari',
-			'7' => 'Februar',
-			'8' => 'Maret',
-			'9' => 'April',
-			'10' => 'Mei',
-			'11' => 'Juni',
-		);
-
-
-		foreach ($months as $key => $value) {
-			$data = array(
-				'id_spp_siswa' => rand(11111, 99999),
-				'id_siswa' => $id_siswa,
-				'kode_bulan' => $key,
-				'bulan' => $value,
-				'status' => 'BELUM LUNAS',
-				'pembayaran' => 'BELUM LUNAS',
-				'cash' => ' ',
-				'kjp' => ' ',
-				'kjp_cash' => ' ',
-				'date' => date("Y-m-d h:i:sa")
-
+		$cek = $this->Model_siswa->validasi_generate_pembayaran_spp($id_siswa);
+		if ($cek->num_rows() > 0) {
+			$echo = "eror";
+		} else {
+			$months = array(
+				'1' => 'Augustus',
+				'2' => 'September',
+				'3' => 'Oktober',
+				'4' => 'November',
+				'5' => 'Desember',
+				'6' => 'Januari',
+				'7' => 'Februar',
+				'8' => 'Maret',
+				'9' => 'April',
+				'10' => 'Mei',
+				'11' => 'Juni',
 			);
-			$this->db->insert('spp_siswa', $data);
-		}
 
-		redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
+
+			foreach ($months as $key => $value) {
+				$data = array(
+					'id_spp_siswa' => rand(11111, 99999),
+					'id_siswa' => $id_siswa,
+					'kode_bulan' => $key,
+					'bulan' => $value,
+					'status' => 'BELUM LUNAS',
+					'pembayaran' => 'BELUM LUNAS',
+					'cash' => ' ',
+					'kjp' => ' ',
+					'kjp_cash' => ' ',
+					'date' => date("Y-m-d h:i:sa")
+
+				);
+				$this->db->insert('spp_siswa', $data);
+			}
+
+			redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
+		}
 	}
 
 	public function bayar_spp_nonKJP($id_spp_siswa)
