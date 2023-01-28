@@ -1,8 +1,11 @@
 <div class="alert alert-success" role="alert">
-    <h5 class="text-center text-uppercase font-weight-bold">pembayaran spp</h5>
+    <h5 class="text-center text-uppercase font-weight-bold">pembayaran spp dan administrasi lain</h5>
 </div>
 
 <div class="card mt-2">
+    <div class="card-header">
+
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">

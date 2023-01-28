@@ -1,5 +1,5 @@
 <div class="alert alert-success" role="alert">
-    <h5 class="text-center text-uppercase font-weight-bold">setting pembayaran</h5>
+    <h5 class="text-center text-uppercase font-weight-bold">setting pembayaran SPP</h5>
 </div>
 
 <div class="card mt-2">

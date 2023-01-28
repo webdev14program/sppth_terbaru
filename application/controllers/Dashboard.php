@@ -349,44 +349,40 @@ class Dashboard extends CI_Controller
 
 	public function generate_detail_pembayaran_spp($id_siswa)
 	{
-		$cek = $this->Model_siswa->validasi_generate_pembayaran_spp($id_siswa);
-		if ($cek->num_rows() > 0) {
-			$echo = "eror";
-		} else {
-			$months = array(
-				'1' => 'Augustus',
-				'2' => 'September',
-				'3' => 'Oktober',
-				'4' => 'November',
-				'5' => 'Desember',
-				'6' => 'Januari',
-				'7' => 'Februar',
-				'8' => 'Maret',
-				'9' => 'April',
-				'10' => 'Mei',
-				'11' => 'Juni',
+
+		$months = array(
+			'1' => 'Augustus',
+			'2' => 'September',
+			'3' => 'Oktober',
+			'4' => 'November',
+			'5' => 'Desember',
+			'6' => 'Januari',
+			'7' => 'Februar',
+			'8' => 'Maret',
+			'9' => 'April',
+			'10' => 'Mei',
+			'11' => 'Juni',
+		);
+
+
+		foreach ($months as $key => $value) {
+			$data = array(
+				'id_spp_siswa' => rand(11111, 99999),
+				'id_siswa' => $id_siswa,
+				'kode_bulan' => $key,
+				'bulan' => $value,
+				'status' => 'BELUM LUNAS',
+				'pembayaran' => 'BELUM LUNAS',
+				'cash' => ' ',
+				'kjp' => ' ',
+				'kjp_cash' => ' ',
+				'date' => date("Y-m-d h:i:sa")
+
 			);
-
-
-			foreach ($months as $key => $value) {
-				$data = array(
-					'id_spp_siswa' => rand(11111, 99999),
-					'id_siswa' => $id_siswa,
-					'kode_bulan' => $key,
-					'bulan' => $value,
-					'status' => 'BELUM LUNAS',
-					'pembayaran' => 'BELUM LUNAS',
-					'cash' => ' ',
-					'kjp' => ' ',
-					'kjp_cash' => ' ',
-					'date' => date("Y-m-d h:i:sa")
-
-				);
-				$this->db->insert('spp_siswa', $data);
-			}
-
-			redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
+			$this->db->insert('spp_siswa', $data);
 		}
+
+		redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
 	}
 
 	public function bayar_spp_nonKJP($id_spp_siswa)
@@ -459,8 +455,6 @@ class Dashboard extends CI_Controller
 		redirect('Dashboard/detail_pembayaran_spp/' . $id_siswa);
 	}
 
-
-
 	public function rekap_spp_perbulan_perhari()
 	{
 		$isi['spp_perbulan_perhari'] = $this->Model_siswa->pembayaranSPP_perbulan_perhari();
@@ -508,13 +502,13 @@ class Dashboard extends CI_Controller
 		$this->load->view('SPP/print_rekap_spp_perhari', $isi);
 	}
 
-	public function daftar_setting_pembayaran()
+	public function daftar_setting_pembayaran_spp()
 	{
 		$isi['kelas'] = $this->Model_kelas->group_kelas();
 		$isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran();
-		$isi['content'] = 'Setting/tampilan_setting_pembayaran';
+		$isi['content'] = 'Setting/tampilan_setting_pembayaran_spp';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
@@ -548,15 +542,14 @@ class Dashboard extends CI_Controller
 		$this->session->set_flashdata('info', '<div class="row">
         <div class="col-md mt-2">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>SETTING PEMBAYARAN BERHASIL DI SIMPAN</strong>
+                <strong>SETTING PEMBAYARAN SPP BERHASIL DI SIMPAN</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
         </div>');
-		redirect('Dashboard/daftar_setting_pembayaran');
-		redirect('Dashboard/daftar_setting_pembayaran');
+		redirect('Dashboard/daftar_setting_pembayaran_spp');
 	}
 
 	public function detail_setting_pembayaran($id_setting_pembayaran)
@@ -584,6 +577,50 @@ class Dashboard extends CI_Controller
         </div>
         </div>');
 		redirect('Dashboard/daftar_setting_pembayaran');
+	}
+
+	public function daftar_setting_pembayaran_adm_lain()
+	{
+		$isi['kelas'] = $this->Model_kelas->group_kelas();
+		$isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+		$this->Model_keamanan->getKeamanan();
+		$isi['setting_pembayaran'] = $this->Model_adm_lain->dataAdmLain();
+		$isi['content'] = 'Setting/tampilan_setting_pembayaran_adm_lain';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function simpan_setting_pembayaran_lain()
+	{
+		$id_setting_pembayaran_lain = rand(111111, 999999);
+		$nama_pembayaran_lain = $this->input->post('nama_pembayaran');
+		$group_kelas = $this->input->post('group_kelas');
+		$tahun_ajaran = $this->input->post('tahun_ajaran');
+		$jenis_pembayaran = "ADMINISTRASI LAIN";
+		$nominal = $this->input->post('nominal');
+
+
+		$data = array(
+			'id_setting_pembayaran_lain' => $id_setting_pembayaran_lain,
+			'nama_pembayaran_lain' => $nama_pembayaran_lain,
+			'id_groupKelas' => $group_kelas,
+			'id_tahun_ajaran' => $tahun_ajaran,
+			'jenis_pembayaran' => $jenis_pembayaran,
+			'nominal' => $nominal,
+		);
+		$this->db->insert('setting_pembayaran_lain', $data);
+		$this->session->set_flashdata('info', '<div class="row">
+        <div class="col-md mt-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>SETTING PEMBAYARAN ADMINISTRASI LAIN BERHASIL DI SIMPAN</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>');
+		redirect('Dashboard/daftar_setting_pembayaran_adm_lain');
 	}
 
 	public function logout()

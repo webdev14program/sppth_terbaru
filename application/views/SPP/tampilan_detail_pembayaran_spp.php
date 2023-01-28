@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <h5 class="text-center">
-                    <a class="<?= $validasi['validasi']?>"  href="<?= base_url() ?>Dashboard/generate_detail_pembayaran_spp/<?= $siswa['siswa_tahun_ajaran'] ?>" > <i class="fas fa-sync-alt"></i> generate</a>
+                    <a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/generate_detail_pembayaran_spp/<?= $siswa['siswa_tahun_ajaran'] ?>"> <i class="fas fa-sync-alt"></i> generate</a>
                 </h5>
             </div>
             <div class="table-responsive">

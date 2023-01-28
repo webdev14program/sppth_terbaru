@@ -98,9 +98,14 @@
 			Setting
 		</div>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran">
+			<a class="nav-link" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_spp">
 				<i class="fas fa-cog"></i>
-				<span class="text-uppercase">Setting Pembayaran</span></a>
+				<span class="text-uppercase">Pembayaran SPP</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_adm_lain">
+				<i class="fas fa-cog"></i>
+				<span class="text-uppercase">Pembayaran ADM Lain</span></a>
 		</li>
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
