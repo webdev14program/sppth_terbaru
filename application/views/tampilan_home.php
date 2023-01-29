@@ -2,7 +2,7 @@
 	<div class="col-md">
 		<div class="card bg-primary">
 			<div class="card-body">
-				<h5 class="text-white font-weight-bold text-uppercase">SPP V2.0 rev 1.5 smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
+				<h5 class="text-white font-weight-bold text-uppercase">SPP <span class="text-success"><?= $version ?></span> smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
 			</div>
 		</div>
 	</div>
@@ -87,7 +87,7 @@
 					<tbody>
 						<tr>
 							<td>Versi Aplikasi </td>
-							<td>: SPP V2.0 rev1.5 (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
+							<td class="text-uppercase">: SPP <?= $version ?> (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
 						</tr>
 						<tr>
 							<td>Versi PHP </td>

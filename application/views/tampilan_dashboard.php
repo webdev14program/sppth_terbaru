@@ -5,7 +5,7 @@
 	<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 		<!-- Sidebar - Brand -->
-		<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+		<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
 			<div class="sidebar-brand-text mx-3 text-uppercase">Admin SPP <br> SMK TH</sup></div>
 		</a>
 
@@ -52,17 +52,10 @@
 		<li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Dashboard/pembayaran_spp">
 				<i class="fas fa-credit-card"></i>
-				<span class="text-uppercase">Pembayaran SPP</span></a>
+				<span class="text-uppercase">Pembayaran</span></a>
 		</li>
 
 
-
-		<!-- Nav Item - Tables -->
-		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Dashboard/pembayaran_administrasi">
-				<i class="fas fa-credit-card"></i>
-				<span class="text-uppercase">administrasi</span></a>
-		</li>
 		<hr class="sidebar-divider d-none d-md-block">
 		<div class="sidebar-heading">
 			laporan

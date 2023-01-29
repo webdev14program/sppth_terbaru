@@ -50,13 +50,25 @@ ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
 
 	public function PerNISdataSiswaALL($nis)
 	{
-		$sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran, concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar FROM `siswa`
+		// 		$sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran, concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar FROM `siswa`
+		// INNER JOIN jurusan
+		// ON siswa.jurusan=jurusan.kode
+		// INNER JOIN tahun_ajaran
+		// ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+		// WHERE siswa.nis='$nis'
+		// ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
+		$sql = "SELECT setting_pembayaran.id_setting_pembayaran,group_kelas.id_groupKelas,tahun_ajaran.id_tahun_ajaran,siswa.id_siswa,siswa.nis,siswa.nama_siswa,siswa.kelas,group_kelas.nama_group,jurusan.jurusan,tahun_ajaran.tahun_ajaran,
+concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar
+FROM `setting_pembayaran`
+INNER JOIN group_kelas
+ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas
+INNER JOIN tahun_ajaran
+ON setting_pembayaran.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+INNER JOIN siswa
+ON setting_pembayaran.id_groupKelas=siswa.group_kelas
 INNER JOIN jurusan
 ON siswa.jurusan=jurusan.kode
-INNER JOIN tahun_ajaran
-ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
-WHERE siswa.nis='$nis'
-ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
+WHERE siswa.nis='$nis';";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

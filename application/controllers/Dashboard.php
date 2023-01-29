@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller
 		$isi['kelas'] = $this->Model_kelas->countKelas();
 		$isi['siswa'] = $this->Model_siswa->countSiswaAktif();
 		$isi['siswa_tidak_aktif'] = $this->Model_siswa->countSiswaTidakAktif();
-
+		$isi['version'] = 'RC V2.2 rev 1.6';
 		$this->Model_keamanan->getKeamanan();
 		$isi['content'] = 'tampilan_home';
 		$this->load->view('templates/header');
@@ -322,6 +322,7 @@ class Dashboard extends CI_Controller
 	{
 		$isi['header'] = $this->Model_siswa->HeaderPerNISdataSiswaALL($nis);
 		$isi['siswa'] = $this->Model_siswa->PerNISdataSiswaALL($nis);
+		$isi['adm_lain'] = $this->Model_adm_lain->AdmLain($nis);
 		$this->Model_keamanan->getKeamanan();
 		$isi['content'] = 'SPP/pembayaran_spp_per_nis';
 		$this->load->view('templates/header');
@@ -552,6 +553,20 @@ class Dashboard extends CI_Controller
 		redirect('Dashboard/daftar_setting_pembayaran_spp');
 	}
 
+	// Administrasi Lain
+
+	public function detail_pembayaran_adm_lain($id_siswa)
+	{
+		$this->Model_keamanan->getKeamanan();
+		$isi['adm_lain'] = $this->Model_adm_lain->siswaAdmLain($id_siswa);
+		$isi['header'] = $this->Model_adm_lain->headerAdmLain($id_siswa);
+		$isi['content'] = 'Adm_lain/tampilan_detail_adm_lain';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+	// End Administrasi Lain
+
 	public function detail_setting_pembayaran($id_setting_pembayaran)
 	{
 		$this->Model_keamanan->getKeamanan();
@@ -564,19 +579,19 @@ class Dashboard extends CI_Controller
 
 	public function hapus_setting_pembayaran($id_setting_pembayaran)
 	{
-		$this->db->where('id_setting_pembayaran', $id_setting_pembayaran);
-		$this->db->delete('setting_pembayaran');
+		$this->db->where('id_setting_pembayaran_lain', $id_setting_pembayaran);
+		$this->db->delete('setting_pembayaran_lain');
 		$this->session->set_flashdata('info', '<div class="row">
         <div class="col-md mt-2">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>SETTING PEMBAYARAN BERHASIL DI HAPUS BERDASARKAN ID </strong>
+                <strong>SETTING PEMBAYARAN ADM BERHASIL DI HAPUS BERDASARKAN ID </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
         </div>');
-		redirect('Dashboard/daftar_setting_pembayaran');
+		redirect('');
 	}
 
 	public function daftar_setting_pembayaran_adm_lain()
@@ -622,6 +637,7 @@ class Dashboard extends CI_Controller
         </div>');
 		redirect('Dashboard/daftar_setting_pembayaran_adm_lain');
 	}
+
 
 	public function logout()
 	{

@@ -1,13 +1,14 @@
 <div class="alert alert-success" role="alert">
     <h5 class="text-center text-uppercase font-weight-bold">detail setting pembayaran</h5>
 </div>
-<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran">kembali</a>
+<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_spp">kembali</a>
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header bg-primary">
                 <h5 class="text-uppercase text-white font-weight-bold">Jenis pembayaran : <?= $setting_pembayaran['nama_jenis_pembayaran'] ?></h5>
                 <h5 class="text-uppercase text-white font-weight-bold">Grup Kelas : <?= $setting_pembayaran['nama_group'] ?></h5>
+                <h5 class="text-uppercase text-white font-weight-bold">Tahun Ajaran : <?= $setting_pembayaran['tahun_ajaran'] ?></h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

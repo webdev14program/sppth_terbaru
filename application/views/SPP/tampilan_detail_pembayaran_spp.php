@@ -38,12 +38,12 @@
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sudah Bayar <br> <?= $hasil_rupiah = "Rp " . number_format($jumlah_bayar['jumlah_pembayaran'], 0, ',', '.') ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sudah Bayar <br> <?= $hasil_rupiah = "Rp " . number_format($jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
         </div>
     </div>
     <div class="col-md">
         <div class="alert alert-success" role="alert">
-            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar <br> <?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 0, ',', '.') ?></h5>
+            <h5 class="text-center text-uppercase font-weight-bold">Sisa bayar <br> <?= $hasil_rupiah = "Rp " . number_format($total_bayar['total_pembayaran'] - $jumlah_bayar['jumlah_pembayaran'], 2, ',', '.') ?></h5>
         </div>
     </div>
 </div>
