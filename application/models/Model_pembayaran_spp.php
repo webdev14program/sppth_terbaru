@@ -32,7 +32,7 @@ class Model_pembayaran_spp extends CI_Model
 
     public function totalPembayaranSPP($id_siswa)
     {
-        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,count(*) AS total_bulan,((setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek)*11) AS total_pembayaran
+        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,setting_pembayaran.spp,setting_pembayaran.komputer,setting_pembayaran.mandarin,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,count(*) AS total_bulan,((setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin)*11) AS total_pembayaran
 FROM `spp_siswa`
                 INNER JOIN siswa
                 ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
@@ -46,8 +46,8 @@ FROM `spp_siswa`
 
     public function pembayaran_spp_kjp($id_spp_siswa)
     {
-        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,
-(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) AS nominal, 
+        $sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,setting_pembayaran.spp,setting_pembayaran.komputer,setting_pembayaran.mandarin,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,
+(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) AS nominal, 
 spp_siswa.kjp, spp_siswa.kjp_cash FROM `spp_siswa`
                 INNER JOIN siswa
                 ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)

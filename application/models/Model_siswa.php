@@ -103,10 +103,10 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
 		$belum_lunas = '<p class="text-center font-weight-bold text-danger">BELUM LUNAS</p>';
 		$lunas_cash = '<p class="text-center font-weight-bold text-success">LUNAS CASH</p>';
 		$lunas_kjp = '<p class="text-center font-weight-bold text-warning">LUNAS KJP</p>';
-		$sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,spp_siswa.cash,spp_siswa.kjp,spp_siswa.kjp_cash,setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) AS nominal,
+		$sql = "SELECT spp_siswa.id_spp_siswa,spp_siswa.id_siswa,siswa.nama_siswa,spp_siswa.kode_bulan,spp_siswa.bulan,spp_siswa.status,spp_siswa.pembayaran,spp_siswa.cash,spp_siswa.kjp,spp_siswa.kjp_cash,setting_pembayaran.spp,setting_pembayaran.komputer,setting_pembayaran.mandarin,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) AS nominal,
         CASE
-            WHEN spp_siswa.cash=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) THEN '$lunas_cash'
-            WHEN (spp_siswa.kjp+kjp_cash)=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) THEN '$lunas_kjp'
+            WHEN spp_siswa.cash=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) THEN '$lunas_cash'
+            WHEN (spp_siswa.kjp+kjp_cash)=(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) THEN '$lunas_kjp'
             ELSE '$belum_lunas'
         END AS status_pabayar_spp,spp_siswa.date
         FROM `spp_siswa`

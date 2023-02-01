@@ -21,21 +21,31 @@
                             </tr>
                             <tr>
                                 <th class="text-center">2</th>
+                                <td>Komputer</td>
+                                <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['komputer'], 2, ',', '.') ?></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">3</th>
+                                <td>Mandarin</td>
+                                <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['mandarin'], 2, ',', '.') ?></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">4</th>
                                 <td>TABUNGAN</td>
                                 <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['tabungan'], 2, ',', '.') ?></td>
                             </tr>
                             <tr>
-                                <th class="text-center">3</th>
+                                <th class="text-center">5</th>
                                 <td>INTERNET</td>
                                 <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['internet'], 2, ',', '.') ?></td>
                             </tr>
                             <tr>
-                                <th class="text-center">4</th>
+                                <th class="text-center">6</th>
                                 <td>PRAKTEK</td>
                                 <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['praktek'], 2, ',', '.') ?></td>
                             </tr>
                             <tr>
-                                <th class="text-center">5</th>
+                                <th class="text-center">*</th>
                                 <td class="font-weight-bold">JUMLAH</td>
                                 <td class="font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['nominal'], 2, ',', '.') ?></td>
                             </tr>

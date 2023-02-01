@@ -91,19 +91,28 @@
                                 <select class="form-control" name="jenis_pembayaran">
                                     <option value="1001">Pembayaran SPP</option>
                                     <option value="2002" disabled>Pembayaran Administrasi Lain</option>
-
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md">
                             <div class="form-group">
                                 <label>SPP</label>
                                 <input type="number" name="spp" class="form-control">
                             </div>
+                        </div>
+                        <div class="col-md">
+
                             <div class="form-group">
                                 <label>Tabungan</label>
                                 <input type="number" name="tabungan" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label>Komputer</label>
+                                <input type="number" name="komputer" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Mandarin</label>
+                                <input type="number" name="mandarin" class="form-control">
+                            </div>
+
                             <div class="form-group">
                                 <label>Internet</label>
                                 <input type="number" name="internet" class="form-control">

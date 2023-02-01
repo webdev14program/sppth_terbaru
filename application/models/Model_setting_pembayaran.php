@@ -19,7 +19,7 @@ class Model_setting_pembayaran extends CI_Model
     public function dataSettingpembayaran()
     {
         $sql = "SELECT setting_pembayaran.id_setting_pembayaran,setting_pembayaran.nama_pembayaran,IF(setting_pembayaran.jenis_pembayaran='1001','Pembayaran SPP','Pembayaran Administrasi Lain') AS nama_jenis_pembayaran,group_kelas.nama_group,tahun_ajaran.tahun_ajaran,
-setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) AS nominal,setting_pembayaran.date 
+setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) AS nominal,setting_pembayaran.date 
 FROM `setting_pembayaran`
 INNER JOIN group_kelas
 ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas
@@ -33,7 +33,7 @@ ORDER BY group_kelas.id_groupKelas ASC;";
     public function detailSettingpembayaran($id_setting_pembayaran)
     {
         $sql = "SELECT setting_pembayaran.id_setting_pembayaran,setting_pembayaran.nama_pembayaran,IF(setting_pembayaran.jenis_pembayaran='1001','Pembayaran SPP','Pembayaran Administrasi Lain') AS nama_jenis_pembayaran,group_kelas.nama_group,tahun_ajaran.tahun_ajaran,
-setting_pembayaran.spp,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek) AS nominal,setting_pembayaran.date 
+setting_pembayaran.spp,setting_pembayaran.komputer,setting_pembayaran.mandarin,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,(setting_pembayaran.spp+setting_pembayaran.tabungan+setting_pembayaran.internet+setting_pembayaran.praktek+setting_pembayaran.komputer+setting_pembayaran.mandarin) AS nominal,setting_pembayaran.date 
 FROM `setting_pembayaran`
 INNER JOIN group_kelas
 ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas

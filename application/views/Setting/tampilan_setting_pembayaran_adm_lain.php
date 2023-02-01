@@ -42,7 +42,7 @@
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Dashboard/hapus_setting_pembayaran/<?= $row['id_setting_pembayaran_lain'] ?>"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Dashboard/hapus_setting_pembayaran_adm_lain/<?= $row['id_setting_pembayaran_lain'] ?>"><i class="fas fa-trash"></i></a>
                                 </h5>
                             </td>
                     </tr>

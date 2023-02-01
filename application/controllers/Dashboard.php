@@ -526,6 +526,8 @@ class Dashboard extends CI_Controller
 		$tabungan = $this->input->post('tabungan');
 		$internet = $this->input->post('internet');
 		$praktek = $this->input->post('praktek');
+		$komputer = $this->input->post('komputer');
+		$mandarin = $this->input->post('mandarin');
 
 
 		$data = array(
@@ -535,6 +537,8 @@ class Dashboard extends CI_Controller
 			'id_tahun_ajaran' => $tahun_ajaran,
 			'jenis_pembayaran' => $jenis_pembayaran,
 			'spp' => $spp,
+			'komputer' => $komputer,
+			'mandarin' => $mandarin,
 			'tabungan' => $tabungan,
 			'internet' => $internet,
 			'praktek' => $praktek,
@@ -579,19 +583,36 @@ class Dashboard extends CI_Controller
 
 	public function hapus_setting_pembayaran($id_setting_pembayaran)
 	{
-		$this->db->where('id_setting_pembayaran_lain', $id_setting_pembayaran);
-		$this->db->delete('setting_pembayaran_lain');
+		$this->db->where('id_setting_pembayaran', $id_setting_pembayaran);
+		$this->db->delete('setting_pembayaran');
 		$this->session->set_flashdata('info', '<div class="row">
         <div class="col-md mt-2">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>SETTING PEMBAYARAN ADM BERHASIL DI HAPUS BERDASARKAN ID </strong>
+                <strong>SETTING PEMBAYARAN SPP BERHASIL DI HAPUS BERDASARKAN ID </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
         </div>');
-		redirect('');
+		redirect('Dashboard/daftar_setting_pembayaran_spp');
+	}
+
+	public function hapus_setting_pembayaran_adm_lain($id_setting_pembayaran)
+	{
+		$this->db->where('id_setting_pembayaran_lain', $id_setting_pembayaran);
+		$this->db->delete('setting_pembayaran_lain');
+		$this->session->set_flashdata('info', '<div class="row">
+        <div class="col-md mt-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>SETTING PEMBAYARAN ADM LAIN BERHASIL DI HAPUS BERDASARKAN ID </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>');
+		redirect('Dashboard/daftar_setting_pembayaran_adm_lain');
 	}
 
 	public function daftar_setting_pembayaran_adm_lain()

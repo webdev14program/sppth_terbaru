@@ -18,23 +18,27 @@
 							</div>
 							<div class="form-group">
 								<label>Pembayaran SPP Bulan <?= $siswa['bulan'] ?></label>
-								<input type="text" class="form-control" value="<?= $siswa['spp'] ?>" readonly>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['spp'], 2, ',', '.') ?>" readonly>
+							</div>
+							<div class="form-group">
+								<label>Pembayaran Komputer Bulan <?= $siswa['bulan'] ?></label>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['komputer'], 2, ',', '.') ?>" readonly>
+							</div>
+							<div class="form-group">
+								<label>Pembayaran Praktek Mandarin <?= $siswa['bulan'] ?></label>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['mandarin'], 2, ',', '.') ?>" readonly>
 							</div>
 							<div class="form-group">
 								<label>Pembayaran Tabungan Bulan <?= $siswa['bulan'] ?></label>
-								<input type="text" class="form-control" value="<?= $siswa['tabungan'] ?>" readonly>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['tabungan'], 2, ',', '.') ?>" readonly>
 							</div>
 							<div class="form-group">
 								<label>Pembayaran Internet Bulan <?= $siswa['bulan'] ?></label>
-								<input type="text" class="form-control" value="<?= $siswa['internet'] ?>" readonly>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['internet'], 2, ',', '.') ?>" readonly>
 							</div>
 							<div class="form-group">
 								<label>Pembayaran Praktek Bulan <?= $siswa['bulan'] ?></label>
-								<input type="text" class="form-control" value="<?= $siswa['praktek'] ?>" readonly>
-							</div>
-							<div class="form-group">
-								<label>Total Pembayaran SPP Bulan <?= $siswa['bulan'] ?></label>
-								<input type="text" class="form-control" value="<?= $siswa['nominal'] ?>" readonly>
+								<input type="text" class="form-control" value="<?= $hasil_rupiah = "Rp " . number_format($siswa['praktek'], 2, ',', '.') ?>" readonly>
 							</div>
 						</div>
 						<div class="col-md">
@@ -44,7 +48,11 @@
 							</div>
 							<div class="form-group">
 								<label>Pembayaran KJP Cash</label>
-								<input type="text" name="kjp_cash" value="<?= $siswa['kjp_cash'] ?>" class="form-control">
+								<input type="text" name="kjp_cash" value="<?= $siswa['nominal'] - 240000 ?>" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Total Pembayaran SPP Bulan <?= $siswa['bulan'] ?></label>
+								<input type="text" class="form-control" value="<?= $siswa['nominal'] ?>" readonly>
 							</div>
 						</div>
 					</div>

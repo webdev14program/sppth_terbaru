@@ -66,6 +66,8 @@
                             <th scope="col">Bulan</th>
                             <!-- <th scope="col">status</th> -->
                             <th scope="col">SPP</th>
+                            <th scope="col">KOMPUTER</th>
+                            <th scope="col">MANDARIN</th>
                             <th scope="col">TABUNGAN</th>
                             <th scope="col">INTERNET</th>
                             <th scope="col">PRAKTEK</th>
@@ -84,6 +86,8 @@
                                 <td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $row['bulan']; ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['spp'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['komputer'], 0, ',', '.') ?></td>
+                                <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['mandarin'], 0, ',', '.') ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['tabungan'], 0, ',', '.') ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['internet'], 0, ',', '.') ?></td>
                                 <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['praktek'], 0, ',', '.') ?></td>
