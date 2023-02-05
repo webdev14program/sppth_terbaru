@@ -21,12 +21,12 @@
                             </tr>
                             <tr>
                                 <th class="text-center">2</th>
-                                <td>Komputer</td>
+                                <td>KOMPUTER</td>
                                 <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['komputer'], 2, ',', '.') ?></td>
                             </tr>
                             <tr>
                                 <th class="text-center">3</th>
-                                <td>Mandarin</td>
+                                <td>MANDARIN</td>
                                 <td><?= $hasil_rupiah = "Rp " . number_format($setting_pembayaran['mandarin'], 2, ',', '.') ?></td>
                             </tr>
                             <tr>

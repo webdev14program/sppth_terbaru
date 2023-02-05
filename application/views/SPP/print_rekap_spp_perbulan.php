@@ -14,84 +14,113 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h3 class="text-center text-uppercase font-weight-bold">Rekap Pembayaran SPP Per Bulan</h3>
-        <h3 class="text-center text-uppercase font-weight-bold"><?= $header['bulan_spp'] ?> <?= $header['tahun_spp'] ?></h3>
-        <div class="row mt-5">
-            <div class="col-md">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr class="text-uppercase">
-                            <th scope="col">No</th>
-                            <th scope="col">ID Siswa</th>
-                            <th scope="col">Nama Siswa</th>
-                            <th scope="col">Kelas</th>
-                            <th scope="col">Bulan</th>
-                            <th scope="col">Tahun</th>
-                            <th scope="col">Keterangan</th>
-                            <th scope="col">NON KJP</th>
-                            <th scope="col">KJP cash</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            $no = 1;
-                            foreach ($siswa as $row) {
-                            ?>
-                                <td><?php echo $no++; ?></td>
-                                <td><?= $row['nis']; ?></td>
-                                <td class="text-uppercase"><?= $row['nama_siswa']; ?></td>
-                                <td class=""><?= $row['kelas']; ?></td>
-                                <td class=""><?= $row['bulan']; ?></td>
-                                <td class=""><?= $row['tahun']; ?></td>
-                                <td class=""><?= $row['pembayaran']; ?></td>
-                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
-                                <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
-                        </tr>
-                    <?php } ?>
-                    <tr>
-                        <td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
-                        <td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <!-- <div class="container mt-5"> -->
+    <!-- <h3 class="text-center text-uppercase font-weight-bold">Rekap Pembayaran SPP Per Bulan</h3>
+        <h3 class="text-center text-uppercase font-weight-bold"><?= $header['bulan_spp'] ?> <?= $header['tahun_spp'] ?></h3> -->
+    <div class="row">
+        <div class="col-md">
+
+            <div class="row">
+                <img src="https://smkth-jakbar.com/assets/images/logo.png" style="width: 160px;height: 160px;margin-top: 20px; margin-left: 20px;">
+                <div class="col-md mt-4">
+                    <table class="table border">
+                        <tbody>
+                            <tr>
+                                <td class="text-uppercase font-weight-bold">Nama Aplikasi </td>
+                                <td class="font-weight-bold text-uppercase">: SPP SMK TUNAS HARAPAN</td>
+                            </tr>
+                            <tr>
+                                <td class="text-uppercase font-weight-bold">SPP Per-Bulan</td>
+                                <td class="font-weight-bold text-uppercase">: <?= $header['bulan_spp'] ?> <?= $header['tahun_spp'] ?></td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-uppercase font-weight-bold">Tahun Ajaran</td>
+                                <td class="font-weight-bold text-uppercase">: <?= $header['tahun_ajaran'] ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><br>
+            <hr style="border-top: 2px dashed black;">
         </div>
-
-        <div class="row mt-5">
-            <div class="col-md">
-                <h4 class="text-center"><?php
-                                        function bulan_indo($bln)
-                                        {
-                                            $bln = (int) $bln;
-                                            $bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-
-                                            return $bulan[$bln];
-                                        }
-                                        function tgl_indo($tgl)
-                                        {
-                                            $tanggal = substr($tgl, 8, 2);
-                                            $bulan = bulan_indo(substr($tgl, 5, 2));
-                                            $tahun = substr($tgl, 0, 4);
-
-                                            return $tanggal . ' ' . $bulan . ' ' . $tahun;
-                                        }
-                                        $tanggal = date('Y-m-d');
-                                        $bulan = date('m');
-                                        echo tgl_indo($tanggal);
-                                        ?></h4>
-                <h4 class="text-center">Kepala Tata Usaha</h4>
-                <h4 class="text-center" style="margin-top: 120px;">Septiana Pajar Nurcahyati, A.md</h4>
-            </div>
-            <div class="col-md">
-                <h4 class="text-center">Yang Mengetahui</h4>
-                <h4 class="text-center">Kepala Sekolah</h4>
-                <h4 class="text-center" style="margin-top: 120px;">Widodo, S.E, M.M</h4>
-            </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr class="text-uppercase">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Siswa</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Keterangan</th>
+                        <th scope="col">NON KJP</th>
+                        <th scope="col">KJP cash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        $no = 1;
+                        foreach ($siswa as $row) {
+                        ?>
+                            <td><?php echo $no++; ?></td>
+                            <td class="text-uppercase"><?= $row['nama_siswa']; ?></td>
+                            <td class=""><?= $row['kelas']; ?></td>
+                            <td class=""><?= $row['bulan']; ?></td>
+                            <td class=""><?= $row['tahun']; ?></td>
+                            <td class=""><?= $row['pembayaran']; ?></td>
+                            <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
+                            <td class=""><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
+                    </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+                    <td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
+    <div class="row mt-5">
+        <div class="col-md">
+            <h4 class="text-center"><?php
+                                    function bulan_indo($bln)
+                                    {
+                                        $bln = (int) $bln;
+                                        $bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+
+                                        return $bulan[$bln];
+                                    }
+                                    function tgl_indo($tgl)
+                                    {
+                                        $tanggal = substr($tgl, 8, 2);
+                                        $bulan = bulan_indo(substr($tgl, 5, 2));
+                                        $tahun = substr($tgl, 0, 4);
+
+                                        return $tanggal . ' ' . $bulan . ' ' . $tahun;
+                                    }
+                                    $tanggal = date('Y-m-d');
+                                    $bulan = date('m');
+                                    echo tgl_indo($tanggal);
+                                    ?></h4>
+            <h4 class="text-center">Kepala Tata Usaha</h4>
+            <h4 class="text-center" style="margin-top: 120px;">Septiana Pajar Nurcahyati, A.md</h4>
+        </div>
+        <div class="col-md">
+            <h4 class="text-center">Yang Mengetahui</h4>
+            <h4 class="text-center">Kepala Sekolah</h4>
+            <h4 class="text-center" style="margin-top: 120px;">Widodo, S.E, M.M</h4>
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <script>
+        window.print();
+    </script>
 
 
 

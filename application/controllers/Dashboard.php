@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	// Start Data Master
 	public function data_tahun_ajaran()
 	{
 		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->dataTahunAjaran();
@@ -307,7 +308,9 @@ class Dashboard extends CI_Controller
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
 	}
+	// End Data Master
 
+	// Start Pembayaran SPP
 	public function pembayaran_spp()
 	{
 		$isi['siswa'] = $this->Model_siswa->NISdataSiswaALL();
@@ -329,7 +332,6 @@ class Dashboard extends CI_Controller
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
 	}
-
 
 	public function detail_pembayaran_spp($id_siswa)
 	{
@@ -483,7 +485,6 @@ class Dashboard extends CI_Controller
 		$this->load->view('SPP/print_rekap_spp_perbulan', $isi);
 	}
 
-
 	public function rekap_spp_admin_perhari($bulan_tahun)
 	{
 		$isi['header'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
@@ -501,6 +502,37 @@ class Dashboard extends CI_Controller
 		$isi['header'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari_header($hari_bulan_tahun);
 		$isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari($hari_bulan_tahun);
 		$this->load->view('SPP/print_rekap_spp_perhari', $isi);
+	}
+
+	public function rekap_spp_kelas()
+	{
+
+		$this->Model_keamanan->getKeamanan();
+		$isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+
+		$isi['content'] = 'SPP/rekap_spp_perkelas';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function rekap_pembayaran_spp_kelas($id_tahun_ajaran)
+	{
+
+		$isi['kelas'] = $this->Model_kelas->tahun_ajaran_kelas_siswa($id_tahun_ajaran);
+		$this->Model_keamanan->getKeamanan();
+		$isi['content'] = 'SPP/tampilan_detail_rekap_kelas';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function print_perkelas_pembayaran_spp($kelas_tahun_ajaran)
+	{
+		$this->Model_keamanan->getKeamanan();
+		$isi['header'] = $this->Model_pembayaran_spp->header_rekap_spp_perbulan_perkerlas($kelas_tahun_ajaran);
+		$isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perkerlas($kelas_tahun_ajaran);
+		$this->load->view('SPP/print_rekap_spp_perkelas', $isi);
 	}
 
 	public function daftar_setting_pembayaran_spp()
@@ -556,6 +588,7 @@ class Dashboard extends CI_Controller
         </div>');
 		redirect('Dashboard/daftar_setting_pembayaran_spp');
 	}
+	// End Pembayaran SPP
 
 	// Administrasi Lain
 

@@ -12,7 +12,7 @@
 	<div class="col-md mt-2">
 		<div class="card bg-success">
 			<div class="card-body">
-				<h4 class="text-white font-weight-bold text-uppercase">jumlah siswa aktif</h4>
+				<h4 class="text-white font-weight-bold text-uppercase">siswa aktif</h4>
 				<h4 class="text-white font-weight-bold text-uppercase"><?= $siswa ?> siswa</h4>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 	<div class="col-md mt-2">
 		<div class="card bg-danger">
 			<div class="card-body">
-				<h4 class="text-white font-weight-bold text-uppercase">jumlah siswa tidak aktif</h4>
+				<h4 class="text-white font-weight-bold text-uppercase">siswa tidak aktif</h4>
 				<h4 class="text-white font-weight-bold text-uppercase"><?= $siswa_tidak_aktif ?> siswa</h4>
 			</div>
 		</div>
