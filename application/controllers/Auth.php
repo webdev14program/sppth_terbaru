@@ -14,7 +14,7 @@ class Auth extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $pass = md5($password);
+        $pass = sha1($password);
         $this->load->model('Model_login');
         $cek = $this->Model_login->cek_login($username, $pass);
 
