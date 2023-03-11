@@ -18,7 +18,7 @@ class Model_adm_lain extends CI_Model
 
     public function siswaAdmLain($id_siswa)
     {
-        $sql = "SELECT setting_pembayaran_lain.id_setting_pembayaran_lain,siswa.id_siswa,siswa.nis,siswa.nama_siswa,jurusan.jurusan,siswa.kelas,tahun_ajaran.tahun_ajaran,setting_pembayaran_lain.nama_pembayaran_lain,setting_pembayaran_lain.nominal,group_kelas.nama_group,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `setting_pembayaran_lain`
+        $sql = "SELECT setting_pembayaran_lain.id_setting_pembayaran_lain,siswa.id_siswa,siswa.nis,tahun_ajaran.id_tahun_ajaran,group_kelas.id_groupKelas,siswa.nama_siswa,jurusan.jurusan,siswa.kelas,tahun_ajaran.tahun_ajaran,setting_pembayaran_lain.nama_pembayaran_lain,setting_pembayaran_lain.nominal,group_kelas.nama_group,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran FROM `setting_pembayaran_lain`
 INNER JOIN siswa
 ON setting_pembayaran_lain.id_groupKelas=siswa.group_kelas
 INNER JOIN tahun_ajaran
