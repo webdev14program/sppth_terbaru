@@ -370,7 +370,7 @@ class Dashboard extends CI_Controller
 
 		foreach ($months as $key => $value) {
 			$data = array(
-				'id_spp_siswa' => rand(11111, 99999),
+				'id_spp_siswa' => rand(11111111, 99999999),
 				'id_siswa' => $id_siswa,
 				'kode_bulan' => $key,
 				'bulan' => $value,
@@ -545,7 +545,7 @@ class Dashboard extends CI_Controller
 	public function daftar_setting_pembayaran_spp()
 	{
 		$isi['kelas'] = $this->Model_kelas->group_kelas();
-		$isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran();
 		$isi['content'] = 'Setting/tampilan_setting_pembayaran_spp';
@@ -602,8 +602,13 @@ class Dashboard extends CI_Controller
 	public function detail_pembayaran_adm_lain($id_siswa)
 	{
 		$this->Model_keamanan->getKeamanan();
+
 		$isi['adm_lain'] = $this->Model_adm_lain->siswaAdmLain($id_siswa);
 		$isi['header'] = $this->Model_adm_lain->headerAdmLain($id_siswa);
+
+		$isi['dropDown'] = $this->Model_adm_lain->drop_down_adm_lain($id_siswa);
+		$isi['tabel'] = $this->Model_adm_lain->detailAdmLain($id_siswa);
+
 		$isi['content'] = 'Adm_lain/tampilan_detail_adm_lain';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
@@ -611,24 +616,71 @@ class Dashboard extends CI_Controller
 	}
 	// End Administrasi Lain
 
+	// public function simpan_pembayaran_adm_lain()
+	// {
+	// 	$id_adm_siswa = rand(111111, 999999);
+	// 	$siswa_tahun_ajaran = $this->input->post('siswa_tahun_ajaran');
+	// 	$id_setting_pembayaran_lain = $this->input->post('id_setting_pembayaran_lain');
+	// 	$id_tahun_ajaran = $this->input->post('id_tahun_ajaran');
+	// 	$id_groupKelas = $this->input->post('id_groupKelas');
+	// 	$nominal = $this->input->post('nominal');
+
+	// 	$data = array(
+	// 		'id_adm_siswa' => $id_adm_siswa,
+	// 		'siswa_tahun_ajaran' => $siswa_tahun_ajaran,
+	// 		'id_setting_pembayaran_lain' => $id_setting_pembayaran_lain,
+	// 		'id_tahun_ajaran' => $id_tahun_ajaran,
+	// 		'id_groupKelas' => $id_groupKelas,
+	// 		'status' => 'LUNAS',
+	// 		'jenis_pembayaran' => 'CASH',
+	// 		'nominal' => $nominal,
+	// 	);
+
+	// 	$this->db->insert('adm_siswa', $data);
+	// 	redirect('Dashboard/detail_pembayaran_adm_lain/' . $siswa_tahun_ajaran);
+	// }
+
 	public function simpan_pembayaran_adm_lain()
 	{
 		$id_adm_siswa = rand(111111, 999999);
 		$siswa_tahun_ajaran = $this->input->post('siswa_tahun_ajaran');
-		$id_setting_pembayaran_lain = $this->input->post('id_setting_pembayaran_lain');
-		$id_tahun_ajaran = $this->input->post('id_tahun_ajaran');
-		$id_groupKelas = $this->input->post('id_groupKelas');
-		$nominal = $this->input->post('nominal');
-
+		$id_setting_pembayaran_lain = $this->input->post('id_setting_pembayaran');
+		$cash = $this->input->post('cash');
+		$kjp = 0;
+		$kjp_cash = 0;
 		$data = array(
 			'id_adm_siswa' => $id_adm_siswa,
-			'siswa_tahun_ajaran' => $siswa_tahun_ajaran,
 			'id_setting_pembayaran_lain' => $id_setting_pembayaran_lain,
-			'id_tahun_ajaran' => $id_tahun_ajaran,
-			'id_groupKelas' => $id_groupKelas,
+			'siswa_tahun_ajaran' => $siswa_tahun_ajaran,
 			'status' => 'LUNAS',
 			'jenis_pembayaran' => 'CASH',
-			'nominal' => $nominal,
+			'cash' => $cash,
+			'kjp' => $kjp,
+			'kjp_cash' => $kjp,
+		);
+
+		$this->db->insert('adm_siswa', $data);
+		redirect('Dashboard/detail_pembayaran_adm_lain/' . $siswa_tahun_ajaran);
+	}
+
+	public function simpan_pembayaran_adm_lain_kjp()
+	{
+		$id_adm_siswa = rand(111111, 999999);
+
+		$siswa_tahun_ajaran = $this->input->post('siswa_tahun_ajaran');
+		$id_setting_pembayaran_lain = $this->input->post('id_setting_pembayaran');
+		$cash = 0;
+		$kjp = $this->input->post('kjp');
+		$kjp_cash = $this->input->post('kjp_cash');;
+		$data = array(
+			'id_adm_siswa' => $id_adm_siswa,
+			'id_setting_pembayaran_lain' => $id_setting_pembayaran_lain,
+			'siswa_tahun_ajaran' => $siswa_tahun_ajaran,
+			'status' => 'LUNAS',
+			'jenis_pembayaran' => 'KJP',
+			'cash' => $cash,
+			'kjp' => $kjp,
+			'kjp_cash' => $kjp_cash,
 		);
 
 		$this->db->insert('adm_siswa', $data);
@@ -682,7 +734,7 @@ class Dashboard extends CI_Controller
 	public function daftar_setting_pembayaran_adm_lain()
 	{
 		$isi['kelas'] = $this->Model_kelas->group_kelas();
-		$isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_adm_lain->dataAdmLain();
 		$isi['content'] = 'Setting/tampilan_setting_pembayaran_adm_lain';

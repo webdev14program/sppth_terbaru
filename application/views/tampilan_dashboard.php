@@ -163,6 +163,7 @@
 			<div class="container my-auto">
 				<div class="copyright text-center text-white my-auto">
 					<h6 class="text-center font-weight-bold">Copyright &copy; SMK Tunas Harapan</h6>
+					<h6 class="text-center font-weight-bold">Developer by Rahmadika Surya Setiawan, S.Kom</h6>
 				</div>
 			</div>
 		</footer>

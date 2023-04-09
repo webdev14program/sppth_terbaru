@@ -14,12 +14,8 @@
 </head>
 
 <body>
-	<!-- <div class="container mt-5"> -->
-	<!-- <h3 class="text-center text-uppercase font-weight-bold">Rekap Pembayaran SPP Per Bulan</h3>
-        <h3 class="text-center text-uppercase font-weight-bold"><?= $header['bulan_spp'] ?> <?= $header['tahun_spp'] ?></h3> -->
 	<div class="row">
 		<div class="col-md">
-
 			<div class="row">
 				<img src="https://smkth-jakbar.com/assets/images/logo.png" style="width: 160px;height: 160px;margin-top: 20px; margin-left: 20px;">
 				<div class="col-md mt-4">
@@ -30,12 +26,12 @@
 								<td class="font-weight-bold text-uppercase">: SPP SMK TUNAS HARAPAN</td>
 							</tr>
 							<tr>
-								<td class="text-uppercase font-weight-bold">Nama Siswa</td>
-								<td class="font-weight-bold text-uppercase">: <?= $kwitansi['nama_siswa'] ?> <?= $header['tahun_spp'] ?></td>
+								<td class="text-uppercase font-weight-bold">SPP Per-Bulan</td>
+								<td class="font-weight-bold text-uppercase">: <?= $header['bulan_spp'] ?></td>
 							</tr>
 
 							<tr>
-								<td class="text-uppercase font-weight-bold">Kelas</td>
+								<td class="text-uppercase font-weight-bold">Tahun Ajaran</td>
 								<td class="font-weight-bold text-uppercase">: <?= $header['tahun_ajaran'] ?></td>
 							</tr>
 						</tbody>
@@ -45,7 +41,19 @@
 			<hr style="border-top: 2px dashed black;">
 		</div>
 	</div>
-	<div class="row mt-5">
+
+	<div class="row">
+		<div class="col-md">
+			<div class="card">
+				<div class="card-body">
+					<h5> JUMLAH PEMBAYARAN SPP : <?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></h5>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row mt-3">
 		<div class="col-md">
 			<table class="table table-striped table-bordered">
 				<thead>
@@ -77,7 +85,7 @@
 					</tr>
 				<?php } ?>
 				<tr>
-					<td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+					<td colspan="6" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
 					<td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></td>
 				</tr>
 				</tbody>

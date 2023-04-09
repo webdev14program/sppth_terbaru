@@ -75,7 +75,7 @@
 							<th scope="col">STATUS PEMBAYARAN</th>
 							<th scope="col">WAKTU</th>
 							<th scope="col">PEMBAYARAN</th>
-							<th scope="col">KWITANSI</th>
+							<!-- <th scope="col">KWITANSI</th> -->
 						</tr>
 					</thead>
 					<tbody>
@@ -115,11 +115,6 @@
 											</h5>
 										</div>
 									</div>
-								</td>
-								<td>
-									<h5 class="text-center text-uppercase">
-										<a class="badge badge-info" href="<?= base_url() ?>Dashboard/print_kwitansi/<?= $row['id_spp_siswa']; ?>" target="_blank">Cetak</a>
-									</h5>
 								</td>
 						</tr>
 					<?php } ?>
