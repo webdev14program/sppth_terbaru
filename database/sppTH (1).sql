@@ -1,0 +1,684 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Apr 09, 2023 at 03:49 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `sppTH`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adm_siswa`
+--
+
+CREATE TABLE `adm_siswa` (
+  `id_adm_siswa` int(16) NOT NULL,
+  `id_setting_pembayaran_lain` varchar(128) NOT NULL,
+  `siswa_tahun_ajaran` varchar(128) NOT NULL,
+  `status` varchar(128) NOT NULL,
+  `jenis_pembayaran` varchar(128) NOT NULL,
+  `cash` int(128) NOT NULL,
+  `kjp` int(128) NOT NULL,
+  `kjp_cash` int(128) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `adm_siswa`
+--
+
+INSERT INTO `adm_siswa` (`id_adm_siswa`, `id_setting_pembayaran_lain`, `siswa_tahun_ajaran`, `status`, `jenis_pembayaran`, `cash`, `kjp`, `kjp_cash`, `timestamp`) VALUES
+(615687, '390218', '1087303303', 'LUNAS', 'CASH', 100000, 0, 0, '2023-04-08 16:39:40'),
+(880218, '155404', '1087303303', 'LUNAS', 'CASH', 165000, 0, 0, '2023-04-08 16:39:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth`
+--
+
+CREATE TABLE `auth` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `level` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `auth`
+--
+
+INSERT INTO `auth` (`id`, `username`, `password`, `nama`, `level`) VALUES
+(101, 'adminTU', '74d2227b18503a76f302bf22d1b4fdbe6b5be6d7', 'ADMINISTRATOR TATA USAHA', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_kelas`
+--
+
+CREATE TABLE `group_kelas` (
+  `id_groupKelas` int(16) NOT NULL,
+  `nama_group` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `group_kelas`
+--
+
+INSERT INTO `group_kelas` (`id_groupKelas`, `nama_group`) VALUES
+(1001, 'X BM'),
+(2002, 'X TKJ/DKV'),
+(3003, 'XI BM'),
+(4004, 'XI TKJ/DKV'),
+(5005, 'XII BM'),
+(6006, 'XII TKJ/DKV');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jurusan`
+--
+
+CREATE TABLE `jurusan` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `jurusan` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `jurusan`
+--
+
+INSERT INTO `jurusan` (`id`, `kode`, `jurusan`) VALUES
+(101, 'AKL', 'AKUTANSI DAN KEUANGAN LEMBAGA'),
+(202, 'PM', 'PEMASARAN'),
+(303, 'MPLB', 'MANAJEMEN PERKANTORAN LEMBAGA BISNIS'),
+(404, 'TJKT', 'TEKNIK JARINGAN KOMPUTER DAN TELEKOMUNIKASI'),
+(505, 'DKV', 'DESAIN KOMUNIKASI VISUAL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `kelas` varchar(128) NOT NULL,
+  `id_tahun_ajaran` int(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `kode`, `kelas`, `id_tahun_ajaran`) VALUES
+(3035146, 'DKV', 'X DKV 1', 303),
+(3035147, 'DKV', 'XI DKV 1', 404);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting_pembayaran`
+--
+
+CREATE TABLE `setting_pembayaran` (
+  `id_setting_pembayaran` int(16) NOT NULL,
+  `nama_pembayaran` varchar(128) NOT NULL,
+  `id_groupKelas` int(16) NOT NULL,
+  `id_tahun_ajaran` int(16) NOT NULL,
+  `jenis_pembayaran` varchar(128) NOT NULL,
+  `spp` int(128) NOT NULL,
+  `komputer` int(32) NOT NULL,
+  `mandarin` int(32) NOT NULL,
+  `tabungan` int(11) NOT NULL,
+  `internet` int(11) NOT NULL,
+  `praktek` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `setting_pembayaran`
+--
+
+INSERT INTO `setting_pembayaran` (`id_setting_pembayaran`, `nama_pembayaran`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `spp`, `komputer`, `mandarin`, `tabungan`, `internet`, `praktek`, `date`) VALUES
+(319260, 'Pembayaran SPP', 1001, 303, '1001', 265000, 40000, 25000, 20000, 25000, 0, '2023-04-07'),
+(747802, 'Pembayaran spp', 2002, 303, '1001', 265000, 40000, 25000, 20000, 25000, 50000, '2023-04-07'),
+(816490, 'Pembayaran spp', 4004, 404, '1001', 265000, 40000, 25000, 20000, 25000, 50000, '2023-04-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting_pembayaran_lain`
+--
+
+CREATE TABLE `setting_pembayaran_lain` (
+  `id_setting_pembayaran_lain` int(16) NOT NULL,
+  `nama_pembayaran_lain` varchar(255) NOT NULL,
+  `id_groupKelas` int(16) NOT NULL,
+  `id_tahun_ajaran` int(16) NOT NULL,
+  `jenis_pembayaran` varchar(128) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `setting_pembayaran_lain`
+--
+
+INSERT INTO `setting_pembayaran_lain` (`id_setting_pembayaran_lain`, `nama_pembayaran_lain`, `id_groupKelas`, `id_tahun_ajaran`, `jenis_pembayaran`, `nominal`, `date`) VALUES
+(155404, 'LKS', 2002, 303, 'ADMINISTRASI LAIN', 165000, '2023-04-08'),
+(390218, 'UTS GENAP', 2002, 303, 'ADMINISTRASI LAIN', 100000, '2023-04-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `id_siswa` int(18) NOT NULL,
+  `nis` int(32) NOT NULL,
+  `nama_siswa` varchar(256) NOT NULL,
+  `jurusan` varchar(16) NOT NULL,
+  `kelas` varchar(18) NOT NULL,
+  `group_kelas` varchar(16) NOT NULL,
+  `tahun_ajaran` varchar(32) NOT NULL,
+  `status` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`id_siswa`, `nis`, `nama_siswa`, `jurusan`, `kelas`, `group_kelas`, `tahun_ajaran`, `status`) VALUES
+(1087303, 228588, 'ADE SETYA CANDRA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1088303, 228589, 'ARIANSYAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1089303, 228590, 'ARYA SUBAGJA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1090303, 228591, 'DIAN NOVITA SARI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1091303, 228592, 'DIDA PERKASA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1092303, 228593, 'EGHA PATRIANSYAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1093303, 228594, 'ESMERALDA VALENCIA WIDJAJA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1094303, 228595, 'FAHIRA ANA PUTRI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1095303, 228596, 'FARHAN SETYAWAN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1096303, 228597, 'GITA INDAH SABANA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1097303, 228599, 'IBNU ADITYA ADNAN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1098303, 228600, 'IKHSAN BAYU NUGROHO', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1099303, 228601, 'ISMAIL AHMAD SAHDAD', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1100303, 228602, 'ISTAUFIRIN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1101303, 228603, 'IVAN FERDINAN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1102303, 228604, 'JEFRY HIDAYATULLAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1103303, 228605, 'JONI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1104303, 228606, 'JUSTIN RAFAEL', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1105303, 228607, 'LANANG SINGGIH PANGESTU', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1106303, 228608, 'MARCELL RAKASE', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1107303, 228609, 'MARTIN AL FATHONI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1108303, 228610, 'MIXCEL DIMAS JUNIAWAN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1109303, 228611, 'MOSES DOLVIN MAELISSA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1110303, 228612, 'MUHAMAD RIKO SYAHPUTRA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1111303, 228613, 'MUHAMMAD NURSHAM AHMADINEJAD', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1112303, 228614, 'MUTIA VARA DILLA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1113303, 228615, 'NADIA ARDHELIA PUTRI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1114303, 228616, 'NAFI\'AJI VANOROSSI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1115303, 228617, 'NOFIA INDRIANI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1116303, 228618, 'RAFFAEL EDGINA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1117303, 228619, 'RAFI ACHMAD APRILIANDI', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1118303, 228620, 'RAFKA AFRIZAL MUTTAQIN', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1119303, 228621, 'RAIHAN DWI FEBRIYANTO', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1120303, 228622, 'RAVI HAFIZ ARDIANSYAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1121303, 228623, 'REGA JUVENSIA SAPUTRA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1122303, 228624, 'REHAN JULIANTO', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1123303, 228625, 'RIFAT AKMAL', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1124303, 228626, 'RIO ARDIANSYAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1125303, 228627, 'RIZKY DIAN PERMANA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1126303, 228628, 'RIZQI MUH AKBAR', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1127303, 228629, 'RUDIYANSAH', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1128303, 228630, 'TUBAGUS RAIHAN RAHMATULLOH HIDAYAT', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1129303, 228631, 'VERDINAN WILLIAM HOLLE', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF'),
+(1130303, 228632, 'ZASKIA DEVINA ROSALINA', 'DKV', 'X DKV 1', '2002', '303', 'AKTIF');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spp_siswa`
+--
+
+CREATE TABLE `spp_siswa` (
+  `id_spp_siswa` int(18) NOT NULL,
+  `id_siswa` bigint(255) NOT NULL,
+  `kode_bulan` int(18) NOT NULL,
+  `bulan` varchar(128) NOT NULL,
+  `status` varchar(32) NOT NULL,
+  `pembayaran` varchar(128) NOT NULL,
+  `cash` int(128) NOT NULL,
+  `kjp` int(128) NOT NULL,
+  `kjp_cash` int(128) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `spp_siswa`
+--
+
+INSERT INTO `spp_siswa` (`id_spp_siswa`, `id_siswa`, `kode_bulan`, `bulan`, `status`, `pembayaran`, `cash`, `kjp`, `kjp_cash`, `date`) VALUES
+(11332046, 1095303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:29'),
+(11422378, 1091303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:19:44'),
+(11865152, 1087303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:49'),
+(12034734, 1111303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:15'),
+(12875646, 1092303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:06'),
+(13178596, 1103303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:10:14'),
+(14643487, 1089303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:04'),
+(14754610, 1087303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:57'),
+(15039426, 1108303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:13'),
+(15157158, 1090303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:29'),
+(15690592, 1101303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:54'),
+(15722507, 1106303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:25'),
+(15822274, 1100303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:35'),
+(15852721, 1108303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:21'),
+(16091670, 1098303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:57'),
+(16331417, 1092303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:15'),
+(17169428, 1106303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:27'),
+(17608067, 1110303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:15'),
+(17615098, 1097303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:22'),
+(17832799, 1104303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:11:27'),
+(17874898, 1098303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:35:36'),
+(17929442, 1087303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:15:45'),
+(18254248, 1110303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:18'),
+(18621888, 1100303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:47:26'),
+(19415869, 1102303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:52:04'),
+(19527892, 1099303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:41:35'),
+(19586832, 1093303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:59'),
+(20714357, 1091303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:48'),
+(20983937, 1098303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:35:39'),
+(21222020, 1098303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:32:46'),
+(22022501, 1087303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:15:45'),
+(22230699, 1103303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:17'),
+(22493361, 1102303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:50:53'),
+(22582976, 1092303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:08'),
+(22602591, 1087303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:55'),
+(23053918, 1088303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:25'),
+(23404687, 1088303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:16:20'),
+(23470375, 1109303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:25:58'),
+(23525461, 1099303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(23564610, 1108303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:16:57'),
+(23658968, 1096303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:27'),
+(24047526, 1106303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:30'),
+(24551752, 1091303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:53'),
+(25108032, 1093303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:55'),
+(25218584, 1098303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:54'),
+(25627408, 1104303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:11:58'),
+(27288306, 1101303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:47'),
+(28456457, 1098303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:35:42'),
+(28712277, 1094303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:23'),
+(28833244, 1110303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:27:10'),
+(29003157, 1102303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:52:03'),
+(29240173, 1088303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:26'),
+(29740289, 1090303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:17:13'),
+(30133462, 1106303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:25'),
+(30413127, 1090303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:15'),
+(30562387, 1098303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:32:46'),
+(30736985, 1099303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:41:34'),
+(31354603, 1099303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(31432316, 1111303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:23'),
+(31730696, 1110303303, 7, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:27:10'),
+(32309166, 1092303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:31:57'),
+(32598248, 1111303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:17'),
+(32610875, 1095303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:31'),
+(33255826, 1104303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:11:53'),
+(33699114, 1089303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:06'),
+(34118411, 1105303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:08'),
+(34504591, 1092303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:31:57'),
+(34570622, 1099303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(35160731, 1091303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:47'),
+(35574226, 1108303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:16'),
+(35995309, 1094303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:13'),
+(36099426, 1098303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:35:46'),
+(36297979, 1110303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:17'),
+(36687421, 1098303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:32:46'),
+(37149187, 1095303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:27'),
+(37151743, 1104303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:11:59'),
+(37333828, 1093303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:48'),
+(37773080, 1108303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:14'),
+(37789651, 1094303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:20'),
+(37818537, 1104303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:11:27'),
+(37994210, 1100303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:47:26'),
+(38102182, 1102303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:50:53'),
+(38140437, 1103303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:26'),
+(38626305, 1104303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:11:27'),
+(38927392, 1091303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:47'),
+(39100276, 1095303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:34'),
+(39920875, 1089303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:14:59'),
+(40401523, 1090303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:23'),
+(40465970, 1101303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:48:43'),
+(40744879, 1108303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:16:57'),
+(40929715, 1089303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:12'),
+(41997179, 1105303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:12:18'),
+(42535002, 1107303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:41'),
+(42600061, 1094303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:27'),
+(42899666, 1096303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:30'),
+(42986379, 1109303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:25:58'),
+(43126221, 1088303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:26'),
+(43181407, 1104303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:11:54'),
+(43194581, 1098303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:35:48'),
+(43218052, 1106303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:25'),
+(44040563, 1099303303, 6, 'Januari', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(44173603, 1089303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:14:59'),
+(44594589, 1094303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:15'),
+(44825808, 1102303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:53:20'),
+(44964671, 1103303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:20'),
+(44970487, 1106303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:31'),
+(45072103, 1103303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:10:14'),
+(45393572, 1087303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:15:45'),
+(45546305, 1101303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:44'),
+(45725126, 1110303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:27:10'),
+(45728951, 1090303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:19'),
+(45750037, 1096303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:25:26'),
+(46606808, 1106303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:25'),
+(47310537, 1096303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:28'),
+(47656525, 1093303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:21:36'),
+(47736350, 1109303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:16'),
+(48454083, 1105303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:02'),
+(48493872, 1110303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:19'),
+(48973911, 1103303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:19'),
+(49559121, 1107303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:15:05'),
+(49983516, 1107303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:39'),
+(50101861, 1100303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:38'),
+(50371796, 1092303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:09'),
+(50573841, 1107303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:56'),
+(51244661, 1111303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:30:13'),
+(51587687, 1103303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:25'),
+(51637991, 1109303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:07'),
+(51639772, 1099303303, 7, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(51655398, 1091303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:19:44'),
+(51728645, 1105303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:12:18'),
+(52316910, 1095303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:24:25'),
+(52926844, 1089303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:05'),
+(53417588, 1111303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:25'),
+(53550207, 1095303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:24:25'),
+(53626610, 1105303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:12:59'),
+(53732251, 1100303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:37'),
+(53756766, 1095303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:31'),
+(53772472, 1110303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:27:10'),
+(53998567, 1097303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:27:09'),
+(54122786, 1095303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:28'),
+(54795145, 1096303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:25:26'),
+(54837000, 1092303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:31:57'),
+(54987145, 1095303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:30'),
+(55132641, 1105303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:02'),
+(55258799, 1105303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:11'),
+(55650936, 1107303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:40'),
+(56128751, 1107303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:21:47'),
+(57192704, 1090303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:26'),
+(57528916, 1106303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:33'),
+(57558154, 1109303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:09'),
+(57806418, 1103303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:10:14'),
+(58133091, 1105303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:06'),
+(59251282, 1102303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:52:06'),
+(59426880, 1093303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:53'),
+(59951504, 1108303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:04'),
+(60035840, 1107303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:14:56'),
+(60089524, 1088303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:24'),
+(60275840, 1111303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:16'),
+(61455659, 1102303303, 8, 'Maret', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:54:12'),
+(61511493, 1097303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:15'),
+(61979816, 1110303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:12'),
+(62511651, 1099303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:41:37'),
+(64188647, 1102303303, 7, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:53:53'),
+(64464085, 1102303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:50:56'),
+(64528198, 1106303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:29'),
+(64791581, 1099303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:45:51'),
+(65130922, 1111303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:30:13'),
+(66445883, 1090303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:17'),
+(66650881, 1108303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:12'),
+(66699433, 1103303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:16'),
+(66956285, 1096303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:36'),
+(67188812, 1101303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:45'),
+(67537915, 1101303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:52'),
+(68511985, 1087303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:52'),
+(68967580, 1094303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:23:11'),
+(69044635, 1092303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:11'),
+(69504756, 1090303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:20'),
+(69691722, 1109303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:13'),
+(69955004, 1100303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:45'),
+(70324792, 1089303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:14:59'),
+(70348587, 1110303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:27:16'),
+(70606712, 1101303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:49'),
+(71288935, 1088303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:22'),
+(71725384, 1099303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:45:47'),
+(72039435, 1104303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:12:00'),
+(72174009, 1109303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:25:58'),
+(72800971, 1103303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:10:17'),
+(72819901, 1094303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:23:11'),
+(73601474, 1093303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:21:36'),
+(73799206, 1090303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:17:13'),
+(73853854, 1097303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:12'),
+(74554811, 1093303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:52'),
+(75400034, 1104303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:11:56'),
+(75500725, 1094303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:23:11'),
+(76458773, 1097303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:18'),
+(76759606, 1095303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:24:25'),
+(76806384, 1093303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:50'),
+(77564621, 1097303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:27:09'),
+(77990025, 1111303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:30:13'),
+(78043883, 1095303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:24:38'),
+(78087739, 1097303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:13'),
+(78172610, 1093303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:49'),
+(78191023, 1087303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:46'),
+(78313143, 1109303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:11'),
+(79066589, 1101303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:46'),
+(79392084, 1109303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:08'),
+(79593552, 1096303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:29'),
+(79775240, 1109303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:08'),
+(79897339, 1100303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:36'),
+(80473679, 1093303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:21:36'),
+(81843290, 1096303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:31'),
+(82119449, 1098303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:56'),
+(82127538, 1107303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:21:43'),
+(82819042, 1091303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:56'),
+(83048230, 1100303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:47:26'),
+(83111010, 1089303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:05'),
+(83224176, 1091303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:50'),
+(83258917, 1108303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:15'),
+(83406484, 1088303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:23'),
+(83571373, 1096303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:33'),
+(83897416, 1101303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:48:43'),
+(84102586, 1094303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:17'),
+(84209273, 1089303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:09'),
+(84248876, 1105303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:13:01'),
+(84553568, 1109303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:26:15'),
+(84786516, 1088303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:30'),
+(85659920, 1088303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:16:32'),
+(85876011, 1097303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:10'),
+(86181870, 1103303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:10:14'),
+(86645995, 1091303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:46'),
+(87075606, 1088303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:16:20'),
+(87449717, 1093303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:21:51'),
+(87749764, 1090303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:17:13'),
+(87873447, 1104303303, 11, 'Juni', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:11:27'),
+(88143363, 1107303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:38'),
+(88759595, 1087303303, 4, 'November', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:49'),
+(89219507, 1108303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:18'),
+(89335210, 1111303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:26'),
+(89530022, 1104303303, 7, 'Februar', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:11:27'),
+(90189076, 1101303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:48:47'),
+(90214667, 1099303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:37:54'),
+(90681653, 1100303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:48'),
+(91071606, 1105303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:12:59'),
+(91638979, 1097303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:27:09'),
+(92110597, 1097303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:14'),
+(92144482, 1107303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:21:39'),
+(92150760, 1091303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:19:49'),
+(92840653, 1107303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:17:42'),
+(92854157, 1102303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:50:53'),
+(92963484, 1101303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:48:43'),
+(93110773, 1090303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:17:18'),
+(93246315, 1092303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:12'),
+(93444470, 1096303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:25:26'),
+(94006799, 1111303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:27'),
+(94038253, 1106303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:30'),
+(94950740, 1096303303, 8, 'Maret', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:25:39'),
+(95249518, 1111303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:30:24'),
+(95626701, 1092303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:07'),
+(95986224, 1097303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:27:11'),
+(96353259, 1108303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:16:57'),
+(96624129, 1094303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:14'),
+(96728500, 1100303303, 6, 'Januari', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:41'),
+(96952762, 1089303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:03'),
+(98200928, 1100303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:47:39'),
+(98406503, 1102303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:50:58'),
+(98634725, 1087303303, 3, 'Oktober', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:48'),
+(98820953, 1106303303, 7, 'Februar', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 01:14:34'),
+(98919158, 1094303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:23:14'),
+(99074560, 1092303303, 5, 'Desember', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:32:10'),
+(99108927, 1089303303, 1, 'Augustus', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:02'),
+(99202841, 1110303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:27:10'),
+(99285925, 1091303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:19:44'),
+(99313357, 1105303303, 10, 'Mei', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 01:12:18'),
+(99354385, 1088303303, 9, 'April', 'BELUM LUNAS', 'BELUM LUNAS', 0, 0, 0, '2023-04-08 00:16:20'),
+(99774099, 1087303303, 2, 'September', 'LUNAS', 'NON KJP', 425000, 0, 0, '2023-04-08 00:15:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tahun_ajaran`
+--
+
+CREATE TABLE `tahun_ajaran` (
+  `id_tahun_ajaran` int(16) NOT NULL,
+  `tahun_ajaran` varchar(32) NOT NULL,
+  `status` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tahun_ajaran`
+--
+
+INSERT INTO `tahun_ajaran` (`id_tahun_ajaran`, `tahun_ajaran`, `status`) VALUES
+(101, '2020/2021', 'TIDAK AKTIF'),
+(202, '2021/2022', 'TIDAK AKTIF'),
+(303, '2022/2023', 'AKTIF'),
+(404, '2023/2024', 'TIDAK AKTIF'),
+(505, '2024/2025', 'TIDAK AKTIF'),
+(606, '2025/2026', 'TIDAK AKTIF');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `adm_siswa`
+--
+ALTER TABLE `adm_siswa`
+  ADD PRIMARY KEY (`id_adm_siswa`);
+
+--
+-- Indexes for table `auth`
+--
+ALTER TABLE `auth`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `group_kelas`
+--
+ALTER TABLE `group_kelas`
+  ADD PRIMARY KEY (`id_groupKelas`);
+
+--
+-- Indexes for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `setting_pembayaran`
+--
+ALTER TABLE `setting_pembayaran`
+  ADD PRIMARY KEY (`id_setting_pembayaran`);
+
+--
+-- Indexes for table `setting_pembayaran_lain`
+--
+ALTER TABLE `setting_pembayaran_lain`
+  ADD PRIMARY KEY (`id_setting_pembayaran_lain`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id_siswa`) USING BTREE;
+
+--
+-- Indexes for table `spp_siswa`
+--
+ALTER TABLE `spp_siswa`
+  ADD PRIMARY KEY (`id_spp_siswa`);
+
+--
+-- Indexes for table `tahun_ajaran`
+--
+ALTER TABLE `tahun_ajaran`
+  ADD PRIMARY KEY (`id_tahun_ajaran`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `adm_siswa`
+--
+ALTER TABLE `adm_siswa`
+  MODIFY `id_adm_siswa` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=925675;
+
+--
+-- AUTO_INCREMENT for table `auth`
+--
+ALTER TABLE `auth`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+
+--
+-- AUTO_INCREMENT for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
+
+--
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3039925;
+
+--
+-- AUTO_INCREMENT for table `setting_pembayaran_lain`
+--
+ALTER TABLE `setting_pembayaran_lain`
+  MODIFY `id_setting_pembayaran_lain` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=964810;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
