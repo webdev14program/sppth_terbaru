@@ -614,31 +614,7 @@ class Dashboard extends CI_Controller
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
 	}
-	// End Administrasi Lain
 
-	// public function simpan_pembayaran_adm_lain()
-	// {
-	// 	$id_adm_siswa = rand(111111, 999999);
-	// 	$siswa_tahun_ajaran = $this->input->post('siswa_tahun_ajaran');
-	// 	$id_setting_pembayaran_lain = $this->input->post('id_setting_pembayaran_lain');
-	// 	$id_tahun_ajaran = $this->input->post('id_tahun_ajaran');
-	// 	$id_groupKelas = $this->input->post('id_groupKelas');
-	// 	$nominal = $this->input->post('nominal');
-
-	// 	$data = array(
-	// 		'id_adm_siswa' => $id_adm_siswa,
-	// 		'siswa_tahun_ajaran' => $siswa_tahun_ajaran,
-	// 		'id_setting_pembayaran_lain' => $id_setting_pembayaran_lain,
-	// 		'id_tahun_ajaran' => $id_tahun_ajaran,
-	// 		'id_groupKelas' => $id_groupKelas,
-	// 		'status' => 'LUNAS',
-	// 		'jenis_pembayaran' => 'CASH',
-	// 		'nominal' => $nominal,
-	// 	);
-
-	// 	$this->db->insert('adm_siswa', $data);
-	// 	redirect('Dashboard/detail_pembayaran_adm_lain/' . $siswa_tahun_ajaran);
-	// }
 
 	public function simpan_pembayaran_adm_lain()
 	{

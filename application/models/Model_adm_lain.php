@@ -3,8 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_adm_lain extends CI_Model
 {
-
-
 	public function dataAdmLain()
 	{
 		$sql = "SELECT setting_pembayaran_lain.id_setting_pembayaran_lain,setting_pembayaran_lain.nama_pembayaran_lain,group_kelas.nama_group,tahun_ajaran.tahun_ajaran,setting_pembayaran_lain.jenis_pembayaran,setting_pembayaran_lain.nominal,setting_pembayaran_lain.date FROM `setting_pembayaran_lain`
