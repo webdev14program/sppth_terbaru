@@ -7,7 +7,7 @@
 		<button type="button" class="btn btn-success btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#uploadSiswa">
 			<i class="fas fa-plus-square"></i> Upload siswa
 		</button>
-		<a class="btn btn-danger btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/hapus_all_siswa"><i class="fas fa-trash"></i> Hapus Siswa</a>
+		<a class="btn btn-danger btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Peserta_didik/hapus_all_siswa"><i class="fas fa-trash"></i> Hapus Siswa</a>
 	</div>
 </div>
 
@@ -40,7 +40,7 @@
 							<td class="text-center text-uppercase font-weight-bold"><?= $row['jumlah_siswa']; ?> Siswa</td>
 							<td>
 								<h5 class="text-center">
-									<a class="btn btn-primary btn-sm" href="<?= base_url() ?>Dashboard/detail_data_siswa/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
+									<a class="btn btn-primary btn-sm" href="<?= base_url() ?>Peserta_didik/detail_data_siswa/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
 								</h5>
 							</td>
 					</tr>
@@ -127,7 +127,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<?= form_open_multipart('Dashboard/upload_siswa'); ?>
+				<?= form_open_multipart('Peserta_didik/upload_siswa'); ?>
 				<div class="form-group">
 					<input type="file" name="excel" class="form-control-file" name="file" required accept=".xlsx">
 				</div>

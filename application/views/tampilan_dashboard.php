@@ -26,18 +26,18 @@
 		<div class="sidebar-heading text-uppercase">
 			master akademik
 		</div>
-		<li class="nav-item">
+		<li class="nav-item text-uppercase">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 				<i class="fas fa-fw fa-cog"></i>
 				<span class="text-uppercase">master akademik</span>
 			</a>
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-				<div class="bg-white py-2 collapse-inner rounded">
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_tahun_ajaran">Tahun Ajaran</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_jurusan">Jurusan</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_kelas">Kelas</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa">Siswa Aktif</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/data_siswa_non_aktif"> Siswa Non Aktif</a>
+				<div class="bg-white py-2 collapse-inner rounded text-primary">
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Tahun_ajaran">Tahun Ajaran</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Jurusan">Jurusan</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Kelas">Kelas</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Peserta_didik">Peserta Didik</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Peserta_didik/data_siswa_non_aktif"> PD Non Aktif</a>
 				</div>
 			</div>
 		</li>

@@ -4,7 +4,7 @@
 </div>
 <div class="card">
 	<div class="card-body">
-		<a class="btn btn-success btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/data_siswa">kembali</a>
+		<a class="btn btn-success btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Peserta_didik">kembali</a>
 	</div>
 </div>
 
@@ -19,8 +19,6 @@
 						<th>nama siswa</th>
 						<th>jurusan</th>
 						<th>kelas</th>
-						<th>group</th>
-						<th>Status Siswa</th>
 						<th>aksi</th>
 					</tr>
 				</thead>
@@ -35,11 +33,9 @@
 							<td class=" text-uppercase font-weight-bold"><?= $row['nama_siswa']; ?></td>
 							<td class=" text-uppercase font-weight-bold"><?= $row['nama_jurusan']; ?></td>
 							<td class="text-center text-uppercase font-weight-bold"><?= $row['kelas']; ?></td>
-							<td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
-							<td class="text-center text-uppercase font-weight-bold"><?= $row['status']; ?></td>
 							<td class="text-center text-uppercase font-weight-bold">
 								<h5 class="text-center">
-									<form method="POST" action="<?= base_url() ?>Dashboard/simpan_siswa_non_aktif">
+									<form method="POST" action="<?= base_url() ?>Peserta_didik/simpan_siswa_non_aktif">
 										<input type="text" value="<?= $row['id_siswa']; ?>" name="id_siswa" hidden>
 										<input type="text" value="<?= $row['nis']; ?>" name="nis" hidden>
 										<input type="text" value="<?= $row['nama_siswa']; ?>" name="nama_siswa" hidden>

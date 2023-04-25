@@ -5,7 +5,7 @@
 	<div class="col-md">
 		<div class="card">
 			<div class="card-body">
-				<a class="btn btn-success btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/data_kelas">Kembali Kelas</a>
+				<a class="btn btn-success btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Kelas">Kembali Kelas</a>
 			</div>
 		</div>
 	</div>

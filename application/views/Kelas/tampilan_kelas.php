@@ -9,7 +9,7 @@
 				<button type="button" class="btn btn-success btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#exampleModal">
 					<i class="fas fa-plus-square"></i> Upload Kelas
 				</button>
-				<a class="btn btn-danger btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/hapus_all_kelas"><i class="fas fa-trash"></i> Hapus Kelas</a>
+				<a class="btn btn-danger btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Kelas/hapus_all_kelas"><i class="fas fa-trash"></i> Hapus Kelas</a>
 			</div>
 		</div>
 	</div>
@@ -41,7 +41,7 @@
 							<td class="text-center text-uppercase font-weight-bold"><?= $row['jumlah_kelas']; ?> Kelas</td>
 							<td>
 								<h5 class="text-center">
-									<a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/detail_kelas/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
+									<a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Kelas/detail_kelas/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
 								</h5>
 							</td>
 					</tr>
@@ -62,7 +62,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<?= form_open_multipart('Dashboard/upload_kelas'); ?>
+				<?= form_open_multipart('Kelas/upload_kelas'); ?>
 				<div class="form-group">
 					<input type="file" name="excel" class="form-control-file" name="file" required accept=".xlsx">
 				</div>
