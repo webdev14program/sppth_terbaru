@@ -91,12 +91,12 @@
 			Setting
 		</div>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Pembayaran/daftar_setting_pembayaran_spp">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_pembayaran_spp">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Pembayaran SPP</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_adm_lain">
+			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Pembayaran ADM Lain</span></a>
 		</li>

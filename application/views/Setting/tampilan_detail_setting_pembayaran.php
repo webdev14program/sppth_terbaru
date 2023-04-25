@@ -1,7 +1,7 @@
 <div class="alert alert-success" role="alert">
     <h5 class="text-center text-uppercase font-weight-bold">detail setting pembayaran</h5>
 </div>
-<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_spp">kembali</a>
+<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Setting/setting_pembayaran_spp">kembali</a>
 <div class="row">
     <div class="col-md-6">
         <div class="card">

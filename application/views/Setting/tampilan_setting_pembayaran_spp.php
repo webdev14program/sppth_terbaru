@@ -42,8 +42,8 @@
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-primary btn-sm  text-uppercase" href="<?= base_url() ?>Dashboard/detail_setting_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-search"></i></i></a>
-                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Dashboard/hapus_setting_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-primary btn-sm  text-uppercase" href="<?= base_url() ?>Setting/detail_setting_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-search"></i></i></a>
+                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Setting/hapus_setting_pembayaran_spp/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-trash"></i></a>
                                 </h5>
                             </td>
                     </tr>
@@ -61,7 +61,7 @@
                 <h5 class="modal-title text-uppercase font-weight-bold text-white">tambah Pembayaran</h5>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url() ?>Pembayaran/simpan_setting_pembayaran" method="POST">
+                <form action="<?= base_url() ?>Setting/simpan_setting_pembayaran" method="POST">
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group">
