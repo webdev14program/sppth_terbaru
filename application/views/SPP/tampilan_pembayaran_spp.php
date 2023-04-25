@@ -29,7 +29,7 @@
                             <td class=" text-uppercase font-weight-bold"><?= $row['jurusan']; ?></td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Dashboard/pembayaran_spp_per_nis/<?= $row['nis'] ?>">Detail</a>
+                                    <a class="btn btn-sm btn-success" href="<?= base_url() ?>Pembayaran/pembayaran_spp_per_nis/<?= $row['nis'] ?>">Detail</a>
                                 </h5>
                             </td>
                     </tr>

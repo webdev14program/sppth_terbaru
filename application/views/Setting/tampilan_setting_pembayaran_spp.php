@@ -61,7 +61,7 @@
                 <h5 class="modal-title text-uppercase font-weight-bold text-white">tambah Pembayaran</h5>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url() ?>Dashboard/simpan_setting_pembayaran" method="POST">
+                <form action="<?= base_url() ?>Pembayaran/simpan_setting_pembayaran" method="POST">
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group">

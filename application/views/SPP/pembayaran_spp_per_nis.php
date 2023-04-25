@@ -1,6 +1,14 @@
-<a class="btn btn-success text-white text-uppercase font-weight-bold mb-3" href="<?= base_url() ?>Dashboard/pembayaran_spp">Kembali</a>
 <div class="row">
 	<div class="col-md">
+		<div class="card">
+			<div class="card-body">
+				<a class="btn btn-success btn-sm text-white text-uppercase font-weight-bold" href="<?= base_url() ?>Pembayaran">Kembali</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md mt-2">
 		<div class="card">
 			<div class="card-body bg-primary">
 				<h5 class="text-white text-uppercase font-weight-bold">Nama Siswa : <?= $header['nama_siswa'] ?></h5>
@@ -12,7 +20,7 @@
 
 
 <div class="row">
-	<div class="col-md mt-3">
+	<div class="col-md mt-2">
 		<div class="card">
 			<div class="card-header bg-success">
 				<h5 class="text-center font-weight-bold text-white text-uppercase">Pembayaran SPP</h5>
@@ -59,7 +67,7 @@
 									</td>
 									<td>
 										<h5 class="text-center">
-											<a class="btn btn-success btn-sm" target="_blank" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran</a>
+											<a class="btn btn-success btn-sm" target="_blank" href="<?= base_url() ?>Pembayaran/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran</a>
 										</h5>
 									</td>
 							</tr>

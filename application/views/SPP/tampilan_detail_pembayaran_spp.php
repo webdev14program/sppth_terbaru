@@ -2,7 +2,7 @@
 	<h5 class="text-center text-uppercase font-weight-bold">detail pembayaran spp</h5>
 </div>
 
-<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/pembayaran_spp_per_nis/<?= $siswa['nis'] ?>">kembali</a>
+
 <div class="row">
 	<div class="col-md">
 		<div class="alert alert-success" role="alert">
@@ -55,7 +55,7 @@
 			</div>
 			<div class="col-md-4">
 				<h5 class="text-center">
-					<a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/generate_detail_pembayaran_spp/<?= $siswa['siswa_tahun_ajaran'] ?>"> <i class="fas fa-sync-alt"></i> generate</a>
+					<a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Pembayaran/generate_detail_pembayaran_spp/<?= $siswa['siswa_tahun_ajaran'] ?>"> <i class="fas fa-sync-alt"></i> generate</a>
 				</h5>
 			</div>
 			<div class="table-responsive">
@@ -98,7 +98,7 @@
 								<td>
 									<div class="row">
 										<div class="col-md">
-											<form action="<?= base_url() ?>Dashboard/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
+											<form action="<?= base_url() ?>Pembayaran/bayar_spp_nonKJP/<?= $row['id_spp_siswa'] ?>" method="POST">
 												<input type="text" class="form-control text-uppercase" name="id_spp_siswa" value="<?= $row['id_spp_siswa'] ?>" hidden>
 												<input type="text" class="form-control text-uppercase" name="id_siswa" value="<?= $row['id_siswa'] ?>" hidden>
 												<input type="text" class="form-control text-uppercase" name="kode_bulan" value="<?= $row['kode_bulan'] ?>" hidden>
@@ -111,7 +111,7 @@
 										</div>
 										<div class="col-md">
 											<h5 class="text-center text-uppercase">
-												<a class="badge badge-danger" href="<?= base_url() ?>Dashboard/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
+												<a class="badge badge-danger" href="<?= base_url() ?>Pembayaran/bayar_spp_kjp/<?= $row['id_spp_siswa']; ?>">KJP</a>
 											</h5>
 										</div>
 									</div>

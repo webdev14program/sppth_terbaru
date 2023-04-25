@@ -1,4 +1,4 @@
-<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Dashboard/detail_pembayaran_spp/<?= $siswa['id_siswa'] ?><? ?>">Kembali</a>
+<a class="btn btn-sm btn-success text-uppercase font-weight-bold mb-2" href="<?= base_url() ?>Pembayaran/detail_pembayaran_spp/<?= $siswa['id_siswa'] ?><? ?>">Kembali</a>
 <div class="row">
 	<div class="col-md">
 		<div class="card">
@@ -6,7 +6,7 @@
 				Pembayaran KJP
 			</div>
 			<div class="card-body">
-				<form action="<?= base_url() ?>Dashboard/simpan_spp_kjp" method="POST">
+				<form action="<?= base_url() ?>Pembayaran/simpan_spp_kjp" method="POST">
 					<div class="row">
 						<div class="col-md">
 							<input type="text" value="<?= $siswa['id_spp_siswa'] ?>" name="id_spp_siswa" hidden>

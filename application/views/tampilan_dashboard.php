@@ -50,7 +50,7 @@
 		</div>
 		<!-- Nav Item - Charts -->
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Dashboard/pembayaran_spp">
+			<a class="nav-link" href="<?= base_url() ?>Pembayaran">
 				<i class="fas fa-credit-card"></i>
 				<span class="text-uppercase">Pembayaran</span></a>
 		</li>
@@ -91,7 +91,7 @@
 			Setting
 		</div>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Dashboard/daftar_setting_pembayaran_spp">
+			<a class="nav-link" href="<?= base_url() ?>Pembayaran/daftar_setting_pembayaran_spp">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Pembayaran SPP</span></a>
 		</li>
