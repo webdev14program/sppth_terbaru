@@ -46,7 +46,7 @@
 		<div class="col-md">
 			<div class="card">
 				<div class="card-body">
-					<h5> JUMLAH PEMBAYARAN SPP : <?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></h5>
+					<h5> JUMLAH PEMBAYARAN SPP PERBULAN : <?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></h5>
 				</div>
 			</div>
 		</div>
@@ -62,7 +62,6 @@
 						<th scope="col">Nama Siswa</th>
 						<th scope="col">Kelas</th>
 						<th scope="col">Bulan</th>
-						<th scope="col">Tahun</th>
 						<th scope="col">Keterangan</th>
 						<th scope="col">NON KJP</th>
 						<th scope="col">KJP cash</th>
@@ -78,14 +77,13 @@
 							<td class="text-uppercase"><?= $row['nama_siswa']; ?></td>
 							<td class=""><?= $row['kelas']; ?></td>
 							<td class=""><?= $row['bulan']; ?></td>
-							<td class=""><?= $row['tahun']; ?></td>
 							<td class=""><?= $row['pembayaran']; ?></td>
 							<td class=""><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
 							<td class=""><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
 					</tr>
 				<?php } ?>
 				<tr>
-					<td colspan="6" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+					<td colspan="5" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
 					<td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_spp'], 2, ',', '.') ?></td>
 				</tr>
 				</tbody>

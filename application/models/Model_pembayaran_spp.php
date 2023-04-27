@@ -98,22 +98,11 @@ spp_siswa.kjp, spp_siswa.kjp_cash FROM `spp_siswa`
 
 	public function tabel_rekap_spp_admin_perhari($bulan_tahun)
 	{
-		// $sql = "SELECT day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun, SUM(setting_pembayaran.nominal) AS jumlah_non_kjp,SUM(spp_siswa.kjp_cash) AS kjp_cash,(SUM(setting_pembayaran.nominal)+SUM(spp_siswa.kjp_cash)) AS total_pembayarn,day(spp_siswa.date) AS hari, monthname(spp_siswa.date) AS bulan, year(spp_siswa.date) AS tahun,
-		//         concat(day(spp_siswa.date),monthname(spp_siswa.date),YEAR(spp_siswa.date)) AS hari_bulan_tahun
-		//         FROM `spp_siswa`
-		//         INNER JOIN siswa
-		//         ON spp_siswa.id_siswa=concat(siswa.id_siswa,siswa.tahun_ajaran)
-		//         INNER JOIN setting_pembayaran
-		//         ON concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
-		//         WHERE spp_siswa.status='LUNAS' AND concat(monthname(spp_siswa.date),YEAR(spp_siswa.date))='July2022'
-		//         GROUP BY day(spp_siswa.date)
-		//         ORDER BY day(spp_siswa.date) DESC;";
-
-		$sql = "SELECT spp_siswa.bulan,spp_siswa.status,spp_siswa.cash,spp_siswa.kjp_cash,spp_siswa.date,sum(spp_siswa.cash) AS cash_non_kjp,SUM(spp_siswa.kjp_cash) AS cash_kjp,(sum(spp_siswa.cash)+SUM(spp_siswa.kjp_cash))AS total_pembayarn,day(spp_siswa.date) AS tanggal_spp,monthname(spp_siswa.date) AS bulan_spp,year(spp_siswa.date) AS tahun_spp,concat(day(spp_siswa.date),monthname(spp_siswa.date),year(spp_siswa.date)) AS hari_bulan_tahun
+		$sql = "SELECT spp_siswa.bulan,spp_siswa.status,spp_siswa.cash,spp_siswa.kjp_cash,spp_siswa.date,sum(spp_siswa.cash) AS cash_non_kjp,SUM(spp_siswa.kjp_cash) AS cash_kjp,(sum(spp_siswa.cash)+SUM(spp_siswa.kjp_cash))AS total_pembayarn,day(spp_siswa.date) AS tanggal_spp,monthname(spp_siswa.date) AS bulan_spp,year(spp_siswa.date) AS tahun_spp,date(spp_siswa.date) AS tanggal,concat(day(spp_siswa.date),monthname(spp_siswa.date),year(spp_siswa.date)) AS hari_bulan_tahun
             FROM `spp_siswa` 
             WHERE spp_siswa.status='LUNAS'
             GROUP BY tanggal_spp,bulan_spp,tahun_spp
-            ORDER BY `kode_bulan` DESC";
+            ORDER BY `kode_bulan` DESC;";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

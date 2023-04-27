@@ -36,7 +36,7 @@
 								<td><?= $hasil_rupiah = "Rp " . number_format($row['cash'], 2, ',', '.') ?></td>
 								<td><?= $hasil_rupiah = "Rp " . number_format($row['kjp_cash'], 2, ',', '.') ?></td>
 								<td><?= $hasil_rupiah = "Rp " . number_format($row['total_pembayaran'], 2, ',', '.') ?></td>
-								<td class="text-center"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard/print_perbulan_pembayaran_spp/<?= $row['bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a></td>
+								<td class="text-center"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Laporan_spp/print_perbulan_pembayaran_spp/<?= $row['bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a></td>
 						</tr>
 					<?php } ?>
 					</tbody>

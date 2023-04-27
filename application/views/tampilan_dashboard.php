@@ -61,16 +61,16 @@
 			laporan
 		</div>
 		<!-- Nav Item - Charts -->
-		<li class="nav-item">
+		<li class="nav-item text-uppercase">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapse">
 				<i class="fas fa-book-open"></i>
 				<span>PEMBAYARAN SPP</span>
 			</a>
 			<div id="collapsePages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_perbulan_perhari">Rekap Hari</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_perbulan_perbulan">Rekap Bulan</a>
-					<a class="collapse-item" href="<?= base_url() ?>Dashboard/rekap_spp_kelas">Rekap Kelas</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Laporan_spp/rekap_spp_perbulan_perhari">Rekap Hari</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Laporan_spp/rekap_spp_perbulan_perbulan">Rekap Bulan</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Laporan_spp/rekap_spp_kelas">Rekap Kelas</a>
 				</div>
 			</div>
 		</li>

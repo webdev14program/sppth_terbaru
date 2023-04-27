@@ -1,4 +1,4 @@
-<a class="btn btn-success text-uppercase font-weight-bold mb-3" href="<?= base_url() ?>Dashboard/rekap_spp_perbulan_perhari">kembali</a>
+<a class="btn btn-success text-uppercase font-weight-bold mb-3" href="<?= base_url() ?>Laporan_spp/rekap_spp_perbulan_perhari">kembali</a>
 <div class="row">
     <div class="col-md">
         <div class="alert alert-success" role="alert">
@@ -21,12 +21,6 @@
                                 </th>
                                 <th scope="col">
                                     <h6 class="font-weight-bold" style="text-transform: uppercase;">Tanggal</h6>
-                                </th>
-                                <th scope="col">
-                                    <h6 class="font-weight-bold" style="text-transform: uppercase;">Bulan</h6>
-                                </th>
-                                <th scope="col">
-                                    <h6 class="font-weight-bold" style="text-transform: uppercase;">Tahun</h6>
                                 </th>
                                 <th scope="col">
                                     <h6 class="font-weight-bold" style="text-transform: uppercase;">Non KJP</h6>
@@ -52,13 +46,7 @@
                                         <h6><?php echo $no++; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['tanggal_spp']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['bulan_spp']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase"><?php echo $row['tahun_spp']; ?></h6>
+                                        <h6 class="text-uppercase text-center"><?php echo $row['tanggal']; ?></h6>
                                     </td>
                                     <td>
                                         <h6 class="text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($row['cash_non_kjp'], 2, ',', '.') ?></h6>
@@ -71,7 +59,7 @@
                                     </td>
                                     <th>
                                         <h5 class="text-center">
-                                            <a class="btn btn-danger btn-sm text-uppercase text-white font-weight-bold" href="<?= base_url() ?>Dashboard/print_perhari_pembayaran_spp/<?= $row['hari_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a>
+                                            <a class="btn btn-danger btn-sm text-uppercase text-white font-weight-bold" href="<?= base_url() ?>Laporan_spp/print_perhari_pembayaran_spp/<?= $row['hari_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a>
                                         </h5>
                                     </th>
                             </tr>

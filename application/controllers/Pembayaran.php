@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pembayaran extends CI_Controller
 {
 
-    
+
     public function index()
     {
         $isi['siswa'] = $this->Model_siswa->NISdataSiswaALL();
@@ -48,34 +48,34 @@ class Pembayaran extends CI_Controller
     {
 
         $months = array(
-                '1' => 'Augustus',
-                '2' => 'September',
-                '3' => 'Oktober',
-                '4' => 'November',
-                '5' => 'Desember',
-                '6' => 'Januari',
-                '7' => 'Februar',
-                '8' => 'Maret',
-                '9' => 'April',
-                '10' => 'Mei',
-                '11' => 'Juni',
-            );
+            '1' => 'Augustus',
+            '2' => 'September',
+            '3' => 'Oktober',
+            '4' => 'November',
+            '5' => 'Desember',
+            '6' => 'Januari',
+            '7' => 'Februar',
+            '8' => 'Maret',
+            '9' => 'April',
+            '10' => 'Mei',
+            '11' => 'Juni',
+        );
 
 
         foreach ($months as $key => $value) {
             $data = array(
-                    'id_spp_siswa' => rand(11111111, 99999999),
-                    'id_siswa' => $id_siswa,
-                    'kode_bulan' => $key,
-                    'bulan' => $value,
-                    'status' => 'BELUM LUNAS',
-                    'pembayaran' => 'BELUM LUNAS',
-                    'cash' => ' ',
-                    'kjp' => ' ',
-                    'kjp_cash' => ' ',
-                    'date' => date("Y-m-d h:i:sa")
+                'id_spp_siswa' => rand(11111111, 99999999),
+                'id_siswa' => $id_siswa,
+                'kode_bulan' => $key,
+                'bulan' => $value,
+                'status' => 'BELUM LUNAS',
+                'pembayaran' => 'BELUM LUNAS',
+                'cash' => ' ',
+                'kjp' => ' ',
+                'kjp_cash' => ' ',
+                'date' => date("Y-m-d h:i:sa")
 
-                );
+            );
             $this->db->insert('spp_siswa', $data);
         }
 
@@ -94,17 +94,17 @@ class Pembayaran extends CI_Controller
 
 
         $data = array(
-                'id_spp_siswa' => $id_spp_siswa,
-                'id_siswa' => $id_siswa,
-                'kode_bulan' => $kode_bulan,
-                'bulan' => $bulan,
-                'status' => $status,
-                'pembayaran' => $pembayaran,
-                'cash' => $cash,
-                'kjp' => ' ',
-                'kjp_cash' => ' ',
-                'date' => date("Y-m-d h:i:sa")
-            );
+            'id_spp_siswa' => $id_spp_siswa,
+            'id_siswa' => $id_siswa,
+            'kode_bulan' => $kode_bulan,
+            'bulan' => $bulan,
+            'status' => $status,
+            'pembayaran' => $pembayaran,
+            'cash' => $cash,
+            'kjp' => ' ',
+            'kjp_cash' => ' ',
+            'date' => date("Y-m-d h:i:sa")
+        );
 
         $this->db->where('id_spp_siswa', $id_spp_siswa);
         $this->db->update('spp_siswa', $data);
@@ -137,15 +137,15 @@ class Pembayaran extends CI_Controller
 
 
         $data = array(
-                'id_spp_siswa' => $id_spp_siswa,
-                'id_siswa' => $id_siswa,
-                'kode_bulan' => $kode_bulan,
-                'bulan' => $bulan,
-                'status' => $status,
-                'pembayaran' => $pembayaran,
-                'kjp' => $kjp,
-                'kjp_cash' => $kjp_cash,
-            );
+            'id_spp_siswa' => $id_spp_siswa,
+            'id_siswa' => $id_siswa,
+            'kode_bulan' => $kode_bulan,
+            'bulan' => $bulan,
+            'status' => $status,
+            'pembayaran' => $pembayaran,
+            'kjp' => $kjp,
+            'kjp_cash' => $kjp_cash,
+        );
 
         $this->db->where('id_spp_siswa', $id_spp_siswa);
         $this->db->update('spp_siswa', $data);
@@ -158,81 +158,4 @@ class Pembayaran extends CI_Controller
         $isi['kwitansi'] = $this->Model_pembayaran_spp->print_kwitansi_spp($id_spp_siswa);
         $this->load->view('SPP/print_kwitansi', $isi);
     }
-
-    public function rekap_spp_perbulan_perhari()
-    {
-        $isi['spp_perbulan_perhari'] = $this->Model_siswa->pembayaranSPP_perbulan_perhari();
-        $this->Model_keamanan->getKeamanan();
-        $isi['content'] = 'SPP/rekap_spp_perbulan_perhari';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-    public function rekap_spp_perbulan_perbulan()
-    {
-        $isi['spp_perbulan_perbulan'] = $this->Model_pembayaran_spp->rekap_spp_perbulan_perbulan();
-        $this->Model_keamanan->getKeamanan();
-        $isi['content'] = 'SPP/rekap_spp_perbulan_perbulan';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-
-    public function print_perbulan_pembayaran_spp($bulan_tahun)
-    {
-        $this->Model_keamanan->getKeamanan();
-        $isi['header'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perbulan_header($bulan_tahun);
-        $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perbulan($bulan_tahun);
-        $this->load->view('SPP/print_rekap_spp_perbulan', $isi);
-    }
-
-    public function rekap_spp_admin_perhari($bulan_tahun)
-    {
-        $isi['header'] = $this->Model_pembayaran_spp->rekap_spp_admin_perhari($bulan_tahun);
-        $isi['tabel_perhari'] = $this->Model_pembayaran_spp->tabel_rekap_spp_admin_perhari($bulan_tahun);
-        $this->Model_keamanan->getKeamanan();
-        $isi['content'] = 'SPP/rekap_spp_perhari';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-
-    public function print_perhari_pembayaran_spp($hari_bulan_tahun)
-    {
-        $this->Model_keamanan->getKeamanan();
-        $isi['header'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari_header($hari_bulan_tahun);
-        $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perhari($hari_bulan_tahun);
-        $this->load->view('SPP/print_rekap_spp_perhari', $isi);
-    }
-
-    public function rekap_spp_kelas()
-    {
-
-        $this->Model_keamanan->getKeamanan();
-        $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
-
-        $isi['content'] = 'SPP/rekap_spp_perkelas';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-
-    public function rekap_pembayaran_spp_kelas($id_tahun_ajaran)
-    {
-
-        $isi['kelas'] = $this->Model_kelas->tahun_ajaran_kelas_siswa($id_tahun_ajaran);
-        $this->Model_keamanan->getKeamanan();
-        $isi['content'] = 'SPP/tampilan_detail_rekap_kelas';
-        $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-
-    public function print_perkelas_pembayaran_spp($kelas_tahun_ajaran)
-    {
-        $this->Model_keamanan->getKeamanan();
-        $isi['header'] = $this->Model_pembayaran_spp->header_rekap_spp_perbulan_perkerlas($kelas_tahun_ajaran);
-        $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perkerlas($kelas_tahun_ajaran);
-        $this->load->view('SPP/print_rekap_spp_perkelas', $isi);
-    } 
 }

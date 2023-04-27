@@ -19,7 +19,6 @@
                     <tr class="text-uppercase text-center font-weight-bold">
                         <th>#</th>
                         <th>id pembayaran</th>
-                        <th>nama pembayaran</th>
                         <th>jenis pembayaran</th>
                         <th>Grup kelas</th>
                         <th>nominal</th>
@@ -36,7 +35,6 @@
                             <td class="text-center text-uppercase font-weight-bold"><?php echo $no++; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['id_setting_pembayaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_jenis_pembayaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>

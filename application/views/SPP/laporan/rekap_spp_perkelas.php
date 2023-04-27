@@ -26,7 +26,7 @@
                              <td class="text-center text-uppercase font-weight-bold"><?= $row['jumlah_kelas']; ?> Kelas</td>
                              <td>
                                  <h5 class="text-center">
-                                     <a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Dashboard/rekap_pembayaran_spp_kelas/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
+                                     <a class="btn btn-primary btn-sm text-uppercase font-weight-bold" href="<?= base_url() ?>Laporan_spp/rekap_pembayaran_spp_kelas/<?= $row['id_tahun_ajaran']; ?>">Detail</a>
                                  </h5>
                              </td>
                      </tr>

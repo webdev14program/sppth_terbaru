@@ -29,7 +29,7 @@
 								<td class="text-center"><?php echo $no++; ?></td>
 								<td class="text-center"><?= $row['bulan']; ?></td>
 								<td><?= $row['tahun']; ?></td>
-								<td class="text-center"><a class="btn btn-primary btn-sm" href="<?= base_url() ?>Dashboard/rekap_spp_admin_perhari/<?= $row['bulan_tahun'] ?>">List Tanggal</a></td>
+								<td class="text-center"><a class="btn btn-primary btn-sm" href="<?= base_url() ?>Laporan_spp/rekap_spp_admin_perhari/<?= $row['bulan_tahun'] ?>">List Tanggal</a></td>
 						</tr>
 					<?php } ?>
 					</tbody>
