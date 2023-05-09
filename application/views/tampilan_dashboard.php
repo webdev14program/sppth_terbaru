@@ -38,6 +38,7 @@
 					<a class="collapse-item text-primary" href="<?= base_url() ?>Kelas">Kelas</a>
 					<a class="collapse-item text-primary" href="<?= base_url() ?>Peserta_didik">Peserta Didik</a>
 					<a class="collapse-item text-primary" href="<?= base_url() ?>Peserta_didik/data_siswa_non_aktif"> PD Non Aktif</a>
+					<a class="collapse-item text-primary" href="<?= base_url() ?>Peserta_didik/nis_siswa_tahun_ajaran"> NIS Siswa</a>
 				</div>
 			</div>
 		</li>
@@ -90,6 +91,7 @@
 		<div class="sidebar-heading">
 			Setting
 		</div>
+
 		<li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Setting/setting_pembayaran_spp">
 				<i class="fas fa-cog"></i>

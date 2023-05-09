@@ -173,4 +173,26 @@ class Peserta_didik extends CI_Controller
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+
+    public function nis_siswa_tahun_ajaran()
+    {
+
+        $this->Model_keamanan->getKeamanan();
+        $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+
+        $isi['content'] = 'Siswa/tampilan_nis_siswa_tahun_ajaran';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail_nis_kelas_tahun_ajaran($tahun_ajaran)
+    {
+        $isi['tahun_ajaran'] = $this->Model_kelas->tahun_ajaran();
+
+        $isi['content'] = 'Siswa/tampilan_nis_siswa_tahun_ajaran';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
 }

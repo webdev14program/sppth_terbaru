@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Setting extends CI_Controller
 {
-    // start setting pembayaran spp
+
     public function setting_pembayaran_spp()
     {
         $isi['kelas'] = $this->Model_kelas->group_kelas();
@@ -148,7 +148,5 @@ class Setting extends CI_Controller
         </div>');
         redirect('Setting/daftar_setting_pembayaran_adm_lain');
     }
-
-    
     // End setting pembayaran adm lain
 }

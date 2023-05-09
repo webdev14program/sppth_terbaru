@@ -55,6 +55,7 @@ class Laporan_spp extends CI_Controller
     }
     // END LAPORAN SPP PER BULAN
 
+    // START LAPORAN SPP PER KELAS
     public function rekap_spp_kelas()
     {
 
@@ -85,4 +86,5 @@ class Laporan_spp extends CI_Controller
         $isi['siswa'] = $this->Model_pembayaran_spp->print_rekap_spp_perbulan_perkerlas($kelas_tahun_ajaran);
         $this->load->view('SPP/print/print_rekap_spp_perkelas', $isi);
     }
+    // START LAPORAN SPP PER KELAS
 }
