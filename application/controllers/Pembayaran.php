@@ -43,22 +43,23 @@ class Pembayaran extends CI_Controller
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
-
+ 
     public function generate_detail_pembayaran_spp($id_siswa)
     {
 
         $months = array(
-            '1' => 'Augustus',
-            '2' => 'September',
-            '3' => 'Oktober',
-            '4' => 'November',
-            '5' => 'Desember',
-            '6' => 'Januari',
-            '7' => 'Februar',
-            '8' => 'Maret',
-            '9' => 'April',
-            '10' => 'Mei',
-            '11' => 'Juni',
+            '1' => 'Juli',
+            '2' => 'Augustus',
+            '3' => 'September',
+            '4' => 'Oktober',
+            '5' => 'November',
+            '6' => 'Desember',
+            '7' => 'Januari',
+            '8' => 'Februar',
+            '9' => 'Maret',
+            '10' => 'April',
+            '11' => 'Mei',
+            '12' => 'Juni',
         );
 
 
