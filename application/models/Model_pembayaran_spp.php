@@ -221,4 +221,23 @@ LIMIT 1;";
 		$query = $this->db->query($sql);
 		return $query->row_array();
 	}
+
+
+	public function jumlah_spp_terbaru()
+	{
+		$tanggal = date("Y-m-d");
+		$sql = "SELECT SUM(spp_siswa.cash+spp_siswa.kjp+spp_siswa.kjp_cash) AS jumlah,date(spp_siswa.date) AS tanggal FROM `spp_siswa`
+				WHERE spp_siswa.status='LUNAS' AND date(spp_siswa.date) = '$tanggal';";
+		$query = $this->db->query($sql);
+		return $query->row_array();
+	}
+
+	public function jumlah_adm_lain_terbaru()
+	{
+		$tanggal = date("Y-m-d");
+		$sql = "SELECT (cash+kjp+kjp_cash) AS jumlah,date(timestamp) AS tanggal FROM `adm_siswa`
+WHERE status='LUNAS' AND date(timestamp) ='$tanggal';";
+		$query = $this->db->query($sql);
+		return $query->row_array();
+	}
 }

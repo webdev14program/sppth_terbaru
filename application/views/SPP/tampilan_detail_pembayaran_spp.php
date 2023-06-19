@@ -1,4 +1,11 @@
-<div class="alert alert-success" role="alert">
+<div class="card">
+	<div class="card-body">
+		<h5 class="text-uppercase font-weight-bold">
+			<a class="btn btn-success btn-sm" href="<?= base_url() ?>Pembayaran/pembayaran_spp_per_nis/<?= $siswa['nis'] ?>">Kembali</a>
+		</h5>
+	</div>
+</div>
+<div class="alert alert-success mt-3" role="alert">
 	<h5 class="text-center text-uppercase font-weight-bold">detail pembayaran spp</h5>
 </div>
 

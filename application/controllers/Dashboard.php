@@ -15,6 +15,9 @@ class Dashboard extends CI_Controller
 		$isi['kelas'] = $this->Model_kelas->countKelas();
 		$isi['siswa'] = $this->Model_siswa->countSiswaAktif();
 		$isi['siswa_tidak_aktif'] = $this->Model_siswa->countSiswaTidakAktif();
+		$isi['jumlah_spp_terbaru'] = $this->Model_pembayaran_spp->jumlah_spp_terbaru();
+		$isi['jumlah_adm_lain_terbaru'] = $this->Model_pembayaran_spp->jumlah_adm_lain_terbaru();
+
 		$isi['version'] = 'RC V2.2 rev 1.7';
 		$this->Model_keamanan->getKeamanan();
 		$isi['content'] = 'tampilan_home';
@@ -23,7 +26,7 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	
+
 	// Administrasi Lain
 
 	public function detail_pembayaran_adm_lain($id_siswa)
@@ -90,9 +93,9 @@ class Dashboard extends CI_Controller
 		redirect('Dashboard/detail_pembayaran_adm_lain/' . $siswa_tahun_ajaran);
 	}
 
-	
 
-	
+
+
 
 	public function hapus_setting_pembayaran_adm_lain($id_setting_pembayaran)
 	{
@@ -111,7 +114,7 @@ class Dashboard extends CI_Controller
 		redirect('Dashboard/daftar_setting_pembayaran_adm_lain');
 	}
 
-	
+
 
 
 

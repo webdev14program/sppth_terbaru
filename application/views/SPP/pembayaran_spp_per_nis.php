@@ -67,7 +67,7 @@
 									</td>
 									<td>
 										<h5 class="text-center">
-											<a class="btn btn-success btn-sm" target="_blank" href="<?= base_url() ?>Pembayaran/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran</a>
+											<a class="btn btn-success btn-sm" href="<?= base_url() ?>Pembayaran/detail_pembayaran_spp/<?= $row['siswa_tahun_ajar'] ?>">Pembayaran</a>
 										</h5>
 									</td>
 							</tr>

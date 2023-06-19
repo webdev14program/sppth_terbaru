@@ -2,7 +2,14 @@
 	<div class="col-md">
 		<div class="card bg-primary">
 			<div class="card-body">
-				<h5 class="text-white font-weight-bold text-uppercase">SPP smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>) - <span class="text-success"><?= $version ?></span></h5>
+				<div class="row">
+					<div class="col-md">
+						<h5 class="text-white font-weight-bold text-uppercase">SPP smk tunas harapan</h5>
+					</div>
+					<div class="col-md mx-auto">
+						<h5 class="text-white font-weight-bold text-uppercase text-right">Tanggal <?= date("Y-m-d") ?></h5>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,7 +33,7 @@
 		</div>
 	</div>
 	<div class="col-md mt-2">
-		<div class="card bg-warning">
+		<div class="card bg-dark">
 			<div class="card-body">
 				<h5 class="text-white font-weight-bold text-uppercase">jurusan siswa</h5>
 				<h5 class="text-white font-weight-bold text-uppercase"><?= $jurusan ?> jurusan</h5>
@@ -34,7 +41,7 @@
 		</div>
 	</div>
 	<div class="col-md mt-2">
-		<div class="card bg-danger">
+		<div class="card bg-info">
 			<div class="card-body">
 				<h5 class="text-white font-weight-bold text-uppercase">jumlah rombel </h5>
 				<h5 class="text-white font-weight-bold text-uppercase"><?= $kelas['kelas'] ?> rombel</h5>
@@ -43,71 +50,72 @@
 	</div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
 	<div class="col-md mt-2">
 		<div class="card">
 			<div class="card-header bg-primary">
-				<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Identitas Sekolah</h5>
+				<h5 class="text-white font-weight-bold text-uppercase">Pembayaran Rerbaru</h5>
 			</div>
 			<div class="card-body">
-				<table class="table table-border">
-					<tbody class="text-dark">
-						<tr>
-							<td>Nama Sekolah </td>
-							<td>: SMK Tunas Harapan</td>
-						</tr>
-						<tr>
-							<td>NPSN </td>
-							<td>: 20101484</td>
-						</tr>
-						<tr>
-							<td>Alamat </td>
-							<td>: JL. KOMP. BNI 46 PESING</td>
-						</tr>
-						<tr>
-							<td>Email </td>
-							<td>: admin@smkth-jakbar.com</td>
-						</tr>
-						<tr>
-							<td>Website </td>
-							<td>: <a class="text-dark" target="_blank" href="https://smkth-jakbar.com/">https://smkth-jakbar.com/</a></td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="row">
+					<div class="col-md">
+						<div class="card">
+							<div class="card-header bg-success">
+								<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Jumlah SPP</h5>
+							</div>
+							<div class="card-body">
+								<table class="table table-border">
+									<tbody>
+										<h4 class=" font-weight-bold "><?= $hasil_rupiah = "Rp " . number_format($jumlah_spp_terbaru['jumlah'], 2, ',', '.') ?></h4>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="card">
+							<div class="card-header bg-danger">
+								<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Jumlah ADM LAIN</h5>
+							</div>
+							<div class="card-body">
+						 		<table class="table table-border">
+									<tbody>
+										<h4 class="font-weight-bold "><?= $hasil_rupiah = "Rp " . number_format($jumlah_adm_lain_terbaru['jumlah'], 2, ',', '.') ?></h4>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="card">
+							<div class="card-header bg-dark">
+								<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Jumlah PANGKAL</h5>
+							</div>
+							<div class="card-body">
+								<table class="table table-border">
+									<tbody>
+										<h4 class="font-weight-bold">Rp 0,00</h4>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-md ">
+						<div class="card">
+							<div class="card-header bg-info">
+								<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Jumlah DU</h5>
+							</div>
+							<div class="card-body">
+								<table class="table table-border">
+									<tbody>
+										<h4 class=" font-weight-bold ">Rp 0,00</h4>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-md mt-2">
-		<div class="card">
-			<div class="card-header bg-primary">
-				<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Detail Aplikasi</h5>
-			</div>
-			<div class="card-body">
-				<table class="table table-border">
-					<tbody>
-						<tr>
-							<td>Versi Aplikasi </td>
-							<td class="text-uppercase">: SPP <?= $version ?> (<?= $tahun_ajaran['tahun_ajaran'] ?>)</td>
-						</tr>
-						<tr>
-							<td>Versi PHP </td>
-							<td>: PHP 7.3.23</td>
-						</tr>
-						<tr>
-							<td>Database </td>
-							<td>: MySqli 5.0.12</td>
-						</tr>
-						<tr>
-							<td>Web Server </td>
-							<td>: Apache</td>
-						</tr>
-						<tr>
-							<td>Contact Developer </td>
-							<td>: <a class="btn btn-primary btn-sm" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Rahmadika, Saya ingin bertanya tentang pengisian SPP TU SMK TUNAS HARAPAN" target="_blank">DEVELOPER SPP TU</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
+</div> -->
