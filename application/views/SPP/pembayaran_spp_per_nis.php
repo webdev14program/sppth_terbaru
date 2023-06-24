@@ -125,7 +125,7 @@
 									</td>
 									<td>
 										<h5 class="text-center">
-											<a class="btn btn-success btn-sm" target="_blank" href="<?= base_url() ?>Dashboard/detail_pembayaran_adm_lain/<?= $row['siswa_tahun_ajaran'] ?>">Pembayaran</a>
+											<a class="btn btn-success btn-sm" href="<?= base_url() ?>Dashboard/detail_pembayaran_adm_lain/<?= $row['siswa_tahun_ajaran'] ?>">Pembayaran</a>
 										</h5>
 									</td>
 							</tr>

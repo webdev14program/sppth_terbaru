@@ -4,7 +4,7 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md">
-						<h5 class="text-white font-weight-bold text-uppercase">SPP smk tunas harapan</h5>
+						<h5 class="text-white font-weight-bold text-uppercase">SPP smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
 					</div>
 					<div class="col-md mx-auto">
 						<h5 class="text-white font-weight-bold text-uppercase text-right">Tanggal <?= date("Y-m-d") ?></h5>
@@ -78,7 +78,7 @@
 								<h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Jumlah ADM LAIN</h5>
 							</div>
 							<div class="card-body">
-						 		<table class="table table-border">
+								<table class="table table-border">
 									<tbody>
 										<h4 class="font-weight-bold "><?= $hasil_rupiah = "Rp " . number_format($jumlah_adm_lain_terbaru['jumlah'], 2, ',', '.') ?></h4>
 									</tbody>

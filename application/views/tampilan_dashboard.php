@@ -100,8 +100,19 @@
 		<li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
 				<i class="fas fa-cog"></i>
+				<span class="text-uppercase">Uang Masuk SEKOLAH</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
+				<i class="fas fa-cog"></i>
+				<span class="text-uppercase">Daftar Ulang</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
+				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Pembayaran ADM Lain</span></a>
 		</li>
+
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 
