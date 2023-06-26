@@ -80,17 +80,12 @@ WHERE concat(siswa.id_siswa,siswa.tahun_ajaran) = '$nis';";
 
 	public function detailAdmLain($id_siswa)
 	{
-		$sql = "SELECT adm_siswa.id_adm_siswa,adm_siswa.id_setting_pembayaran_lain,siswa.kelas,tahun_ajaran.tahun_ajaran,setting_pembayaran_lain.nama_pembayaran_lain,
-setting_pembayaran_lain.nominal,adm_siswa.timestamp, adm_siswa.cash,adm_siswa.kjp,adm_siswa.kjp_cash,
-(adm_siswa.cash+adm_siswa.kjp+adm_siswa.kjp_cash) AS jumlah_pembayaran,adm_siswa.jenis_pembayaran
-FROM `adm_siswa`
-INNER JOIN siswa
-ON adm_siswa.siswa_tahun_ajaran=concat(siswa.id_siswa,siswa.tahun_ajaran)
-INNER JOIN tahun_ajaran
-ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+		$sql = "SELECT setting_pembayaran_lain.nama_pembayaran_lain,setting_pembayaran_lain.nominal,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajaran,concat(siswa.group_kelas,siswa.tahun_ajaran) AS group_tahun_ajaran FROM `siswa`
 INNER JOIN setting_pembayaran_lain
-ON adm_siswa.id_setting_pembayaran_lain=setting_pembayaran_lain.id_setting_pembayaran_lain
-WHERE adm_siswa.siswa_tahun_ajaran='$id_siswa';";
+ON concat(siswa.group_kelas,siswa.tahun_ajaran)=concat(setting_pembayaran_lain.id_groupKelas,setting_pembayaran_lain.id_tahun_ajaran)
+INNER JOIN tahun_ajaran
+ON setting_pembayaran_lain.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

@@ -57,17 +57,13 @@ ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
 		// ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
 		// WHERE siswa.nis='$nis'
 		// ORDER BY siswa.kelas,siswa.nama_siswa ASC;";
-		$sql = "SELECT setting_pembayaran.id_setting_pembayaran,group_kelas.id_groupKelas,tahun_ajaran.id_tahun_ajaran,siswa.id_siswa,siswa.nis,siswa.nama_siswa,siswa.kelas,group_kelas.nama_group,jurusan.jurusan,tahun_ajaran.tahun_ajaran,
-concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar
-FROM `setting_pembayaran`
-INNER JOIN group_kelas
-ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas
-INNER JOIN tahun_ajaran
-ON setting_pembayaran.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
-INNER JOIN siswa
-ON setting_pembayaran.id_groupKelas=siswa.group_kelas
+		$sql = "SELECT jurusan.jurusan,siswa.kelas,tahun_ajaran.tahun_ajaran,concat(siswa.id_siswa,siswa.tahun_ajaran) AS siswa_tahun_ajar FROM `siswa`
+INNER JOIN setting_pembayaran
+ON concat(siswa.group_kelas,siswa.tahun_ajaran)=concat(setting_pembayaran.id_groupKelas,setting_pembayaran.id_tahun_ajaran)
 INNER JOIN jurusan
-ON siswa.jurusan=jurusan.kode
+ON jurusan.kode=siswa.jurusan
+INNER join tahun_ajaran
+ON tahun_ajaran.id_tahun_ajaran=siswa.tahun_ajaran
 WHERE siswa.nis='$nis';";
 		$query = $this->db->query($sql);
 		return $query->result_array();

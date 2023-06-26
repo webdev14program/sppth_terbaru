@@ -12,8 +12,68 @@
 		</button>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md mt-2">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-header bg-info text-white">
+								<h5 class="text-center text-uppercase font-weight-bold">Daftar Pembayaran ADM lain</h5>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr class="text-center text-uppercase">
+												<th scope="col">NOxc</th>
+												<th scope="col">Pembaran</th>
+												<th scope="col">Nominal</th>
+												<th scope="col">Aksi</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<?php
+												$no = 1;
+												foreach ($list_pembayaran as $row) {
+												?>
+													<td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
+													<td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran_lain']; ?></td>
+													<td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
+													<td>
+														<h5 class="text-center"><a class="btn btn-primary btn-sm" href="#">BAYAR</a></h5>
+													</td>
+											</tr>
+										<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="card">
+							<div class="card-header">
+								Quote
+							</div>
+							<div class="card-body">
+								<blockquote class="blockquote mb-0">
+									<p>A well-known quote, contained in a blockquote element.</p>
+									<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div class="card mt-2">
+	</div>
+</div>
+
+<!-- <div class="card mt-2">
 	<div class="card-header bg-danger text-white">
 		<h5 class="text-uppercase font-weight-bold">Nama Siswa : <?= $header['nama_siswa'] ?></h5>
 	</div>
@@ -63,7 +123,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <div class="modal fade" id="kjp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">

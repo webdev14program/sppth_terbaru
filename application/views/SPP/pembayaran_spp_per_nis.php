@@ -78,7 +78,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md mt-3">
+	<div class="col-md mt-2">
 		<div class="card">
 			<div class="card-header bg-danger">
 				<h5 class="text-center font-weight-bold text-white text-uppercase">Pembayaran Administrasi Lain</h5>
@@ -136,7 +136,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div class="col-md mt-3 mb-3">
+	<div class="col-md mt-2 mb-2">
 		<div class="card">
 			<div class="card-header bg-success">
 				<h5 class="text-center font-weight-bold text-white text-uppercase">UANG MASUK SMK TH (KELAS X)</h5>
@@ -194,7 +194,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md mt-3 mb-3">
+	<div class="col-md mt-2 mb-2">
 		<div class="card">
 			<div class="card-header bg-danger">
 				<h5 class="text-center font-weight-bold text-white text-uppercase">DAFTAR ULANG (KELAS XI DAN XII)</h5>
@@ -251,5 +251,5 @@
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 </div>

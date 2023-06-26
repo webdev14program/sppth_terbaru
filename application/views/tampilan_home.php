@@ -4,7 +4,7 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md">
-						<h5 class="text-white font-weight-bold text-uppercase">SPP smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
+						<h5 class="text-white font-weight-bold text-uppercase">Administrasi smk tunas harapan (<?= $tahun_ajaran['tahun_ajaran'] ?>)</h5>
 					</div>
 					<div class="col-md mx-auto">
 						<h5 class="text-white font-weight-bold text-uppercase text-right">Tanggal <?= date("Y-m-d") ?></h5>
