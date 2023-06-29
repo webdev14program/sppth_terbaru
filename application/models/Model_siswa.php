@@ -71,7 +71,7 @@ WHERE siswa.nis='$nis';";
 
 	public function HeaderPerNISdataSiswaALL($nis)
 	{
-		$sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,siswa.jurusan,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
+		$sql = "SELECT siswa.id_siswa,siswa.nis, siswa.nama_siswa,jurusan.jurusan, siswa.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
 INNER JOIN jurusan
 ON siswa.jurusan=jurusan.kode
 INNER JOIN tahun_ajaran

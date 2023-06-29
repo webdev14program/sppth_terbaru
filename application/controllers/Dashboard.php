@@ -37,7 +37,8 @@ class Dashboard extends CI_Controller
 		$isi['header'] = $this->Model_adm_lain->headerAdmLain($id_siswa);
 
 		$isi['dropDown'] = $this->Model_adm_lain->drop_down_adm_lain($id_siswa);
-		$isi['list_pembayaran'] = $this->Model_adm_lain->detailAdmLain($id_siswa);
+		$isi['tabel'] = $this->Model_adm_lain->detailAdmLain($id_siswa);
+		$isi['table_kjp'] = $this->Model_adm_lain->detailAdmLain($id_siswa);
 
 		$isi['content'] = 'Adm_lain/tampilan_detail_adm_lain';
 		$this->load->view('templates/header');

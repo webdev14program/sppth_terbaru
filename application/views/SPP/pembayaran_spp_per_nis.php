@@ -11,7 +11,7 @@
 	<div class="col-md mt-2">
 		<div class="card">
 			<div class="card-body bg-primary">
-				<h5 class="text-white text-uppercase font-weight-bold">Nama Siswa : <?= $header['nama_siswa'] ?></h5>
+				<h5 class="text-white text-uppercase font-weight-bold">Nama Siswa : <?= $header['nama_siswa'] ?> (<?= $header['jurusan'] ?>)</h5>
 			</div>
 		</div>
 	</div>
@@ -34,9 +34,6 @@
 									<h6 class="font-weight-bold" style="text-transform: uppercase;">#</h6>
 								</th>
 								<th scope="col">
-									<h6 class="font-weight-bold" style="text-transform: uppercase;">Jurusan</h6>
-								</th>
-								<th scope="col">
 									<h6 class="font-weight-bold" style="text-transform: uppercase;">Kelas</h6>
 								</th>
 								<th scope="col">
@@ -55,9 +52,6 @@
 								?>
 									<td class="text-centers">
 										<h6><?php echo $no++; ?></h6>
-									</td>
-									<td>
-										<h6 class="text-uppercase text-center"><?php echo $row['jurusan']; ?></h6>
 									</td>
 									<td>
 										<h6 class="text-uppercase text-center"><?php echo $row['kelas']; ?></h6>
@@ -92,9 +86,6 @@
 									<h6 class="font-weight-bold" style="text-transform: uppercase;">#</h6>
 								</th>
 								<th scope="col">
-									<h6 class="font-weight-bold" style="text-transform: uppercase;">Jurusan</h6>
-								</th>
-								<th scope="col">
 									<h6 class="font-weight-bold" style="text-transform: uppercase;">Kelas</h6>
 								</th>
 								<th scope="col">
@@ -115,9 +106,6 @@
 										<h6><?php echo $no++; ?></h6>
 									</td>
 									<td>
-										<h6 class="text-uppercase text-center"><?php echo $row['jurusan']; ?></h6>
-									</td>
-									<td>
 										<h6 class="text-uppercase text-center"><?php echo $row['kelas']; ?></h6>
 									</td>
 									<td>
@@ -136,7 +124,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md mt-2 mb-2">
+	<!-- <div class="col-md mt-2 mb-2">
 		<div class="card">
 			<div class="card-header bg-success">
 				<h5 class="text-center font-weight-bold text-white text-uppercase">UANG MASUK SMK TH (KELAS X)</h5>
@@ -251,5 +239,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
