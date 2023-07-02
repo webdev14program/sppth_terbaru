@@ -139,7 +139,7 @@
 								<h5 class="text-uppercase font-weight-bold">FORM ADM PEMBAYARAN</h5>
 							</div>
 							<div class="card-body">
-								<form action="<?= base_url() ?>Dashboard/simpan_pembayaran_adm_lain_kjp" method="post">
+								<form action="<?= base_url() ?>Adm_lain/simpan_pembayaran_adm_lain_kjp" method="post">
 									<input type="text" name="siswa_tahun_ajaran" value="<?= $header['siswa_tahun_ajaran'] ?>" hidden>
 									<div class="form-group">
 										<label>Pembayaran</label>
@@ -186,7 +186,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
+											ß <tr>
 												<?php
 												$no = 1;
 												foreach ($table_kjp as $row) {
@@ -219,7 +219,7 @@
 
 			</div>
 			<div class="modal-body">
-				<form action="<?= base_url() ?>Dashboard/simpan_pembayaran_adm_lain" method="post">
+				<form action="<?= base_url() ?>Adm_lain/simpan_pembayaran_adm_lain" method="post">
 					<input type="text" name="siswa_tahun_ajaran" value="<?= $header['siswa_tahun_ajaran'] ?>" hidden>
 					<div class="form-group">
 						<label>Pembayaran</label>

@@ -91,9 +91,13 @@
 		<div class="sidebar-heading">
 			Setting
 		</div>
-
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Setting/setting_pembayaran_spp">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_sistem">
+				<i class="fas fa-cog"></i>
+				<span class="text-uppercase">setting sistem</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_spp">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Pembayaran SPP</span></a>
 		</li>

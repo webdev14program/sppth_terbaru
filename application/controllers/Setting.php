@@ -4,12 +4,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Setting extends CI_Controller
 {
 	// Strat Setting Pembayaran spp
-	public function setting_pembayaran_spp()
+
+	public function setting_spp()
 	{
 		$isi['kelas'] = $this->Model_kelas->group_kelas();
 		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
 		$this->Model_keamanan->getKeamanan();
-		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran();
+		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingSPP();
+		$isi['content'] = 'Setting/setting_spp';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function setting_pembayaran_spp($tahun_ajaran)
+	{
+		$isi['kelas'] = $this->Model_kelas->group_kelas();
+		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
+		$this->Model_keamanan->getKeamanan();
+		$isi['header'] = $this->Model_setting_pembayaran->headerSettingpembayaran($tahun_ajaran);
+		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran($tahun_ajaran);
 		$isi['content'] = 'Setting/tampilan_setting_pembayaran_spp';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
@@ -55,7 +69,7 @@ class Setting extends CI_Controller
             </div>
         </div>
         </div>');
-		redirect('Setting/setting_pembayaran_spp');
+		redirect('Setting/setting_spp');
 	}
 
 	public function detail_setting_pembayaran($id_setting_pembayaran)
@@ -214,4 +228,14 @@ class Setting extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 	// end pembayaran uang masuk sekolah
+
+	// start setting sistem
+	public function setting_sistem()
+	{
+		$isi['content'] = 'tampilan_setting_sistem';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+	// end setting sistem
 }
