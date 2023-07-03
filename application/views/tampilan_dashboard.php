@@ -107,7 +107,7 @@
 				<span class="text-uppercase">Uang Masuk SEKOLAH</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_daftar_ulang">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">Daftar Ulang</span></a>
 		</li>

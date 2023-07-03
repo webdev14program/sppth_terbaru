@@ -238,4 +238,12 @@ class Setting extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 	// end setting sistem
+
+	public function setting_daftar_ulang()
+	{
+		$isi['content'] = 'Setting/tampilan_setting_daftar_ulang';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
 }
