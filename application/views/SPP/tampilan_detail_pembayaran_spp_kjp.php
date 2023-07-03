@@ -44,7 +44,7 @@
 						<div class="col-md">
 							<div class="form-group">
 								<label>Pembayaran KJP</label>
-								<input type="text" name="kjp" value="240000" class="form-control" readonly>
+								<input type="text" name="kjp" value="240000" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Pembayaran KJP Cash</label>

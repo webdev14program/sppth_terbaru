@@ -55,7 +55,7 @@ class Model_kelas extends CI_Model
 				INNER JOIN tahun_ajaran
 				ON kelas.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
 				WHERE tahun_ajaran.id_tahun_ajaran='$id_tahun_ajaran'
-				ORDER BY kelas.kelas;";
+				ORDER BY kelas.id ASC;";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

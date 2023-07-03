@@ -11,7 +11,7 @@ class Adm_lain extends CI_Controller
 		$isi['adm_lain'] = $this->Model_adm_lain->siswaAdmLain($id_siswa);
 		$isi['header'] = $this->Model_adm_lain->headerAdmLain($id_siswa);
 
-		$isi['dropDown'] = $this->Model_adm_lain->drop_down_adm_lain($id_siswa);
+		$isi['tableDown'] = $this->Model_adm_lain->dropdown_tabel($id_siswa);
 		$isi['tabel'] = $this->Model_adm_lain->detailAdmLain($id_siswa);
 		$isi['table_kjp'] = $this->Model_adm_lain->detailAdmLainKJP($id_siswa);
 
@@ -42,6 +42,16 @@ class Adm_lain extends CI_Controller
 		);
 
 		$this->db->insert('adm_siswa', $data);
+		$this->session->set_flashdata('info', '<div class="row">
+        <div class="col-md mt-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>PEMBAYARAN ADM LAIN BERHASIL DI TAMBAH BERDASARKAN ID </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        </div>');
 		redirect('Adm_lain/detail_pembayaran_adm_lain/' . $siswa_tahun_ajaran);
 	}
 

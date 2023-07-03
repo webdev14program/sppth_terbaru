@@ -5,73 +5,15 @@
 	<div class="card-body">
 		<a class="btn btn-sm btn-success text-uppercase font-weight-bold" href="<?= base_url() ?>Pembayaran/pembayaran_spp_per_nis/<?= $header['nis'] ?>">kembali</a>
 		<button type="button" class="btn btn-primary btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#cash">
-			Pembayar cash
+			Pembayar ADM LAIN
 		</button>
-		<button type="button" class="btn btn-danger btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#kjp">
+		<!-- <button type="button" class="btn btn-danger btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#kjp">
 			Pembayar KJP
-		</button>
+		</button> -->
 	</div>
 </div>
-<!-- <div class="row">
-	<div class="col-md mt-2">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-md">
-						<div class="card">
-							<div class="card-header bg-info text-white">
-								<h5 class="text-center text-uppercase font-weight-bold">Daftar Pembayaran ADM lain</h5>
-							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr class="text-center text-uppercase">
-												<th scope="col">NOxc</th>
-												<th scope="col">Pembaran</th>
-												<th scope="col">Nominal</th>
-												<th scope="col">Aksi</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<?php
-												$no = 1;
-												foreach ($list_pembayaran as $row) {
-												?>
-													<td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
-													<td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran_lain']; ?></td>
-													<td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
-													<td>
-														<h5 class="text-center"><a class="btn btn-primary btn-sm" href="#">BAYAR</a></h5>
-													</td>
-											</tr>
-										<?php } ?>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md">
-						<div class="card">
-							<div class="card-header">
-								Quote
-							</div>
-							<div class="card-body">
-								<blockquote class="blockquote mb-0">
-									<p>A well-known quote, contained in a blockquote element.</p>
-									<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-								</blockquote>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-	</div>
-</div> -->
+<?= $this->session->flashdata('info') ?>
 
 <div class="card mt-2">
 	<div class="card-header bg-danger text-white">
@@ -125,7 +67,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="kjp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="kjp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header bg-danger">
@@ -210,16 +152,61 @@
 
 		</div>
 	</div>
-</div>
+</div> -->
 <div class="modal fade" id="cash" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header bg-primary">
 				<h5 class="modal-title text-uppercase text-white font-weight-bold" id="exampleModalLabel">Pembayaran Cash</h5>
 
 			</div>
 			<div class="modal-body">
-				<form action="<?= base_url() ?>Adm_lain/simpan_pembayaran_adm_lain" method="post">
+				<div class="row">
+					<div class="col-md">
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr class="text-center text-uppercase">
+									<th scope="col">NO</th>
+									<th scope="col">ID PEMBAYARAN</th>
+									<th scope="col">NAMA PEMBAYARAN</th>
+									<th scope="col">NOMINAL</th>
+									<th colspan="2">Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<?php
+									$no = 1;
+									foreach ($tableDown as $row) {
+									?>
+										<td class="text-center text-uppercase font-weight-bold"><?= $no++; ?></td>
+										<td class="text-center text-uppercase font-weight-bold"><?= $row['id_setting_pembayaran_lain']; ?></td>
+										<td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran_lain']; ?></td>
+										<td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
+										<td>
+											<h5 class="text-center text-uppercase font-weight-bold">
+												<form action="<?= base_url() ?>Adm_lain/simpan_pembayaran_adm_lain" method="post">
+													<input type="text" value="<?= $row['id_setting_pembayaran_lain']; ?>" name="id_setting_pembayaran" hidden>
+													<input type="text" value="<?= $header['siswa_tahun_ajaran']; ?>" name="siswa_tahun_ajaran" hidden>
+													<input type="text" value="<?= $row['nominal']; ?>" name="cash" hidden>
+													<button type="submit" class="btn btn-primary btn-sm">CASH</button>
+												</form>
+
+											</h5>
+										</td>
+										<td>
+											<h5 class="text-center text-uppercase font-weight-bold">
+												<a class="btn btn-danger btn-sm" href="">KJP</a>
+											</h5>
+										</td>
+
+								</tr>
+							<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- <form action="<?= base_url() ?>Adm_lain/simpan_pembayaran_adm_lain" method="post">
 					<input type="text" name="siswa_tahun_ajaran" value="<?= $header['siswa_tahun_ajaran'] ?>" hidden>
 					<div class="form-group">
 						<label>Pembayaran</label>
@@ -245,7 +232,7 @@
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
-				</form>
+				</form> -->
 			</div>
 
 		</div>

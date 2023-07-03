@@ -4,6 +4,9 @@
 
 <div class="card mt-2">
 	<div class="card-body">
+		<button type="button" class="btn btn-primary btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#tambahSiswa">
+			<i class="fas fa-plus-square"></i> TAMBAH siswa
+		</button>
 		<button type="button" class="btn btn-success btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#uploadSiswa">
 			<i class="fas fa-plus-square"></i> Upload siswa
 		</button>
@@ -50,7 +53,7 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahSiswa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header bg-primary text-white">

@@ -55,13 +55,18 @@ GROUP BY siswa.id_siswa;";
 		return $query->result_array();
 	}
 
-	public function dropdown_tabel($id_siswa)
+	public function drop_down_adm_lain($nis)
 	{
-		$sql = "SELECT setting_pembayaran_lain.id_setting_pembayaran_lain,setting_pembayaran_lain.nama_pembayaran_lain,setting_pembayaran_lain.nominal
+		$sql = "SELECT setting_pembayaran_lain.id_setting_pembayaran_lain, setting_pembayaran_lain.nama_pembayaran_lain,
+group_kelas.nama_group,tahun_ajaran.tahun_ajaran, setting_pembayaran_lain.nominal
 FROM `setting_pembayaran_lain`
 INNER JOIN siswa
-ON concat(setting_pembayaran_lain.id_groupKelas,setting_pembayaran_lain.id_tahun_ajaran)=concat(siswa.group_kelas,siswa.tahun_ajaran)
-WHERE concat(siswa.id_siswa,siswa.tahun_ajaran)='$id_siswa';";
+ON setting_pembayaran_lain.id_groupKelas=siswa.group_kelas
+INNER JOIN group_kelas
+ON siswa.group_kelas=group_kelas.id_groupKelas
+INNER JOIN tahun_ajaran
+ON siswa.tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE concat(siswa.id_siswa,siswa.tahun_ajaran) = '$nis';";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}

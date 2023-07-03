@@ -96,7 +96,7 @@ class Setting extends CI_Controller
             </div>
         </div>
         </div>');
-		redirect('Setting/setting_pembayaran_spp');
+		redirect('Setting/setting_spp');
 	}
 	// End setting pembayaran spp
 
