@@ -1,7 +1,7 @@
 <div class="alert alert-dark " role="alert">
 	<h3 class="text-center text-uppercase font-weight-bold">setting sistem</h3>
 </div>
-
+<?= $this->session->flashdata('info') ?>
 <div class="row">
 	<div class="col-md">
 		<div class="card">
@@ -17,7 +17,7 @@
 							</div>
 							<div class="card-body">
 								<h5 class="text-center text-uppercase font-weight-bold">
-									<a class="btn btn-danger btn-sm" href="">Hapus</a>
+									<a class="btn btn-danger btn-sm" href="<?= base_url() ?>Setting/hapus_data_spp_all">Hapus</a>
 								</h5>
 							</div>
 						</div>
