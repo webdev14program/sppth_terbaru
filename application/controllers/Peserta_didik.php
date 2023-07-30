@@ -130,7 +130,7 @@ class Peserta_didik extends CI_Controller
 	{
 		$isi['data_siswa'] = $this->Model_siswa->data_siswa_non_aktif();
 		$this->Model_keamanan->getKeamanan();
-		$isi['content'] = 'siswa/tampilan_data_siswa_non_aktif';
+		$isi['content'] = 'Siswa/tampilan_data_siswa_non_aktif';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
