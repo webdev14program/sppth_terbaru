@@ -89,7 +89,7 @@
 					</tr>
 				<?php } ?>
 				<tr>
-					<td colspan="7" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
+					<td colspan="6" class="font-weight-bold text-center text-uppercase">Jumlah Pembayaran SPP</td>
 					<td colspan="2" class="font-weight-bold text-center text-uppercase"><?= $hasil_rupiah = "Rp " . number_format($header['total_pembayarn'], 2, ',', '.') ?></td>
 				</tr>
 				</tbody>
