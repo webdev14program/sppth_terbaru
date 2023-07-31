@@ -29,7 +29,7 @@
 							</div>
 							<div class="card-body">
 								<h5 class="text-center text-uppercase font-weight-bold">
-									<a class="btn btn-danger btn-sm" href="">Hapus</a>
+									<a class="btn btn-danger btn-sm" href="<?= base_url() ?>Setting/hapus_data_admLain_all">Hapus</a>
 								</h5>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 							</div>
 							<div class="card-body">
 								<h5 class="text-center text-uppercase font-weight-bold">
-									<a class="btn btn-danger btn-sm" href="">Hapus</a>
+									<a class="btn btn-danger btn-sm disabled" href="">Hapus</a>
 								</h5>
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 							</div>
 							<div class="card-body">
 								<h5 class="text-center text-uppercase font-weight-bold">
-									<a class="btn btn-danger btn-sm" href="">Hapus</a>
+									<a class="btn btn-danger btn-sm disabled" href="">Hapus</a>
 								</h5>
 							</div>
 						</div>
