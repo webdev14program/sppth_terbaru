@@ -91,11 +91,11 @@
 		<div class="sidebar-heading">
 			Setting
 		</div>
-		<li class="nav-item">
+		<!-- <li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Setting/setting_sistem">
 				<i class="fas fa-cog"></i>
 				<span class="text-uppercase">setting sistem</span></a>
-		</li>
+		</li> -->
 		<li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Setting/setting_spp">
 				<i class="fas fa-cog"></i>
