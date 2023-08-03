@@ -139,7 +139,7 @@
 	<div class="col-md-3 mt-2">
 		<div class="card">
 			<div class="card-header bg-danger">
-				<h5 class="text-center font-weight-bold text-white text-uppercase">adm Lain</h5>
+				<h5 class="text-center font-weight-bold text-white text-uppercase">DAFTAR ULANG</h5>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
