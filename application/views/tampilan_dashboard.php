@@ -102,9 +102,9 @@
 				<span class="text-uppercase">Pembayaran SPP</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Setting/setting_uang_masuk_sekolah">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_adm_lain">
 				<i class="fas fa-cog"></i>
-				<span class="text-uppercase">Uang Masuk SEKOLAH</span></a>
+				<span class="text-uppercase">Pembayaran ADM Lain</span></a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="<?= base_url() ?>Setting/setting_daftar_ulang">
@@ -112,11 +112,10 @@
 				<span class="text-uppercase">Daftar Ulang</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url() ?>Setting/daftar_setting_pembayaran_adm_lain">
+			<a class="nav-link" href="<?= base_url() ?>Setting/setting_uang_masuk_sekolah">
 				<i class="fas fa-cog"></i>
-				<span class="text-uppercase">Pembayaran ADM Lain</span></a>
+				<span class="text-uppercase">Uang Masuk SEKOLAH</span></a>
 		</li>
-
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 

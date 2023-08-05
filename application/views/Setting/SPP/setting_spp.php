@@ -18,7 +18,7 @@
 				<thead>
 					<tr class="text-uppercase text-center font-weight-bold">
 						<th>#</th>
-						<th>Tahun Ajaran</th>
+						<th>Id Tahun Ajaran</th>
 						<th>jenis pembayaran</th>
 						<th>tahun ajaran</th>
 						<th>setting Pembayaran</th>

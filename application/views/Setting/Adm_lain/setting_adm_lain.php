@@ -1,4 +1,4 @@
-<div class="alert alert-success" role="alert">
+<div class="alert alert-dark" role="alert">
     <h5 class="text-center text-uppercase font-weight-bold">setting pembayaran administrasi lain</h5>
 </div>
 
@@ -18,12 +18,10 @@
                 <thead>
                     <tr class="text-uppercase text-center font-weight-bold">
                         <th>#</th>
-                        <th>ID Pembayaran</th>
-                        <th>nama pembayaran</th>
-                        <th>jenis pembayaran</th>
-                        <th>Grup kelas</th>
-                        <th>nominal</th>
-                        <th>tahun ajaran</th>
+                        <th>ID Tahun Ajaran</th>
+                        <th>Jenis Pembayaran</th>
+                        <th>Tahun Ajaran</th>
+                        <th>Setting Pembayaran</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
@@ -34,15 +32,15 @@
                         foreach ($setting_pembayaran as $row) {
                         ?>
                             <td class="text-center text-uppercase font-weight-bold"><?php echo $no++; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['id_setting_pembayaran_lain']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_pembayaran_lain']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['id_tahun_ajaran']; ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['jenis_pembayaran']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $row['nama_group']; ?></td>
-                            <td class="text-center text-uppercase font-weight-bold"><?= $hasil_rupiah = "Rp " . number_format($row['nominal'], 2, ',', '.') ?></td>
                             <td class="text-center text-uppercase font-weight-bold"><?= $row['tahun_ajaran']; ?></td>
+                            <td class="text-center text-uppercase font-weight-bold"><?= $row['adm_lain']; ?> jumlah setting adm_lain</td>
                             <td>
                                 <h5 class="text-center">
-                                    <a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Setting/hapus_setting_pembayaran_adm_lain/<?= $row['id_setting_pembayaran_lain'] ?>"><i class="fas fa-trash"></i></a>
+                                    <h5 class="text-center">
+                                        <a class="btn btn-primary btn-sm text-uppercase font-wight-bold" href="<?= base_url() ?>Setting/detail_setting_pembayaran_adm_lain/<?= $row['id_tahun_ajaran']; ?>">Detail List</a>
+                                    </h5>
                                 </h5>
                             </td>
                     </tr>

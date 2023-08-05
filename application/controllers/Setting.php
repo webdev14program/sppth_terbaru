@@ -11,7 +11,7 @@ class Setting extends CI_Controller
 		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingSPP();
-		$isi['content'] = 'Setting/setting_spp';
+		$isi['content'] = 'Setting/SPP/setting_spp';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
@@ -24,7 +24,7 @@ class Setting extends CI_Controller
 		$this->Model_keamanan->getKeamanan();
 		$isi['header'] = $this->Model_setting_pembayaran->headerSettingpembayaran($tahun_ajaran);
 		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->dataSettingpembayaran($tahun_ajaran);
-		$isi['content'] = 'Setting/tampilan_setting_pembayaran_spp';
+		$isi['content'] = 'Setting/SPP/tampilan_setting_pembayaran_spp';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
@@ -76,7 +76,7 @@ class Setting extends CI_Controller
 	{
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->detailSettingpembayaran($id_setting_pembayaran);
-		$isi['content'] = 'Setting/tampilan_detail_setting_pembayaran';
+		$isi['content'] = 'Setting/SPP/tampilan_detail_setting_pembayaran';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
@@ -145,13 +145,24 @@ class Setting extends CI_Controller
 
 	// start setting pembayaran adm lain
 
-	public function daftar_setting_pembayaran_adm_lain()
+	public function setting_adm_lain()
 	{
 		$isi['kelas'] = $this->Model_kelas->group_kelas();
 		$isi['tahun_ajaran'] = $this->Model_tahun_ajaran->listTahunAjaran();
 		$this->Model_keamanan->getKeamanan();
 		$isi['setting_pembayaran'] = $this->Model_adm_lain->dataAdmLain();
-		$isi['content'] = 'Setting/tampilan_setting_pembayaran_adm_lain';
+		$isi['content'] = 'Setting/Adm_lain/setting_adm_lain';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function detail_setting_pembayaran_adm_lain($id_tahun_ajaran)
+	{
+		$this->Model_keamanan->getKeamanan();
+		$isi['header'] = $this->Model_adm_lain->detail_Header_THAdmLain($id_tahun_ajaran);
+		$isi['setting_pembayaran'] = $this->Model_adm_lain->detail_THAdmLain($id_tahun_ajaran);
+		$isi['content'] = 'Setting/Adm_lain/detail_adm_lain';
 		$this->load->view('templates/header');
 		$this->load->view('tampilan_dashboard', $isi);
 		$this->load->view('templates/footer');
