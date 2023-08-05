@@ -197,7 +197,7 @@ class Setting extends CI_Controller
             </div>
         </div>
         </div>');
-		redirect('Setting/daftar_setting_pembayaran_adm_lain');
+		redirect('Setting/setting_adm_lain');
 	}
 
 	public function hapus_setting_pembayaran_adm_lain($id_setting_pembayaran)
@@ -214,7 +214,7 @@ class Setting extends CI_Controller
             </div>
         </div>
         </div>');
-		redirect('Setting/daftar_setting_pembayaran_adm_lain');
+		redirect('Setting/setting_adm_lain');
 	}
 	// End setting pembayaran adm lain
 

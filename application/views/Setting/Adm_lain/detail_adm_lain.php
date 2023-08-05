@@ -2,6 +2,19 @@
     <h5 class="text-center text-uppercase font-weight-bold">setting pembayaran administrasi lain <br><?= $header['tahun_ajaran'] ?></h5>
 </div>
 
+
+<div class="row">
+    <div class="col-md">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text-uppercase">
+                    <a class="btn btn-primary btn-sm font-weight-bold" href="<?= base_url() ?>Setting/setting_adm_lain">Kembali</a>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="card mt-2">
     <div class="card-body">
         <div class="table-responsive">
