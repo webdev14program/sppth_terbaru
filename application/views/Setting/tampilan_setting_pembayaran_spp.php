@@ -44,6 +44,7 @@
 							<td>
 								<h5 class="text-center">
 									<a class="btn btn-primary btn-sm  text-uppercase" href="<?= base_url() ?>Setting/detail_setting_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-search"></i></i></a>
+									<!-- <a class="btn btn-info btn-sm  text-uppercase" href="<?= base_url() ?>Setting/edit_pembayaran/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-edit"></i></i></i></a> -->
 									<a class="btn btn-danger btn-sm  text-uppercase" href="<?= base_url() ?>Setting/hapus_setting_pembayaran_spp/<?= $row['id_setting_pembayaran'] ?>"><i class="fas fa-trash"></i></a>
 								</h5>
 							</td>

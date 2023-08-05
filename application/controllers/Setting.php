@@ -98,6 +98,49 @@ class Setting extends CI_Controller
         </div>');
 		redirect('Setting/setting_spp');
 	}
+
+	public function edit_pembayaran($id_setting_pembayaran)
+	{
+		$this->Model_keamanan->getKeamanan();
+		$isi['setting_pembayaran'] = $this->Model_setting_pembayaran->editSettingpembayaran($id_setting_pembayaran);
+		$isi['content'] = 'Setting/tampilan_edit_setting_pembayaran';
+		$this->load->view('templates/header');
+		$this->load->view('tampilan_dashboard', $isi);
+		$this->load->view('templates/footer');
+	}
+
+	public function simpan_edit_pembayaran_spp()
+	{
+		$id_setting_pembayaran = $this->input->post('id_setting_pembayara');
+		$nama_pembayaran = "Pembayaran SPP";
+		$group_kelas = $this->input->post('id_groupKelas');
+		$tahun_ajaran = $this->input->post('id_tahun_ajaran');
+		$jenis_pembayaran = "1001";
+		$spp = $this->input->post('spp');
+		$tabungan = $this->input->post('tabungan');
+		$internet = $this->input->post('internet');
+		$praktek = $this->input->post('praktek');
+		$komputer = $this->input->post('komputer');
+		$mandarin = $this->input->post('mandarin');
+
+
+		$data = array(
+			'id_setting_pembayaran' => $id_setting_pembayaran,
+			'nama_pembayaran' => $nama_pembayaran,
+			'id_groupKelas' => $group_kelas,
+			'id_tahun_ajaran' => $tahun_ajaran,
+			'jenis_pembayaran' => $jenis_pembayaran,
+			'spp' => $spp,
+			'komputer' => $komputer,
+			'mandarin' => $mandarin,
+			'tabungan' => $tabungan,
+			'internet' => $internet,
+			'praktek' => $praktek,
+		);
+		$this->db->where('id_setting_pembayaran', $id_setting_pembayaran);
+		$this->db->update('setting_pembayaran', $data);
+		redirect('Setting/setting_spp');
+	}
 	// End setting pembayaran spp
 
 	// start setting pembayaran adm lain

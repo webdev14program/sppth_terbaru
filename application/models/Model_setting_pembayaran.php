@@ -58,6 +58,20 @@ WHERE setting_pembayaran.id_setting_pembayaran='$id_setting_pembayaran';;";
 		return $query->row_array();
 	}
 
+	public function editSettingpembayaran($id_setting_pembayaran)
+	{
+		$sql = "SELECT setting_pembayaran.id_setting_pembayaran,tahun_ajaran.id_tahun_ajaran,group_kelas.id_groupKelas,setting_pembayaran.jenis_pembayaran,setting_pembayaran.nama_pembayaran,group_kelas.nama_group,tahun_ajaran.tahun_ajaran, 
+setting_pembayaran.spp,setting_pembayaran.komputer,setting_pembayaran.mandarin,setting_pembayaran.tabungan,setting_pembayaran.internet,setting_pembayaran.praktek,date(setting_pembayaran.date) AS tanggal
+FROM `setting_pembayaran`
+INNER JOIN group_kelas
+ON setting_pembayaran.id_groupKelas=group_kelas.id_groupKelas
+INNER JOIN tahun_ajaran
+ON setting_pembayaran.id_tahun_ajaran=tahun_ajaran.id_tahun_ajaran
+WHERE setting_pembayaran.id_setting_pembayaran='$id_setting_pembayaran';";
+		$query = $this->db->query($sql);
+		return $query->row_array();
+	}
+
 	public function setting_spp()
 	{
 		$sql = "SELECT setting_pembayaran.id_setting_pembayaran,group_kelas.nama_group,setting_pembayaran.nama_pembayaran,(spp+komputer+mandarin+tabungan+internet+praktek) AS jumlah_nominal, tahun_ajaran.tahun_ajaran FROM `setting_pembayaran`
