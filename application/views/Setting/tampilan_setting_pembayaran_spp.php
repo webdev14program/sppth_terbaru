@@ -66,10 +66,7 @@
 				<form action="<?= base_url() ?>Setting/simpan_setting_pembayaran" method="POST">
 					<div class="row">
 						<div class="col-md">
-							<div class="form-group">
-								<label>Nama Pembayaran</label>
-								<input type="text" name="nama_pembayaran" class="form-control">
-							</div>
+
 							<div class="form-group">
 								<label>Group Kelas</label>
 								<select class="form-control" name="group_kelas">
@@ -86,13 +83,6 @@
 									<?php foreach ($tahun_ajaran as $row) { ?>
 										<option value="<?= $row['id_tahun_ajaran']; ?>"><?= $row['id_tahun_ajaran']; ?> | <?= $row['tahun_ajaran']; ?> </option>
 									<?php } ?>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Jenis Pembayaran</label>
-								<select class="form-control" name="jenis_pembayaran">
-									<option value="1001">Pembayaran SPP</option>
-									<option value="2002" disabled>Pembayaran Administrasi Lain</option>
 								</select>
 							</div>
 							<div class="form-group">

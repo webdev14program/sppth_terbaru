@@ -33,10 +33,10 @@ class Setting extends CI_Controller
 	public function simpan_setting_pembayaran()
 	{
 		$id_setting_pembayaran = rand(111111, 999999);
-		$nama_pembayaran = $this->input->post('nama_pembayaran');
+		$nama_pembayaran = "PEMBAYARAN SPP";
 		$group_kelas = $this->input->post('group_kelas');
 		$tahun_ajaran = $this->input->post('tahun_ajaran');
-		$jenis_pembayaran = $this->input->post('jenis_pembayaran');
+		$jenis_pembayaran = "1001";
 		$spp = $this->input->post('spp');
 		$tabungan = $this->input->post('tabungan');
 		$internet = $this->input->post('internet');
