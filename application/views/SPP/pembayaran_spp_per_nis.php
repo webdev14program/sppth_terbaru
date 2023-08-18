@@ -89,12 +89,23 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="3">
-									<h5 class="text-center">
-										<a class="btn btn-danger btn-sm disabled" href="#">PERBAIKAN</a>
-									</h5>
-								</td>
+								<?php
+								$no = 1;
+								foreach ($adm_lain as $row) {
+								?>
+									<td class="text-centers">
+										<h6><?php echo $no++; ?></h6>
+									</td>
+									<td>
+										<h6 class="text-uppercase text-center"><?php echo $row['kelas']; ?></h6>
+									</td>
+									<td>
+										<h5 class="text-center">
+											<a class="btn btn-success btn-sm" href="<?= base_url() ?>Adm_lain/detail_pembayaran_adm_lain/<?= $row['siswa_tahun_ajar'] ?>">Bayar</a>
+										</h5>
+									</td>
 							</tr>
+						<?php } ?>
 						</tbody>
 					</table>
 				</div>

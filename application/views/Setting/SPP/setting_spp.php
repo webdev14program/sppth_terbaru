@@ -38,7 +38,7 @@
 							<td class="text-center text-uppercase font-weight-bold"><?= $row['jumlah_setting_spp']; ?> jumlah setting spp</td>
 							<td>
 								<h5 class="text-center">
-									<a class="btn btn-primary btn-sm text-uppercase font-wight-bold" href="<?= base_url() ?>/Setting/setting_pembayaran_spp/<?= $row['id_tahun_ajaran']; ?>">Detail List</a>
+									<a class="btn btn-primary btn-sm text-uppercase font-wight-bold" href="<?= base_url() ?>Setting/setting_pembayaran_spp/<?= $row['id_tahun_ajaran']; ?>">Detail List</a>
 								</h5>
 							</td>
 
